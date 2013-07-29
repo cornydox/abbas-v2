@@ -90,7 +90,7 @@ textarea {
   color:#fff;
   text-align: center;
 }
-#fps{ color:#fff;}
+#fps, #coin, #energy { color:#fff;}
 
 #start { color:#000; font-size: 30px; font-weight: bold; }
 #start:hover { cursor: pointer; color:#fff; }

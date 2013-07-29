@@ -2,6 +2,7 @@
 
 var util = (function(){
     var mouse_timeout = 0;
+    var coin_buffer   = false;
     return{
         initControls: function(){
             stage.onPress = function(evt) {
@@ -26,9 +27,17 @@ var util = (function(){
             else if(abbas.y > 0 && abbas.data.isFlying() === true){
                 abbas.y = (abbas.y - delta_s*2);
             }
-            if(abbas.x > 0){
-                abbas.x = (abbas.x - delta_s);
-            }
+
+        },
+
+        abbasHit: function(){
+            abbas.y = (abbas.y + 100);
+            abbas.data.damage();
+        },
+
+        abbasCoin: function(){
+            abbas.data.plusCoin();
+            document.getElementById("coin").innerHTML = "COIN : " + abbas.data.getCoin();
         },
 
         generateCrow: function(delta_s){
@@ -56,9 +65,11 @@ var util = (function(){
                 if(crow[i].x < -PLAYGROUND_WIDTH){
                     stage.removeChild(crow[i]);
                     delete crow[i];
-                    console.log("removed!");
+                    // console.log("Bird removed!");
                 }
                 else{
+                    var col = crow[i].localToLocal(0, 10, abbas);
+                    if( abbas.hitTest(col.x, col.y) ){ util.abbasHit(); }
                     crow[i].data.update();
                 }
             }
@@ -66,29 +77,36 @@ var util = (function(){
 
         generateCoins: function(delta_s){
             var spawn_chance = Math.random();
-            var no_of_coins  = Math.floor(Math.random()*10) + 3;
-
             // Temporary implementation, need better method.
-            if( spawn_chance > 0.04 && spawn_chance < 0.042 ){
+            if( spawn_chance > 0.04 && spawn_chance < 0.042 && coin_buffer === false ){
+                coin_buffer = true;
+                var no_of_coins  = Math.floor(Math.random()*10) + 3;
+                var pos_y        = Math.floor(Math.random()*300) + 10;
+
                 var img_coin = loader.getResult("coins");
+                var coin_width = img_coin.width/5;
                 var temp     = [];
-                var coin_pos = -PLAYGROUND_WIDTH;
+                var pos_x = PLAYGROUND_WIDTH + (no_of_coins*coin_width);
                 for( var z = 0; z < no_of_coins; z++ ){
                     var speed = Math.floor(Math.random()*2) + 1;
-                    // console.log(speed);
+
                     temp.push(new createjs.SpriteSheet({
                         images: [img_coin],
-                        frames: {"regX": coin_pos, "height": 30, "count": 5, "regY": -abbas.y, "width": 30},
+                        frames: {"regX": 0, "height": 30, "count": 5, "regY": 0, "width": coin_width},
                         animations: {turn:[0,4,true,speed+2]}
                     }));
 
                     coin.push(new createjs.BitmapAnimation(temp[z]));
-                    coin[coin.length-1].setTransform(PLAYGROUND_WIDTH,abbas.y,0.7,0.7);
+                    coin[coin.length-1].setTransform(pos_x,pos_y,0.7,0.7);
                     coin[coin.length-1].gotoAndPlay("turn");
                     coin[coin.length-1].data = new Coin(coin.length-1, delta_s);
                     stage.addChild(coin[coin.length-1]);
-                    coin_pos = coin_pos -30;
+                    pos_x = pos_x - coin_width;
                 }
+
+                setTimeout(function(){
+                    coin_buffer = false;
+                },1500);
 
             }
 
@@ -96,10 +114,18 @@ var util = (function(){
                 if(coin[i].x < -PLAYGROUND_WIDTH-180){
                     stage.removeChild(coin[i]);
                     delete coin[i];
-                    console.log("Coin removed!");
+                    // console.log("Coin removed!");
                 }
                 else{
-                    coin[i].data.update();
+                    var col = coin[i].localToLocal(0, 10, abbas);
+                    if( abbas.hitTest(col.x, col.y) ){
+                        util.abbasCoin();
+                        stage.removeChild(coin[i]);
+                        delete coin[i];
+                    }
+                    else{
+                        coin[i].data.update();
+                    }
                 }
             }
         }

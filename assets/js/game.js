@@ -12,7 +12,7 @@ function Game(){
         path = "assets/img/default/";
 
         var manifest = [
-            {src:path + "abbas.png", id:"abbas"},
+            {src:path + "abbass.png", id:"abbas"},
             {src:path + "coins.png", id:"coins"},
             {src:path + "crow.png", id:"crow"},
             {src:path + "bg_sky.png", id:"sky"},
@@ -59,11 +59,11 @@ function Game(){
         // Abbas animation
         var sprite_sheet = new createjs.SpriteSheet({
             "images": [img_abbas],
-            "frames": {"regX": -60, "height": img_abbas.height, "count": 4, "regY": 0, "width": img_abbas.width/4},
-            "animations": {fly: [0,3, true, 30]}
+            "frames": {"regX": 0, "height": img_abbas.height, "count": 0, "regY": 0, "width": img_abbas.width},
+            "animations": {fly: 0}
         });
         abbas = new createjs.BitmapAnimation(sprite_sheet);
-        // abbas.setTransform(0, 0, 0.4, 0.4);
+        abbas.setTransform(60, 0, 0.4, 0.4);
         abbas.data = new Abbas();
         abbas.gotoAndPlay("fly");
 
