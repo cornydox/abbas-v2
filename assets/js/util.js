@@ -5,20 +5,11 @@ var util = (function(){
     return{
         initControls: function(){
             stage.onPress = function(evt) {
-                // On click
-                if(abbas.y > 10){
-                    abbas.y = abbas.y - 50;
-                    abbas.x = abbas.x + 10;
-                }
-                else{
-                    abbas.y = abbas.y - 10;
-                    abbas.x = abbas.x + 10;
-                }
 
                 // On mouse hold, abbas hover / fly constant
                 mouse_timeout = setTimeout(function(){
                     abbas.data.setFlying(true);
-                }, 400);
+                }, 100);
 
                 // On mouse release
                 evt.onMouseUp = function(evt){
@@ -49,10 +40,11 @@ var util = (function(){
 
                 var spriteSheet = new createjs.SpriteSheet({
                     "images": [img_crow],
-                    "frames": {"regX": -PLAYGROUND_WIDTH, "height": 80, "count": 2, "regY": -abbas.y, "width": 100},
+                    "frames": {"regX": 0, "height": 80, "count": 2, "regY": 0, "width": 100},
                     "animations": {fly:[0,1,"fly",4.5]}
                 });
                 crow.push(new createjs.BitmapAnimation(spriteSheet));
+                crow[crow.length-1].setTransform(PLAYGROUND_WIDTH,abbas.y,0.5,0.5);
                 crow[crow.length-1].gotoAndPlay("fly");
                 crow[crow.length-1].data = new Crow(crow.length-1, delta_s);
 
@@ -91,6 +83,7 @@ var util = (function(){
                     }));
 
                     coin.push(new createjs.BitmapAnimation(temp[z]));
+                    coin[coin.length-1].setTransform(PLAYGROUND_WIDTH,abbas.y,0.7,0.7);
                     coin[coin.length-1].gotoAndPlay("turn");
                     coin[coin.length-1].data = new Coin(coin.length-1, delta_s);
                     stage.addChild(coin[coin.length-1]);

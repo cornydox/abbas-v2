@@ -12,7 +12,7 @@ function Game(){
         path = "assets/img/default/";
 
         var manifest = [
-            {src:path + "abbass.png", id:"abbas"},
+            {src:path + "abbas.png", id:"abbas"},
             {src:path + "coins.png", id:"coins"},
             {src:path + "crow.png", id:"crow"},
             {src:path + "bg_sky.png", id:"sky"},
@@ -47,7 +47,7 @@ function Game(){
         clouds.width    = img_clouds.width;
         mountains.width = img_mountains.width;
         base.width      = img_base.width;
-        grass.width     = img_grass.width;
+        grass.width     = img_grass.width;        
 
         // Paint to canvas
         sky.graphics.beginBitmapFill(img_sky).drawRect(0,0,PLAYGROUND_WIDTH+img_sky.width,img_sky.height);
@@ -59,11 +59,11 @@ function Game(){
         // Abbas animation
         var sprite_sheet = new createjs.SpriteSheet({
             "images": [img_abbas],
-            "frames": {"regX": -60, "height": img_abbas.height, "count": 0, "regY": 0, "width": img_abbas.width},
-            "animations": {fly: 0}
+            "frames": {"regX": -60, "height": img_abbas.height, "count": 4, "regY": 0, "width": img_abbas.width/4},
+            "animations": {fly: [0,3, true, 30]}
         });
         abbas = new createjs.BitmapAnimation(sprite_sheet);
-        abbas.setTransform(0, 0, 0.5, 0.5);
+        // abbas.setTransform(0, 0, 0.4, 0.4);
         abbas.data = new Abbas();
         abbas.gotoAndPlay("fly");
 
