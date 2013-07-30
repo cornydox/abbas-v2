@@ -2,7 +2,7 @@
 
 var util = (function(){
     var mouse_timeout = 0;
-    var coin_buffer   = false;
+
     return{
         initControls: function(){
             stage.onPress = function(evt) {
@@ -18,6 +18,10 @@ var util = (function(){
                     abbas.data.setFlying(false);
                 };
             };
+        },
+
+        getRandom: function(from, to){
+            return Math.floor(Math.random()*(to-from-1) + from);
         },
 
         abbasMovement: function(delta_s){
@@ -40,11 +44,10 @@ var util = (function(){
             document.getElementById("coin").innerHTML = "COIN : " + abbas.data.getCoin();
         },
 
-        generateCrow: function(delta_s){
-            var spawn_chance = Math.random();
+        generateCrow: function(){
+            var spawn_chance = util.getRandom(100,2500);
 
-            // Temporary implementation, need better method.
-            if( spawn_chance > 0.04 && spawn_chance < 0.05 ){
+            setTimeout(function(){
                 var img_crow      = loader.getResult("crow");
 
                 var spriteSheet = new createjs.SpriteSheet({
@@ -55,31 +58,35 @@ var util = (function(){
                 crow.push(new createjs.BitmapAnimation(spriteSheet));
                 crow[crow.length-1].setTransform(PLAYGROUND_WIDTH,abbas.y,0.5,0.5);
                 crow[crow.length-1].gotoAndPlay("fly");
-                crow[crow.length-1].data = new Crow(crow.length-1, delta_s);
+                crow[crow.length-1].data = new Crow(crow.length-1);
 
                 stage.addChild(crow[crow.length-1]);
-                // console.log(crow[0].x);
-            }
 
+                console.log("spawn! " + spawn_chance);
+                util.generateCrow();
+            }, spawn_chance);
+
+        },
+
+        crowMovement: function(delta_s){
             for(var i in crow){
                 if(crow[i].x < -PLAYGROUND_WIDTH){
                     stage.removeChild(crow[i]);
                     delete crow[i];
-                    // console.log("Bird removed!");
+                    console.log("Bird removed!");
                 }
                 else{
                     var col = crow[i].localToLocal(0, 10, abbas);
                     if( abbas.hitTest(col.x, col.y) ){ util.abbasHit(); }
-                    crow[i].data.update();
+                    crow[i].data.update(delta_s);
                 }
             }
         },
 
-        generateCoins: function(delta_s){
-            var spawn_chance = Math.random();
-            // Temporary implementation, need better method.
-            if( spawn_chance > 0.04 && spawn_chance < 0.042 && coin_buffer === false ){
-                coin_buffer = true;
+        generateCoins: function(){
+            var spawn_chance = util.getRandom(1000,15000);
+
+            setTimeout(function(){
                 var no_of_coins  = Math.floor(Math.random()*10) + 3;
                 var pos_y        = Math.floor(Math.random()*300) + 10;
 
@@ -99,17 +106,16 @@ var util = (function(){
                     coin.push(new createjs.BitmapAnimation(temp[z]));
                     coin[coin.length-1].setTransform(pos_x,pos_y,0.7,0.7);
                     coin[coin.length-1].gotoAndPlay("turn");
-                    coin[coin.length-1].data = new Coin(coin.length-1, delta_s);
+                    coin[coin.length-1].data = new Coin(coin.length-1);
                     stage.addChild(coin[coin.length-1]);
                     pos_x = pos_x - coin_width;
                 }
+                util.generateCoins();
+            }, spawn_chance);
 
-                setTimeout(function(){
-                    coin_buffer = false;
-                },1500);
+        },
 
-            }
-
+        coinMovement: function(delta_s){
             for(var i in coin){
                 if(coin[i].x < -PLAYGROUND_WIDTH-180){
                     stage.removeChild(coin[i]);
@@ -124,7 +130,7 @@ var util = (function(){
                         delete coin[i];
                     }
                     else{
-                        coin[i].data.update();
+                        coin[i].data.update(delta_s);
                     }
                 }
             }

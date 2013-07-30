@@ -67,6 +67,9 @@ function Game(){
         abbas.data = new Abbas();
         abbas.gotoAndPlay("fly");
 
+        util.generateCrow();
+        util.generateCoins();
+
         stage.addChild(sky, clouds, mountains, base, grass, abbas);
         createjs.Ticker.useRAF = true;
         createjs.Ticker.timingMode = createjs.Ticker.RAF;
@@ -85,8 +88,8 @@ function Game(){
         grass.x     = (grass.x - delta_s*10) % grass.width;
 
         util.abbasMovement(delta_s);
-        util.generateCrow(delta_s);
-        util.generateCoins(delta_s);
+        util.crowMovement(delta_s);
+        util.coinMovement(delta_s);
 
         stage.update();
 

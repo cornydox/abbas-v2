@@ -1,8 +1,8 @@
-function Crow(index, delta_s){
-	this.speed = delta_s * ((Math.random() * 6) + 1);
+function Crow(index){
+	this.speed = ((Math.random() * 6) + 1);
 	this.index = index;
 }
 
-Crow.prototype.update = function(){
-	crow[this.index].x  = (crow[this.index].x - this.speed);
+Crow.prototype.update = function(delta_s){
+	crow[this.index].x  = (crow[this.index].x - this.speed * delta_s);
 };
