@@ -90,7 +90,32 @@ textarea {
   color:#fff;
   text-align: center;
 }
-#fps, #coin, #energy { color:#fff;}
+#fps, #coin, #energy, #distance { color:#fff;}
+
+#coin { position:absolute; bottom:50px; right: 0;}
+#energy { position:absolute; bottom:50px; left:0;}
+#distance { position:absolute; bottom:50px; left:40%;}
+
+#en{ width:300px; border:3px solid #fff; border-radius:10px;}
+#energy_bar { 
+  width:100%; 
+  background-color:#2F2727;
+   /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, left top, right top, from(#1a82f7), to(#2F2727));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(left, #2F2727, #1a82f7);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(left, #2F2727, #1a82f7);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(left, #2F2727, #1a82f7);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(left, #2F2727, #1a82f7);
+}
+
 
 #start { color:#000; font-size: 30px; font-weight: bold; }
 #start:hover { cursor: pointer; color:#fff; }

@@ -2,6 +2,7 @@
 
 var util = (function(){
     var mouse_timeout = 0;
+    var gold_on_screen = false;
 
     return{
         initControls: function(){
@@ -10,12 +11,14 @@ var util = (function(){
                 // On mouse hold, abbas hover / fly constant
                 mouse_timeout = setTimeout(function(){
                     abbas.data.setFlying(true);
+                    abbas.gotoAndPlay("up");
                 }, 100);
 
                 // On mouse release
                 evt.onMouseUp = function(evt){
                     clearTimeout(mouse_timeout);
                     abbas.data.setFlying(false);
+                    abbas.gotoAndPlay("fly");
                 };
             };
         },
@@ -31,6 +34,10 @@ var util = (function(){
             else if(abbas.y > 0 && abbas.data.isFlying() === true){
                 abbas.y = (abbas.y - delta_s*2);
             }
+            else{
+                abbas.gotoAndPlay("glide");
+            }
+            abbas.data.updateDistance();
 
         },
 
@@ -42,6 +49,10 @@ var util = (function(){
         abbasCoin: function(){
             abbas.data.plusCoin();
             document.getElementById("coin").innerHTML = "COIN : " + abbas.data.getCoin();
+        },
+
+        abbasGold: function(){
+            abbas.data.setBoost(true);
         },
 
         generateCrow: function(){
@@ -76,7 +87,7 @@ var util = (function(){
                     console.log("Bird removed!");
                 }
                 else{
-                    var col = crow[i].localToLocal(0, 10, abbas);
+                    var col = crow[i].localToLocal(5, 20, abbas);
                     if( abbas.hitTest(col.x, col.y) ){ util.abbasHit(); }
                     crow[i].data.update(delta_s);
                 }
@@ -87,8 +98,8 @@ var util = (function(){
             var spawn_chance = util.getRandom(1000,15000);
 
             setTimeout(function(){
-                var no_of_coins  = Math.floor(Math.random()*10) + 3;
-                var pos_y        = Math.floor(Math.random()*300) + 10;
+                var no_of_coins  = util.getRandom(3,10);
+                var pos_y        = util.getRandom(10,300);
 
                 var img_coin = loader.getResult("coins");
                 var coin_width = img_coin.width/5;
@@ -134,6 +145,54 @@ var util = (function(){
                     }
                 }
             }
+        },
+
+        generateGold: function(){
+            if( gold_on_screen === false ){
+                var spawn_chance = util.getRandom(1000,3000);
+
+                setTimeout(function(){
+                    var img_gold = loader.getResult("gold");
+                    var pos_y   = util.getRandom(10,300);
+                    var pos_x   = PLAYGROUND_WIDTH + img_gold.width;
+
+                    var sprite_sheet = new createjs.SpriteSheet({
+                        "images": [img_gold],
+                        "frames": {"regX": 0, "height": img_gold.height, "count": 1, "regY": 0, "width": img_gold.width},
+                        "animations": {move: 0}
+                    });
+                    gold = new createjs.BitmapAnimation(sprite_sheet);
+                    gold.setTransform(pos_x, 0, 0.3, 0.3);
+                    gold.data = new Gold();
+                    gold.gotoAndPlay("move");
+                    stage.addChild(gold);
+
+                    gold_on_screen = true;
+                    console.log("gold!");
+
+                }, spawn_chance);
+            }
+        },
+
+        goldMovement: function(delta_s){
+            if( gold_on_screen === true ){
+                if( gold.x < -PLAYGROUND_WIDTH) {
+                    stage.removeChild(gold);
+                    gold_on_screen = false;
+                    util.generateGold();
+                }
+                else{
+                    var col = gold.localToLocal(20, 20, abbas);
+                    if( abbas.hitTest(col.x, col.y) ){
+                        util.abbasGold();
+                        stage.removeChild(gold);
+                    }
+                    else{
+                        gold.data.update(delta_s);
+                    }
+                }
+            }
+
         }
 
     };

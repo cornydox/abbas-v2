@@ -1,7 +1,7 @@
 // Global variables
 var stage, loader;
 var PLAYGROUND_WIDTH, PLAYGROUND_HEIGHT, path;
-var sky, clouds, base, mountains, grass, abbas;
+var sky, clouds, base, mountains, grass, abbas, gold;
 
 var crow = [];
 var coin = [];
