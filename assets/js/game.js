@@ -72,7 +72,7 @@ function Game(){
         util.generateCoins();
         util.generateGold();
 
-        stage.addChild(sky, clouds, mountains, base, grass, abbas);
+        stage.addChild(sky, clouds, mountains, base, abbas, grass);
         createjs.Ticker.useRAF = true;
         createjs.Ticker.timingMode = createjs.Ticker.RAF;
 
@@ -82,21 +82,28 @@ function Game(){
 
     function tick(event){
         var delta_s = event.delta/1000*100;
+        var boost = 1;
 
-        sky.x       = (sky.x - delta_s) % sky.width;
-        clouds.x    = (clouds.x - delta_s*1.5) % clouds.width;
-        mountains.x = (mountains.x - delta_s*2) % mountains.width;
-        base.x      = (base.x - delta_s*3.5) % base.width;
-        grass.x     = (grass.x - delta_s*10) % grass.width;
+        if( abbas.data.getBoost() === true ){
+            boost = MULTIPLIER;
+        }
 
-        util.abbasMovement(delta_s);
-        util.crowMovement(delta_s);
-        util.coinMovement(delta_s);
-        util.goldMovement(delta_s);
+        if( !createjs.Ticker.getPaused() ){
+            sky.x       = (sky.x - delta_s * boost) % sky.width;
+            clouds.x    = (clouds.x - delta_s * 1.5 * boost) % clouds.width;
+            mountains.x = (mountains.x - delta_s * 2 * boost) % mountains.width;
+            base.x      = (base.x - delta_s * 3.5 * boost) % base.width;
+            grass.x     = (grass.x - delta_s * 10 * boost) % grass.width;
+
+            util.abbasMovement(delta_s);
+            util.abbasStats();
+            util.crowMovement(delta_s);
+            util.coinMovement(delta_s);
+            util.goldMovement(delta_s);
+        }
+
 
         stage.update();
 
-        // Display fps
-        document.getElementById("fps").innerHTML = createjs.Ticker.getMeasuredFPS();
     }
 }

@@ -7,19 +7,22 @@ var util = (function(){
     return{
         initControls: function(){
             stage.onPress = function(evt) {
+                if( abbas.data.getEnergy() > 0 ){
+                    // On mouse hold, abbas hover / fly constant
+                    mouse_timeout = setTimeout(function(){
+                        abbas.data.setFlying(true);
+                        abbas.gotoAndPlay("up");
+                    }, 100);
 
-                // On mouse hold, abbas hover / fly constant
-                mouse_timeout = setTimeout(function(){
-                    abbas.data.setFlying(true);
-                    abbas.gotoAndPlay("up");
-                }, 100);
+                    // On mouse release
+                    evt.onMouseUp = function(evt){
+                        clearTimeout(mouse_timeout);
+                        abbas.data.setFlying(false);
+                        abbas.gotoAndPlay("fly");
+                    };
 
-                // On mouse release
-                evt.onMouseUp = function(evt){
-                    clearTimeout(mouse_timeout);
-                    abbas.data.setFlying(false);
-                    abbas.gotoAndPlay("fly");
-                };
+                }
+
             };
         },
 
@@ -27,12 +30,28 @@ var util = (function(){
             return Math.floor(Math.random()*(to-from-1) + from);
         },
 
+        gameOver: function(){
+            var paused = createjs.Ticker.getPaused();
+            console.log(paused + " PAUSED?");
+            createjs.Ticker.setPaused(true);
+            console.log("gameOver");
+        },
+
         abbasMovement: function(delta_s){
-            if(abbas.y < 350 && abbas.data.isFlying() === false){
-                abbas.y = (abbas.y + delta_s);
+            var boost = 1;
+
+            if( abbas.data.getBoost() === true ){
+                boost = MULTIPLIER;
             }
-            else if(abbas.y > 0 && abbas.data.isFlying() === true){
-                abbas.y = (abbas.y - delta_s*2);
+
+            if(abbas.y < 350 && abbas.data.isFlying() === false){ // Abbas falling down 
+                abbas.y = (abbas.y + delta_s / boost);
+            }
+            else if(abbas.y > 0 && abbas.data.isFlying() === true && abbas.data.getEnergy() > 0){ // Abbas fly, limit max height...
+                abbas.y = (abbas.y - (delta_s * 2)/ boost);
+            }
+            else if(abbas.y > 350){
+                util.abbasCrash(delta_s);
             }
             else{
                 abbas.gotoAndPlay("glide");
@@ -46,6 +65,19 @@ var util = (function(){
             abbas.data.damage();
         },
 
+        abbasCrash: function(delta_s){
+            abbas.data.setEnergy(0);
+            abbas.y = (abbas.y - delta_s);
+            setTimeout(function(){
+                abbas.y = (abbas.y + delta_s * 1.5);
+                util.removeAllCrows();
+            }, 500);
+            setTimeout(function(){
+                util.gameOver();
+            }, 1500);
+
+        },
+
         abbasCoin: function(){
             abbas.data.plusCoin();
             document.getElementById("coin").innerHTML = "COIN : " + abbas.data.getCoin();
@@ -53,27 +85,46 @@ var util = (function(){
 
         abbasGold: function(){
             abbas.data.setBoost(true);
+            util.removeAllCrows();
+            setTimeout(function(){
+                abbas.data.setBoost(false);
+            }, 3000);
+        },
+
+        abbasStats: function(){
+            var energy   = abbas.data.getEnergy();
+            var distance = abbas.data.getDistance();
+            var width    = "width:"+ energy + "%";
+
+            // document.getElementById("energy").innerHTML = "ENERGY : " + energy;
+            document.getElementById("energy_bar").setAttribute("style", width);
+            document.getElementById("distance").innerHTML = "DISTANCE : " + distance + " m";
+            // Display fps
+            document.getElementById("fps").innerHTML = createjs.Ticker.getMeasuredFPS();
         },
 
         generateCrow: function(){
             var spawn_chance = util.getRandom(100,2500);
 
             setTimeout(function(){
-                var img_crow      = loader.getResult("crow");
+                if( abbas.data.getBoost() === false ){
+                    var img_crow    = loader.getResult("crow");
 
-                var spriteSheet = new createjs.SpriteSheet({
-                    "images": [img_crow],
-                    "frames": {"regX": 0, "height": 80, "count": 2, "regY": 0, "width": 100},
-                    "animations": {fly:[0,1,"fly",4.5]}
-                });
-                crow.push(new createjs.BitmapAnimation(spriteSheet));
-                crow[crow.length-1].setTransform(PLAYGROUND_WIDTH,abbas.y,0.5,0.5);
-                crow[crow.length-1].gotoAndPlay("fly");
-                crow[crow.length-1].data = new Crow(crow.length-1);
+                    var spriteSheet = new createjs.SpriteSheet({
+                        "images": [img_crow],
+                        "frames": {"regX": 0, "height": 80, "count": 2, "regY": 0, "width": 100},
+                        "animations": {fly:[0,1,"fly",4.5]}
+                    });
+                    crow.push(new createjs.BitmapAnimation(spriteSheet));
+                    crow[crow.length-1].setTransform(PLAYGROUND_WIDTH,abbas.y,0.5,0.5);
+                    crow[crow.length-1].gotoAndPlay("fly");
+                    crow[crow.length-1].data = new Crow(crow.length-1);
 
-                stage.addChild(crow[crow.length-1]);
+                    stage.addChild(crow[crow.length-1]);
 
-                console.log("spawn! " + spawn_chance);
+                    console.log("spawn! " + spawn_chance);
+                }
+
                 util.generateCrow();
             }, spawn_chance);
 
@@ -91,6 +142,13 @@ var util = (function(){
                     if( abbas.hitTest(col.x, col.y) ){ util.abbasHit(); }
                     crow[i].data.update(delta_s);
                 }
+            }
+        },
+
+        removeAllCrows: function(){
+            for(var i in crow){
+                stage.removeChild(crow[i]);
+                delete crow[i];
             }
         },
 
@@ -121,6 +179,7 @@ var util = (function(){
                     stage.addChild(coin[coin.length-1]);
                     pos_x = pos_x - coin_width;
                 }
+
                 util.generateCoins();
             }, spawn_chance);
 
@@ -179,7 +238,6 @@ var util = (function(){
                 if( gold.x < -PLAYGROUND_WIDTH) {
                     stage.removeChild(gold);
                     gold_on_screen = false;
-                    util.generateGold();
                 }
                 else{
                     var col = gold.localToLocal(20, 20, abbas);
@@ -191,6 +249,9 @@ var util = (function(){
                         gold.data.update(delta_s);
                     }
                 }
+            }
+            else if( abbas.data.getBoost() === false ){
+                util.generateGold();
             }
 
         }

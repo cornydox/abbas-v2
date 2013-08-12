@@ -17,10 +17,6 @@ Abbas.prototype.setFlying = function(state){
 	if(state === true){
 		this.energy_timeout = setInterval(function(){
 			self.energy = self.energy - 1;
-			document.getElementById("energy").innerHTML = "ENERGY : " + self.energy;
-
-			var width = "width:"+ self.energy + "%";
-			document.getElementById("energy_bar").setAttribute("style", width);
 		}, 100);
 	}
 	else{
@@ -28,12 +24,26 @@ Abbas.prototype.setFlying = function(state){
 	}
 };
 
+Abbas.prototype.setEnergy = function(value){
+	this.energy = value;
+};
+
+Abbas.prototype.getEnergy = function(){
+	if( this.energy < 0 ){
+		this.energy = 0;
+	}
+
+	return this.energy;
+};
+
 Abbas.prototype.plusCoin = function(){
 	this.coin++;
 
-	if( this.energy <= 95 ){
+	if( this.energy > 100 ){
+		this.energy = 100;
+	}
+	else{
 		this.energy = this.energy + 5;
-		document.getElementById("energy").innerHTML = "ENERGY : " + this.energy;
 	}
 };
 
@@ -43,12 +53,20 @@ Abbas.prototype.getCoin = function(){
 
 Abbas.prototype.damage = function(){
 	this.energy = this.energy - 20;
-	document.getElementById("energy").innerHTML = "ENERGY : " + this.energy;
+	// document.getElementById("energy").innerHTML = "ENERGY : " + this.energy;
 };
 
 Abbas.prototype.updateDistance = function(){
-	this.distance = this.distance + 0.3;
-	document.getElementById("distance").innerHTML = "DISTANCE : " + Math.floor(this.distance) + " m";
+	var boost = 1;
+	if(this.boosting === true){
+		boost = MULTIPLIER;
+	}
+
+	this.distance = this.distance + (0.3 * boost);
+};
+
+Abbas.prototype.getDistance = function(){
+	return Math.floor(this.distance);
 };
 
 Abbas.prototype.setBoost = function(state){

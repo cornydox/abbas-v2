@@ -90,30 +90,30 @@ textarea {
   color:#fff;
   text-align: center;
 }
+
 #fps, #coin, #energy, #distance { color:#fff;}
+#fps{ position: absolute; bottom: 20px; right:0;}
+#coin { position:absolute; bottom:20px; left: 250px;}
+#distance { position:absolute; bottom:20px; left:0;}
 
-#coin { position:absolute; bottom:50px; right: 0;}
-#energy { position:absolute; bottom:50px; left:0;}
-#distance { position:absolute; bottom:50px; left:40%;}
-
-#en{ width:300px; border:3px solid #fff; border-radius:10px;}
+#energy{ position:absolute; bottom:40px; left:0; width:300px; border:3px solid #fff; border-radius:10px;}
 #energy_bar { 
   width:100%; 
   background-color:#2F2727;
    /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-gradient(linear, left top, right top, from(#1a82f7), to(#2F2727));
+  background: -webkit-gradient(linear, left top, right top, from(#2F2727), to(#ff0000));
 
   /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(left, #2F2727, #1a82f7);
+  background: -webkit-linear-gradient(left, #2F2727, #ff0000);
 
   /* Firefox 3.6+ */
-  background: -moz-linear-gradient(left, #2F2727, #1a82f7);
+  background: -moz-linear-gradient(left, #2F2727, #ff0000);
 
   /* IE 10 */
-  background: -ms-linear-gradient(left, #2F2727, #1a82f7);
+  background: -ms-linear-gradient(left, #2F2727, #ff0000);
 
   /* Opera 11.10+ */
-  background: -o-linear-gradient(left, #2F2727, #1a82f7);
+  background: -o-linear-gradient(left, #2F2727, #ff0000);
 }
 
 
