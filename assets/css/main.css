@@ -1,6 +1,10 @@
 /* ==========================================================================
    HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
    ========================================================================== */
+@font-face{
+  font-family: abbasCartoon;
+  src: url('BD_Cartoon_Shout.ttf');     
+}
 
 html,
 button,
@@ -11,7 +15,7 @@ textarea {
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "abbasCartoon";
     /*background: url('../img/dark.png');*/
     font-size: 1em;
     line-height: 1.4;
@@ -64,56 +68,80 @@ textarea {
    Author's custom styles
    ========================================================================== */
 #container {
-  position:relative;
-/*  position: absolute;
-  left: 50%;
-  top: 50%; */ 
+  position:relative;  
+  margin:0 auto;
+  margin-top:50px;
+  width:768px;
+  height:480px; 
+  border:5px solid #000; 
 }
 
-#playground {    
-  /*background: url('../img/welcome.png');*/
+#playground {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-color: #333;
+  background: url('../img/min/start_bg.png') no-repeat;
+  background-size: 100%;
   /*border:5px solid #000;*/
   cursor:pointer;
-  width:100%;
-  /*height:50%;*/
+  /*width:100%;*/
+  
 }
 
 #welcome{
   position: absolute;
-  top:30%;
-  /*left:50%;*/
-  margin: 0 auto;
   height:100%;
-  width:100%;
+  left:30%;
+}
+
+#logo{ padding-left: 50px;}
+
+#start_outer{
+  position:absolute;
+  bottom:10px;
+  background: url("../img/min/wood.png") no-repeat;  
+  margin: 0 auto;
+  height:100px;
+  width:330px;
   color:#fff;
   text-align: center;
 }
 
 #fps, #coin, #energy, #distance { color:#fff;}
 #fps{ position: absolute; bottom: 20px; right:0;}
-#coin { position:absolute; bottom:20px; left: 250px;}
-#distance { position:absolute; bottom:20px; left:0;}
+#coin { text-align: right;}
+#distance { text-align:right;}
 
-#energy{ position:absolute; bottom:40px; left:0; width:300px; border:3px solid #fff; border-radius:10px;}
+#hud{
+  position:absolute; 
+  top:40px; 
+  right:50px;
+  display:none;
+}
+.hud_container{
+  position:relative;
+}
+.hud_icon{
+  position:absolute;
+  left:170px;  
+  bottom:-4px;
+}
+#energy_outer{ 
+  width:180px; 
+  border:3px solid #93ac8c;   
+  background-color: #c5d9e6;
+}
 #energy_bar { 
+  background-color: #079365;  
   width:100%; 
-  background-color:#2F2727;
-   /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-gradient(linear, left top, right top, from(#2F2727), to(#ff0000));
-
-  /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(left, #2F2727, #ff0000);
-
-  /* Firefox 3.6+ */
-  background: -moz-linear-gradient(left, #2F2727, #ff0000);
-
-  /* IE 10 */
-  background: -ms-linear-gradient(left, #2F2727, #ff0000);
-
-  /* Opera 11.10+ */
-  background: -o-linear-gradient(left, #2F2727, #ff0000);
+}
+.energy{
+  height:29px;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 

@@ -1,5 +1,6 @@
 function Game(){
     this.init = function(){
+        $("#hud").show();
         var element = document.getElementById("welcome");
         element.parentNode.removeChild(element);
 
@@ -20,7 +21,9 @@ function Game(){
             {src:path + "base.png", id:"base"},
             {src:path + "mountain.png", id:"mountains"},
             {src:path + "clouds.png", id:"clouds"},
-            {src:path + "grass.png", id:"grass"}
+            {src:path + "grass.png", id:"grass"},
+            {src:path + "energy.png", id:"energy"},
+            {src:path + "multiplier.png", id:"multiplier"}
         ];
         util.initControls();
 
@@ -74,7 +77,7 @@ function Game(){
 
         stage.addChild(sky, clouds, mountains, base, abbas, grass);
         createjs.Ticker.useRAF = true;
-        createjs.Ticker.timingMode = createjs.Ticker.RAF;
+        createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 
         createjs.Ticker.setFPS(60);
         createjs.Ticker.addEventListener("tick", tick); // Start Game...

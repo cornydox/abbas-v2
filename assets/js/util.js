@@ -80,7 +80,7 @@ var util = (function(){
 
         abbasCoin: function(){
             abbas.data.plusCoin();
-            document.getElementById("coin").innerHTML = "COIN : " + abbas.data.getCoin();
+            document.getElementById("coin").innerHTML = abbas.data.getCoin() + " &nbsp;&nbsp;";
         },
 
         abbasGold: function(){
@@ -98,9 +98,9 @@ var util = (function(){
 
             // document.getElementById("energy").innerHTML = "ENERGY : " + energy;
             document.getElementById("energy_bar").setAttribute("style", width);
-            document.getElementById("distance").innerHTML = "DISTANCE : " + distance + " m";
+            document.getElementById("distance").innerHTML = distance + " m";
             // Display fps
-            document.getElementById("fps").innerHTML = createjs.Ticker.getMeasuredFPS();
+            document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
         },
 
         generateCrow: function(){

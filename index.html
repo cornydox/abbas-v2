@@ -16,13 +16,16 @@
 
         <script src="assets/js/lib/preloadjs-NEXT.min.js"></script>
         <script src="assets/js/lib/easeljs-0.6.1.min.js"></script>
+        <script src="assets/js/vendor/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script type="text/javascript" src="assets/js/game.js"></script>
         <script type="text/javascript" src="assets/js/util.js"></script>
         <script type="text/javascript" src="assets/js/abbas.js"></script>
         <script type="text/javascript" src="assets/js/crow.js"></script>
         <script type="text/javascript" src="assets/js/coin.js"></script> 
-        <script type="text/javascript" src="assets/js/gold.js"></script>        
+        <script type="text/javascript" src="assets/js/gold.js"></script>
+
+
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -30,12 +33,29 @@
         <![endif]-->        
 
         <div id="container">
-            <div id="welcome"><span id="start" onclick="startGame();">START GAME</span></div>
+            <div id="welcome">
+                <img id="logo" src="./assets/img/min/1001.png">
+                <div id="start_outer">
+                    <br />
+                    <span id="start" onclick="startGame();">START GAME</span>
+                </div>
+            </div>
             <canvas id="playground" width="768" height="480"></canvas>
+            <div id="hud">                                
+                <div id="distance">0 m</div>                               
+                <div class="hud_container">
+                    <img class="hud_icon" src="./assets/img/min/energy.png">
+                    <div id="energy_outer" class="energy">
+                        <div id="energy_bar" class="energy">&nbsp;</div>
+                    </div>
+                </div>
+                <br />
+                <div class="hud_container">
+                    <img class="hud_icon" src="./assets/img/min/coin.png">
+                    <div id="coin">0 &nbsp;&nbsp;</div>    
+                </div>                 
+            </div>            
             <div id="fps"></div>
-            <div id="energy"><div id="energy_bar">&nbsp;</div></div>            
-            <div id="distance">DISTANCE : 0 m</div>
-            <div id="coin">COIN : 0</div>            
         </div>        
     </body>
 </html>
