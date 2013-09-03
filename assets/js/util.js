@@ -31,8 +31,6 @@ var util = (function(){
         },
 
         gameOver: function(){
-            var paused = createjs.Ticker.getPaused();
-            console.log(paused + " PAUSED?");
             createjs.Ticker.setPaused(true);
             console.log("gameOver");
         },
@@ -107,7 +105,7 @@ var util = (function(){
             var spawn_chance = util.getRandom(100,2500);
 
             setTimeout(function(){
-                if( abbas.data.getBoost() === false ){
+                if( abbas.data.getBoost() === false && createjs.Ticker.getPaused() === false ){
                     var img_crow    = loader.getResult("crow");
 
                     var spriteSheet = new createjs.SpriteSheet({
@@ -122,7 +120,7 @@ var util = (function(){
 
                     stage.addChild(crow[crow.length-1]);
 
-                    console.log("spawn! " + spawn_chance);
+                    // console.log("spawn! " + spawn_chance);
                 }
 
                 util.generateCrow();
@@ -135,7 +133,7 @@ var util = (function(){
                 if(crow[i].x < -PLAYGROUND_WIDTH){
                     stage.removeChild(crow[i]);
                     delete crow[i];
-                    console.log("Bird removed!");
+                    // console.log("Bird removed!");
                 }
                 else{
                     var col = crow[i].localToLocal(5, 20, abbas);
@@ -227,7 +225,7 @@ var util = (function(){
                     stage.addChild(gold);
 
                     gold_on_screen = true;
-                    console.log("gold!");
+                    // console.log("gold!");
 
                 }, spawn_chance);
             }

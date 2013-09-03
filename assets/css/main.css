@@ -153,6 +153,11 @@ textarea {
    Media Queries
    ========================================================================== */
 
+@media (max-device-width: 767px){
+  #container{ margin-top:0; height:100%; width:auto;}
+  #playground{ width:100%;}
+}
+
 @media only screen and (min-width: 35em) {
 
 }
