@@ -306,7 +306,7 @@ var util = (function(){
                     util.generateEnergy();
                 }
                 else{
-                    var col = energy.localToLocal(20, 20, abbas);
+                    var col = energy.localToLocal(0, 5, abbas);
                     if( abbas.hitTest(col.x, col.y) ){
                         util.abbasEnergy();
                         stage.removeChild(energy);

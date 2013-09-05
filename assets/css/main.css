@@ -208,7 +208,7 @@ textarea {
   cursor:pointer;
 }
 
-#gameover_1{ 
+#gameover_1, #loading{ 
   position: absolute;
   top:60px; 
   left:250px;  
