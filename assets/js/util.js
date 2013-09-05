@@ -102,6 +102,10 @@ var util = (function(){
             }, 3000);
         },
 
+        abbasEnergy: function(){
+            abbas.data.regenEnergy();
+        },
+
         abbasStats: function(){
             var energy   = abbas.data.getEnergy();
             var distance = abbas.data.getDistance();
@@ -219,7 +223,7 @@ var util = (function(){
 
         generateGold: function(){
             if( gold_on_screen === false ){
-                var spawn_chance = util.getRandom(1000,3000);
+                var spawn_chance = util.getRandom(1500,5500);
 
                 setTimeout(function(){
                     var img_gold = loader.getResult("gold");
@@ -263,6 +267,56 @@ var util = (function(){
             }
             else if( abbas.data.getBoost() === false ){
                 util.generateGold();
+            }
+
+        },
+
+        generateEnergy: function(){
+            if( energy_on_screen === false ){
+                var spawn_chance = util.getRandom(1500,4000);
+
+                setTimeout(function(){
+                    var img_energy = loader.getResult("energy");
+                    var pos_y      = util.getRandom(10,300);
+                    var pos_x      = PLAYGROUND_WIDTH + img_energy.width;
+
+                    var sprite_sheet = new createjs.SpriteSheet({
+                        "images": [img_energy],
+                        "frames": {"regX": 0, "height": img_energy.height, "count": 1, "regY": 0, "width": img_energy.width},
+                        "animations": {move: 0}
+                    });
+                    energy = new createjs.BitmapAnimation(sprite_sheet);
+                    energy.setTransform(pos_x, 0, 1, 1);
+                    energy.data = new Energy();
+                    energy.gotoAndPlay("move");
+                    stage.addChild(energy);
+
+                    energy_on_screen = true;
+                    // console.log("energy!");
+
+                }, spawn_chance);
+            }
+        },
+
+        energyMovement: function(delta_s){
+            if( energy_on_screen === true ){
+                if( energy.x < -PLAYGROUND_WIDTH) {
+                    stage.removeChild(energy);
+                    energy_on_screen = false;
+                    util.generateEnergy();
+                }
+                else{
+                    var col = energy.localToLocal(20, 20, abbas);
+                    if( abbas.hitTest(col.x, col.y) ){
+                        util.abbasEnergy();
+                        stage.removeChild(energy);
+                        energy_on_screen = false;
+                        util.generateEnergy();
+                    }
+                    else{
+                        energy.data.update(delta_s);
+                    }
+                }
             }
 
         }

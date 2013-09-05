@@ -38,17 +38,20 @@ Abbas.prototype.getEnergy = function(){
 
 Abbas.prototype.plusCoin = function(){
 	this.coin++;
-
-	if( this.energy > 100 ){
-		this.energy = 100;
-	}
-	else{
-		this.energy = this.energy + 5;
-	}
 };
 
 Abbas.prototype.getCoin = function(){
 	return this.coin;
+};
+
+Abbas.prototype.regenEnergy = function(){
+	this.energy = 100;
+	// if( this.energy > 100 ){
+	// 	this.energy = 100;
+	// }
+	// else{
+	// 	this.energy = this.energy + 5;
+	// }
 };
 
 Abbas.prototype.damage = function(){

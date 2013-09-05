@@ -1,17 +1,17 @@
 function Gold(){
 	this.movement = "down";
 	this.update = function(delta_s){
-		gold.x = (gold.x - delta_s * 1.5);
+		gold.x = (gold.x - delta_s * 1.8);
 		if(gold.y > 300){
-			movement = "up";
+			this.movement = "up";
 		}
 		else if(gold.y < 60){
-			movement = "down";
+			this.movement = "down";
 		}
 
-		if(movement == "up"){
+		if(this.movement == "up"){
 			delta_s = -delta_s;
 		}
-		gold.y = (gold.y + delta_s * 2);
+		gold.y = (gold.y + delta_s * 2.5);
 	};
 }

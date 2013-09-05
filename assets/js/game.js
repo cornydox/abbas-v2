@@ -104,6 +104,7 @@ function Game(){
             util.crowMovement(delta_s);
             util.coinMovement(delta_s);
             util.goldMovement(delta_s);
+            util.energyMovement(delta_s);
         }
 
 

@@ -1,7 +1,7 @@
 // Global variables
 var stage, loader;
 var PLAYGROUND_WIDTH, PLAYGROUND_HEIGHT, path;
-var sky, clouds, base, mountains, grass, abbas, gold;
+var sky, clouds, base, mountains, grass, abbas, gold, energy;
 var MULTIPLIER = 6; // Boost multiplier
 
 var crow = [];
