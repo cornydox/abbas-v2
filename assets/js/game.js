@@ -74,6 +74,7 @@ function Game(){
         util.generateCrow();
         util.generateCoins();
         util.generateGold();
+        util.generateEnergy();
 
         stage.addChild(sky, clouds, mountains, base, abbas, grass);
         createjs.Ticker.useRAF = true;

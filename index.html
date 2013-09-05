@@ -20,10 +20,11 @@
         <script type="text/javascript" src="assets/js/main.js"></script>
         <script type="text/javascript" src="assets/js/game.js"></script>
         <script type="text/javascript" src="assets/js/util.js"></script>
+        <script type="text/javascript" src="assets/js/gameover.js"></script>
         <script type="text/javascript" src="assets/js/abbas.js"></script>
         <script type="text/javascript" src="assets/js/crow.js"></script>
         <script type="text/javascript" src="assets/js/coin.js"></script> 
-        <script type="text/javascript" src="assets/js/gold.js"></script>
+        <script type="text/javascript" src="assets/js/gold.js"></script>        
 
 
     </head>
@@ -54,7 +55,61 @@
                     <img class="hud_icon" src="./assets/img/min/coin.png">
                     <div id="coin">0 &nbsp;&nbsp;</div>    
                 </div>                 
-            </div>            
+            </div>
+            <div id="gameover_1">
+                <h1>GAME OVER...</h1>
+            </div>
+            <div id="gameover_2" class="gameover">
+                <div class="inner"></div>
+                <div class="score">
+                    <p>DISTANCE : <span id="show_distance"></span></p>
+                    <p><img src="./assets/img/min/coin.png"> <span id="show_coins"></span></p>
+                    <div id="show_bottom">
+                        <hr/>                   
+                        <p>TOTAL SCORE : <span id="show_score"></span></p>
+                        <p><img src="./assets/img/min/submit.png" id="submit"></p>
+                        <p><img src="./assets/img/min/playagain.png" id="playagain"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="gameover_3" class="gameover">
+                <img class="title" src="./assets/img/min/registration.png">
+                <div class="inner"></div>
+                <div class="form">
+                    <form id="registration">
+                        <input type="hidden" name="action" value="register">
+                        <input type="hidden" name="score" id="score">
+                        <table>
+                            <tr>
+                                <td>NAME</td>
+                                <td><input type="text" name="name" class="register"></td>
+                            </tr>
+                            <tr>
+                                <td>CONTACT NUMBER</td>
+                                <td><input type="text" name="contact" class="register"></td>
+                            </tr>
+                            <tr>
+                                <td>EMAIL</td>
+                                <td><input type="text" name="email" class="register"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><p id="register">REGISTER!</p></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+            <div id="gameover_4" class="gameover">
+                <img class="title" src="./assets/img/min/leaderboard.png">
+                <div class="inner"></div>
+                <div class="score">
+                    <h3>TOP 25</h3>
+                    <ol id="top25">
+                    </ol>
+                </div>
+            </div>
             <div id="fps"></div>
         </div>        
     </body>

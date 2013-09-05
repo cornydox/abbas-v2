@@ -1,8 +1,10 @@
 // Utilities / helper
 
 var util = (function(){
-    var mouse_timeout = 0;
-    var gold_on_screen = false;
+    var mouse_timeout    = 0;
+    var gold_on_screen   = false;
+    var energy_on_screen = false;
+    var GAMEOVER         = false;
 
     return{
         initControls: function(){
@@ -32,7 +34,13 @@ var util = (function(){
 
         gameOver: function(){
             createjs.Ticker.setPaused(true);
-            console.log("gameOver");
+            $("#gameover_1").fadeIn();
+
+            setTimeout(function(){
+                $("#gameover_1").fadeOut();
+                gameover.showScore();
+            },2000);
+            
         },
 
         abbasMovement: function(delta_s){
@@ -70,9 +78,14 @@ var util = (function(){
                 abbas.y = (abbas.y + delta_s * 1.5);
                 util.removeAllCrows();
             }, 500);
-            setTimeout(function(){
-                util.gameOver();
-            }, 1500);
+
+            if( GAMEOVER === false ){
+                setTimeout(function(){
+                    util.gameOver();
+                }, 1500);
+            }
+            
+            GAMEOVER = true;
 
         },
 
@@ -151,16 +164,16 @@ var util = (function(){
         },
 
         generateCoins: function(){
-            var spawn_chance = util.getRandom(1000,15000);
+            var spawn_chance = util.getRandom(1000,6000);
 
             setTimeout(function(){
                 var no_of_coins  = util.getRandom(3,10);
                 var pos_y        = util.getRandom(10,300);
 
-                var img_coin = loader.getResult("coins");
+                var img_coin   = loader.getResult("coins");
                 var coin_width = img_coin.width/5;
-                var temp     = [];
-                var pos_x = PLAYGROUND_WIDTH + (no_of_coins*coin_width);
+                var temp       = [];
+                var pos_x      = PLAYGROUND_WIDTH + (no_of_coins*coin_width);
                 for( var z = 0; z < no_of_coins; z++ ){
                     var speed = Math.floor(Math.random()*2) + 1;
 
