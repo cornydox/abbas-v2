@@ -5,12 +5,11 @@ var util = (function(){
     var gold_on_screen   = false;
     var energy_on_screen = false;
     var GAMEOVER         = false;
-    var abbas_hit        = false;
 
     return{
         initControls: function(){
             stage.onPress = function(evt) {
-                if( abbas.data.getEnergy() > 0 && abbas_hit === false ){
+                if( abbas.data.getEnergy() > 0 ){
                     // On mouse hold, abbas hover / fly constant
                     mouse_timeout = setTimeout(function(){
                         abbas.data.setFlying(true);
@@ -68,11 +67,7 @@ var util = (function(){
         },
 
         abbasHit: function(){
-            abbas_hit = true;
-            setTimeout(function(){
-                abbas_hit = false;
-            },200);
-            abbas.y = (abbas.y + 30);
+            abbas.y = (abbas.y + 40);
             abbas.data.damage();
         },
 
@@ -228,7 +223,7 @@ var util = (function(){
 
         generateGold: function(){
             if( gold_on_screen === false ){
-                var spawn_chance = util.getRandom(3000,7000);
+                var spawn_chance = util.getRandom(8000,15000);
 
                 setTimeout(function(){
                     var img_gold = loader.getResult("gold");
@@ -277,7 +272,7 @@ var util = (function(){
 
         generateEnergy: function(){
             if( energy_on_screen === false ){
-                var spawn_chance = util.getRandom(1500,4000);
+                var spawn_chance = util.getRandom(4000,10000);
 
                 setTimeout(function(){
                     var img_energy = loader.getResult("energy");
