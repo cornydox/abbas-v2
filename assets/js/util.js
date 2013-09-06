@@ -5,11 +5,12 @@ var util = (function(){
     var gold_on_screen   = false;
     var energy_on_screen = false;
     var GAMEOVER         = false;
+    var abbas_hit        = false;
 
     return{
         initControls: function(){
             stage.onPress = function(evt) {
-                if( abbas.data.getEnergy() > 0 ){
+                if( abbas.data.getEnergy() > 0 && abbas_hit === false ){
                     // On mouse hold, abbas hover / fly constant
                     mouse_timeout = setTimeout(function(){
                         abbas.data.setFlying(true);
@@ -67,7 +68,11 @@ var util = (function(){
         },
 
         abbasHit: function(){
-            abbas.y = (abbas.y + 100);
+            abbas_hit = true;
+            setTimeout(function(){
+                abbas_hit = false;
+            },200);
+            abbas.y = (abbas.y + 30);
             abbas.data.damage();
         },
 
@@ -115,7 +120,7 @@ var util = (function(){
             document.getElementById("energy_bar").setAttribute("style", width);
             document.getElementById("distance").innerHTML = distance + " m";
             // Display fps
-            document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
+            // document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
         },
 
         generateCrow: function(){
@@ -127,11 +132,11 @@ var util = (function(){
 
                     var spriteSheet = new createjs.SpriteSheet({
                         "images": [img_crow],
-                        "frames": {"regX": 0, "height": 80, "count": 2, "regY": 0, "width": 100},
-                        "animations": {fly:[0,1,"fly",4.5]}
+                        "frames": {"regX": 0, "height": img_crow.height, "count": 2, "regY": 0, "width": img_crow.width/2},
+                        "animations": {fly:[0,1,"fly",5.5]}
                     });
                     crow.push(new createjs.BitmapAnimation(spriteSheet));
-                    crow[crow.length-1].setTransform(PLAYGROUND_WIDTH,abbas.y,0.5,0.5);
+                    crow[crow.length-1].setTransform(PLAYGROUND_WIDTH,abbas.y,0.6,0.6);
                     crow[crow.length-1].gotoAndPlay("fly");
                     crow[crow.length-1].data = new Crow(crow.length-1);
 
@@ -153,7 +158,7 @@ var util = (function(){
                     // console.log("Bird removed!");
                 }
                 else{
-                    var col = crow[i].localToLocal(5, 20, abbas);
+                    var col = crow[i].localToLocal(5, 25, abbas);
                     if( abbas.hitTest(col.x, col.y) ){ util.abbasHit(); }
                     crow[i].data.update(delta_s);
                 }
@@ -223,7 +228,7 @@ var util = (function(){
 
         generateGold: function(){
             if( gold_on_screen === false ){
-                var spawn_chance = util.getRandom(1500,5500);
+                var spawn_chance = util.getRandom(3000,7000);
 
                 setTimeout(function(){
                     var img_gold = loader.getResult("gold");
@@ -253,20 +258,19 @@ var util = (function(){
                 if( gold.x < -PLAYGROUND_WIDTH) {
                     stage.removeChild(gold);
                     gold_on_screen = false;
+                    util.generateGold();
                 }
                 else{
                     var col = gold.localToLocal(20, 20, abbas);
                     if( abbas.hitTest(col.x, col.y) ){
                         util.abbasGold();
                         stage.removeChild(gold);
+                        util.generateGold();
                     }
                     else{
                         gold.data.update(delta_s);
                     }
                 }
-            }
-            else if( abbas.data.getBoost() === false ){
-                util.generateGold();
             }
 
         },

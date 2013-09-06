@@ -16,7 +16,7 @@ function Game(){
             {src:path + "abbas.png", id:"abbas"},
             {src:path + "coins.png", id:"coins"},
             {src:path + "gold.png", id:"gold"},
-            {src:path + "crow.png", id:"crow"},
+            {src:path + "crow-new.png", id:"crow"},
             {src:path + "sky.png", id:"sky"},
             {src:path + "base.png", id:"base"},
             {src:path + "mountain.png", id:"mountains"},
