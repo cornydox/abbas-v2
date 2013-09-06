@@ -14,7 +14,7 @@ var gameover = (function(){
 			$("#show_score").html(score);
 			$("#score").val(score);
 
-            $("#gameover_2").slideDown();
+            $("#gameover_2").fadeIn();
 		},
 		registerUser: function(){
 			$("#gameover_3").fadeIn();
