@@ -23,12 +23,6 @@ h4 { @include font-size($large); }
 h5 { @include font-size($med); }
 h6 { @include font-size($norm); }
 
-.subhead {
-  color: #777;
-  font-weight: normal;
-  margin-bottom: 20px;
-}
-
 /*=====================================================
  
   Links & Paragraph styles

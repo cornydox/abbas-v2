@@ -1,3 +1,9 @@
+.wrapper-fluid {
+  margin: 0 auto;
+  width: 100%;
+  max-width: $document-width;
+}
+
 #container {
   position:relative;  
   margin:0 auto;
