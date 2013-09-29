@@ -4,6 +4,7 @@ function Abbas(){
 	this.energy_timeout = 0;
 	this.flying = false;
 	this.coin   = 0;
+	this.coin_multiply = false;
 	this.boosting = false;
 }
 
@@ -37,7 +38,12 @@ Abbas.prototype.getEnergy = function(){
 };
 
 Abbas.prototype.plusCoin = function(){
-	this.coin++;
+	if(this.coin_multiply === true){
+		this.coin = this.coin + 3;
+	}
+	else{
+		this.coin++;
+	}
 };
 
 Abbas.prototype.getCoin = function(){
@@ -78,4 +84,8 @@ Abbas.prototype.setBoost = function(state){
 
 Abbas.prototype.getBoost = function(){
 	return this.boosting;
+};
+
+Abbas.prototype.setCoinMultiply = function(state){
+	this.coin_multiply = state;
 };
