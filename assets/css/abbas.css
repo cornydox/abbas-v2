@@ -1,0 +1,751 @@
+@charset "UTF-8";
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* Base */
+/* line 61, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+* html {
+  font-size: 100%;
+}
+
+/* line 64, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+html {
+  font-size: 16px;
+  line-height: 1.0625em;
+}
+
+/* line 6, ../../sass/_base.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 10, ../../sass/_base.scss */
+body {
+  position: relative;
+  background: white;
+  font-family: "bd_cartoon_shoutregular";
+  font-weight: 400;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+}
+@media only screen and (max-width: 767px) {
+  /* line 10, ../../sass/_base.scss */
+  body {
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'bd_cartoon_shoutregular';
+  src: url("../fonts/bd_cartoon_shout-webfont.eot");
+  src: url("../fonts/bd_cartoon_shout-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/bd_cartoon_shout-webfont.woff") format("woff"), url("../fonts/bd_cartoon_shout-webfont.ttf") format("truetype"), url("../fonts/bd_cartoon_shout-webfont.svg#bd_cartoon_shoutregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 2, ../../sass/_typography.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "bd_cartoon_shoutregular";
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  padding-top: 0.1785em;
+  line-height: 0.75544em;
+  padding-bottom: 0.1785em;
+}
+/* line 10, ../../sass/_typography.scss */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: black;
+}
+
+@media only screen and (max-width: 767px) {
+  /* line 16, ../../sass/_typography.scss */
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+  }
+}
+/* line 19, ../../sass/_typography.scss */
+h1 {
+  font-size: 44px;
+  font-size: 2.75rem;
+}
+
+/* line 20, ../../sass/_typography.scss */
+h2 {
+  font-size: 37px;
+  font-size: 2.3125rem;
+}
+
+/* line 21, ../../sass/_typography.scss */
+h3 {
+  font-size: 27px;
+  font-size: 1.6875rem;
+}
+
+/* line 22, ../../sass/_typography.scss */
+h4 {
+  font-size: 23px;
+  font-size: 1.4375rem;
+}
+
+/* line 23, ../../sass/_typography.scss */
+h5 {
+  font-size: 17px;
+  font-size: 1.0625rem;
+}
+
+/* line 24, ../../sass/_typography.scss */
+h6 {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+/* line 26, ../../sass/_typography.scss */
+.subhead {
+  color: #777;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+/*=====================================================
+ 
+  Links & Paragraph styles
+  
+  ======================================================*/
+/* line 38, ../../sass/_typography.scss */
+p {
+  font-family: "bd_cartoon_shoutregular";
+  font-weight: 400;
+  margin-bottom: 8.5px;
+  line-height: 1.0625em;
+}
+
+/* line 46, ../../sass/_typography.scss */
+a {
+  color: black;
+  text-decoration: none;
+  outline: 0;
+  line-height: inherit;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -ms-touch-action: none;
+}
+/* line 53, ../../sass/_typography.scss */
+a:hover {
+  color: #404040;
+}
+
+/* line 58, ../../sass/_typography.scss */
+address {
+  line-height: 1.2em;
+}
+
+/*=====================================================
+
+  Caption
+  
+ ======================================================*/
+/* line 67, ../../sass/_typography.scss */
+figcaption {
+  font-family: "bd_cartoon_shoutregular";
+  line-height: 1.2em;
+}
+
+/*=====================================================
+
+  Superscript & subscript
+  
+ ======================================================*/
+/* line 79, ../../sass/_typography.scss */
+sup,
+sub {
+  height: 0;
+  line-height: 1;
+  vertical-align: baseline;
+  _vertical-align: bottom;
+  position: relative;
+}
+
+/* line 88, ../../sass/_typography.scss */
+sup {
+  bottom: 1ex;
+}
+
+/* line 92, ../../sass/_typography.scss */
+sub {
+  top: .5ex;
+}
+
+/*=====================================================
+
+  Lists
+  
+ ======================================================*/
+/* line 103, ../../sass/_typography.scss */
+ul, ol {
+  margin-bottom: 0.1785em;
+}
+
+/* line 107, ../../sass/_typography.scss */
+ul {
+  list-style: none outside;
+}
+
+/* line 111, ../../sass/_typography.scss */
+ol {
+  list-style: decimal;
+  margin-left: 30px;
+}
+
+/* line 117, ../../sass/_typography.scss */
+ul.square, ul.circle, ul.disc {
+  margin-left: 25px;
+}
+/* line 120, ../../sass/_typography.scss */
+ul.square {
+  list-style: square outside;
+}
+/* line 123, ../../sass/_typography.scss */
+ul.circle {
+  list-style: circle outside;
+}
+/* line 126, ../../sass/_typography.scss */
+ul.disc {
+  list-style: disc outside;
+}
+/* line 129, ../../sass/_typography.scss */
+ul ul {
+  margin: 4px 0 5px 25px;
+}
+
+/* line 134, ../../sass/_typography.scss */
+ol ol {
+  margin: 4px 0 5px 30px;
+}
+
+/* line 138, ../../sass/_typography.scss */
+li {
+  padding-bottom: 0.1785em;
+}
+
+/* line 142, ../../sass/_typography.scss */
+ul.large li {
+  line-height: 21px;
+}
+
+/* line 146, ../../sass/_typography.scss */
+dl dt {
+  font-weight: bold;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+@media only screen and (max-width: 768px) {
+  /* line 153, ../../sass/_typography.scss */
+  ul, ol, dl, p {
+    text-align: left;
+  }
+}
+/* Mobile */
+/* line 159, ../../sass/_typography.scss */
+em {
+  font-style: italic;
+  line-height: inherit;
+}
+
+/* line 164, ../../sass/_typography.scss */
+strong {
+  font-family: "bd_cartoon_shoutregular";
+  font-weight: 700;
+  line-height: inherit;
+}
+
+/* line 170, ../../sass/_typography.scss */
+small {
+  font-size: 56.4%;
+  line-height: inherit;
+}
+
+/* line 175, ../../sass/_typography.scss */
+h1 small, h2 small, h3 small, h4 small, h5 small {
+  color: #777;
+}
+
+/* line 179, ../../sass/_typography.scss */
+blockquote {
+  line-height: inherit;
+  color: #777;
+  font-style: italic;
+  text-indent: -18px;
+  margin: 20px;
+  padding: 30px 25px 30px 80px;
+  background-color: #f3f3f3;
+}
+/* line 183, ../../sass/_typography.scss */
+blockquote p {
+  line-height: 20px;
+  color: #777;
+}
+/* line 191, ../../sass/_typography.scss */
+blockquote cite {
+  display: block;
+  font-size: 12px;
+  font-size: 1.2rem;
+  color: black;
+}
+/* line 196, ../../sass/_typography.scss */
+blockquote cite:before {
+  content: "\2014 \0020";
+}
+/* line 199, ../../sass/_typography.scss */
+blockquote cite a {
+  color: black;
+}
+/* line 201, ../../sass/_typography.scss */
+blockquote cite a:visited {
+  color: black;
+}
+
+/* line 208, ../../sass/_typography.scss */
+blockquote:before {
+  display: inline-block;
+  position: relative;
+  content: "\“";
+  font-size: 95px;
+  font-size: 5.9375rem;
+  position: relative;
+  top: 40px;
+  left: -25px;
+}
+
+/* line 218, ../../sass/_typography.scss */
+hr {
+  border: 1px solid #cccccc;
+  clear: both;
+  margin: 16px 0 18px;
+  height: 0;
+}
+
+/* line 225, ../../sass/_typography.scss */
+abbr, acronym {
+  text-transform: uppercase;
+  font-size: 90%;
+  color: #222;
+  border-bottom: 1px solid #cccccc;
+  cursor: help;
+}
+
+/* line 233, ../../sass/_typography.scss */
+abbr {
+  text-transform: none;
+}
+
+/**
+   * Print styles.
+ *
+ * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+ * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
+ */
+@media print {
+  /* line 245, ../../sass/_typography.scss */
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  /* Black prints faster: sanbeiji.com/archives/953 */
+  /* line 253, ../../sass/_typography.scss */
+  p a {
+    color: black !important;
+    text-decoration: underline;
+  }
+  /* line 256, ../../sass/_typography.scss */
+  p a:visited {
+    color: black !important;
+    text-decoration: underline;
+  }
+  /* line 260, ../../sass/_typography.scss */
+  p a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 264, ../../sass/_typography.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* line 267, ../../sass/_typography.scss */
+  .ir a:after {
+    content: "";
+  }
+
+  /* line 271, ../../sass/_typography.scss */
+  a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  /* Don't show links for images, or javascript/internal links */
+  /* line 276, ../../sass/_typography.scss */
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 280, ../../sass/_typography.scss */
+  thead {
+    display: table-header-group;
+  }
+
+  /* css-discuss.incutio.com/wiki/Printing_Tables */
+  /* line 284, ../../sass/_typography.scss */
+  tr, img {
+    page-break-inside: avoid;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 291, ../../sass/_typography.scss */
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 295, ../../sass/_typography.scss */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
+/* line 1, ../../sass/_custom.scss */
+#container {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 768px;
+  height: 480px;
+  border: 5px solid #000;
+  background-color: #000;
+  background: url("../img/min/start_bg.png") no-repeat;
+}
+
+/* line 12, ../../sass/_custom.scss */
+#playground {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-size: 100%;
+  cursor: pointer;
+  /*width:100%;*/
+}
+
+/* line 19, ../../sass/_custom.scss */
+#welcome {
+  position: absolute;
+  height: 100%;
+  left: 30%;
+}
+
+/* line 25, ../../sass/_custom.scss */
+#logo {
+  padding-left: 50px;
+}
+
+/* line 27, ../../sass/_custom.scss */
+#start_outer {
+  position: absolute;
+  bottom: 10px;
+  background: url("../img/min/wood.png") no-repeat;
+  margin: 0 auto;
+  height: 100px;
+  width: 330px;
+  color: #fff;
+  text-align: center;
+}
+
+/* line 38, ../../sass/_custom.scss */
+#fps, #coin, #energy, #distance {
+  color: #fff;
+}
+
+/* line 39, ../../sass/_custom.scss */
+#fps {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+}
+
+/* line 40, ../../sass/_custom.scss */
+#coin {
+  text-align: right;
+}
+
+/* line 41, ../../sass/_custom.scss */
+#distance {
+  text-align: right;
+}
+
+/* line 43, ../../sass/_custom.scss */
+#hud {
+  position: absolute;
+  top: 40px;
+  right: 50px;
+  display: none;
+}
+
+/* line 49, ../../sass/_custom.scss */
+.hud_container {
+  position: relative;
+}
+
+/* line 52, ../../sass/_custom.scss */
+.hud_icon {
+  position: absolute;
+  left: 170px;
+  bottom: -4px;
+}
+
+/* line 57, ../../sass/_custom.scss */
+#energy_outer {
+  width: 180px;
+  border: 3px solid #93ac8c;
+  background-color: #c5d9e6;
+}
+
+/* line 62, ../../sass/_custom.scss */
+#energy_bar {
+  background-color: #079365;
+  width: 100%;
+}
+
+/* line 66, ../../sass/_custom.scss */
+.energy {
+  height: 29px;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+/* line 76, ../../sass/_custom.scss */
+#start {
+  color: #000;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* line 77, ../../sass/_custom.scss */
+#start:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+/* line 79, ../../sass/_custom.scss */
+.gameover {
+  position: absolute;
+  top: 60px;
+  border: 4px solid #d0b96a;
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* line 86, ../../sass/_custom.scss */
+.inner {
+  position: absolute;
+  top: 0;
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+/* line 96, ../../sass/_custom.scss */
+.form {
+  position: absolute;
+  top: 30px;
+  padding: 20px;
+  text-align: left;
+}
+
+/* line 103, ../../sass/_custom.scss */
+.form table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 0;
+}
+
+/* line 109, ../../sass/_custom.scss */
+.form table td {
+  padding: 5px;
+}
+
+/* line 113, ../../sass/_custom.scss */
+.form table td input {
+  width: 250px;
+  border: 0;
+  box-shadow: 0 0 20px #333;
+}
+
+/* line 119, ../../sass/_custom.scss */
+.score {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  /*text-align: center;*/
+}
+
+/* line 126, ../../sass/_custom.scss */
+.score ol {
+  height: 220px;
+  overflow: auto;
+}
+
+/* line 131, ../../sass/_custom.scss */
+.score ol li {
+  text-align: left;
+}
+
+/* line 135, ../../sass/_custom.scss */
+#register {
+  text-align: right;
+}
+
+/* line 138, ../../sass/_custom.scss */
+#register:hover {
+  cursor: pointer;
+}
+
+/* line 142, ../../sass/_custom.scss */
+#gameover_1, #loading {
+  position: absolute;
+  top: 60px;
+  left: 250px;
+  display: none;
+}
+
+/* line 149, ../../sass/_custom.scss */
+#gameover_2 {
+  left: 260px;
+  width: 260px;
+  height: 340px;
+  display: none;
+}
+
+/* line 156, ../../sass/_custom.scss */
+#gameover_3 {
+  top: 60px;
+  left: 170px;
+  width: 400px;
+  height: 300px;
+  display: none;
+}
+
+/* line 164, ../../sass/_custom.scss */
+#gameover_4 {
+  top: 60px;
+  left: 250px;
+  width: 290px;
+  height: 340px;
+  display: none;
+}
+
+/* line 172, ../../sass/_custom.scss */
+.gameover .title {
+  position: relative;
+  top: -30px;
+  z-index: 999;
+}
+
+/* line 178, ../../sass/_custom.scss */
+#show_bottom {
+  padding: 10px;
+  text-align: center;
+}
+
+/* line 182, ../../sass/_custom.scss */
+#show_bottom hr {
+  background-color: #000;
+  color: #000;
+}
+
+/* line 186, ../../sass/_custom.scss */
+#submit:hover, #playagain:hover {
+  cursor: pointer;
+}
+
+/* line 190, ../../sass/_custom.scss */
+#top25 .list {
+  float: right;
+}

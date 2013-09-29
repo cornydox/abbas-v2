@@ -1,0 +1,70 @@
+// Abbas Settings.
+
+// Responsiveness Settings
+$min-device-width: 320px; 						// iPhone Portrait
+$tablet-device-width: 768px;					// iPad Portrait
+$document-width: 960px;							// Default Document
+$max-device-width: 2880px;						// Max Document Size
+
+// Typography
+$bd_cartoon: "bd_cartoon_shoutregular";
+
+$font-family: "bd_cartoon_shoutregular";
+$font-style-italic: italic;
+
+$font-smoothing: antialiased;
+
+// Sizing
+$xsmall: 9px;
+$small: 10px;
+$norm: 14px;									// $base-font-size (14px == default)
+$med: 17px;
+$large: 23px;
+$larger: 27px;
+$xlarge: 37px;
+$xxlarge: 44px;
+$xxxlarge: 59px;
+$reallybig: 71px;
+$tremendous: 96px;
+$absurd: 115px;
+
+// Font Weights
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-medium: 400;
+$font-weight-regular: 400;
+$font-weight-light: 300;
+$font-weight-thin: 300;
+
+// - This needs to be properly set if you're using different fonts for different weights
+$header-font-weight: $font-weight-regular;
+$body-font-weight: $font-weight-regular;
+$type-font-weight: $font-weight-regular;
+$link-font-weight: $font-weight-regular;
+$button-font-weight: $font-weight-regular;
+$tabs-font-weight: $font-weight-regular;
+
+// Vertical Rhythm Spacing
+$base-line-height: $med !default;
+$rhythm-spacing: .168;
+$rhythm-height: .711;
+
+// Global Colors
+$black: #000;
+$white: #fff;
+$transparent: transparent;
+
+// Typography Colors
+$body-font-color: $black !default;
+$body-link-color: $black !default;
+$body-link-hover-color: lighten($black, 25%) !default;
+
+// User Interface Colors
+$global-bg-color: $white;
+
+$horizontal-rule-color: #ccc !default;
+
+// Floats
+$default-float: left;
+$switch-float: right;
+

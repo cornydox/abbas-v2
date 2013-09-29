@@ -1,0 +1,6 @@
+@mixin tap-highlight($state) {
+	@if $state == false {
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+  		-ms-touch-action: none;
+	}
+}

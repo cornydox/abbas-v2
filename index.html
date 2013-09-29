@@ -11,8 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="shortcut icon" href="favicon.ico" />
 
-        <link rel="stylesheet" href="assets/css/normalize.min.css">
-        <link rel="stylesheet" href="assets/css/main.css">        
+        <link rel="stylesheet" href="assets/css/abbas.css">        
 
         <script src="assets/js/lib/preloadjs-NEXT.min.js"></script>
         <script src="assets/js/lib/easeljs-0.6.1.min.js"></script>
@@ -34,14 +33,18 @@
         <![endif]-->        
 
         <div id="container">
+            <!-- Welcome screen -->
             <div id="welcome">
                 <img id="logo" src="./assets/img/min/1001.png">
                 <div id="start_outer">
-                    <br />
                     <span id="start" onclick="startGame();">START GAME</span>
                 </div>
             </div>
+
+            <!-- Canvas -->
             <canvas id="playground" width="768" height="480"></canvas>
+
+            <!-- HUD -->
             <div id="hud">                                
                 <div id="distance">0 m</div>                               
                 <div class="hud_container">
@@ -56,12 +59,18 @@
                     <div id="coin">0 &nbsp;&nbsp;</div>    
                 </div>                 
             </div>
+
+            <!-- Loading text -->
             <div id="loading">
                 <h1>NOW LOADING...</h1>
             </div>
+
+            <!-- Game Over 1 -->
             <div id="gameover_1">
                 <h1>GAME OVER...</h1>
             </div>
+
+            <!-- Game Over 2 -->
             <div id="gameover_2" class="gameover">
                 <div class="inner"></div>
                 <div class="score">
@@ -75,6 +84,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Game Over 3 -->
             <div id="gameover_3" class="gameover">
                 <img class="title" src="./assets/img/min/registration.png">
                 <div class="inner"></div>
@@ -104,6 +115,7 @@
                 </div>
             </div>
 
+            <!-- Game Over 4 -->
             <div id="gameover_4" class="gameover">
                 <img class="title" src="./assets/img/min/leaderboard.png">
                 <div class="inner"></div>
@@ -113,6 +125,8 @@
                     </ol>
                 </div>
             </div>
+
+            <!-- FPS -->
             <div id="fps"></div>
         </div>        
     </body>
