@@ -1,10 +1,12 @@
 // Utilities / helper
 
 var util = (function(){
-    var mouse_timeout    = 0;
-    var gold_on_screen   = false;
-    var energy_on_screen = false;
-    var GAMEOVER         = false;
+    var mouse_timeout        = 0;
+    var gold_on_screen       = false;
+    var energy_on_screen     = false;
+    var multiplier_on_screen = false;
+    var GAMEOVER             = false;
+    var pulsate              = false;
 
     return{
         initControls: function(){
@@ -104,6 +106,16 @@ var util = (function(){
 
         abbasEnergy: function(){
             abbas.data.regenEnergy();
+        },
+
+        abbasCoinMultiply: function(){
+            abbas.data.setCoinMultiply(true);
+            $("#coin").css({color : "#ff0000", "font-size" : "160%"});
+
+            setTimeout(function(){
+                abbas.data.setCoinMultiply(false);
+                $("#coin").css({color : "#fff", "font-size" : "100%"});
+            }, 6000);
         },
 
         abbasStats: function(){
@@ -223,7 +235,7 @@ var util = (function(){
 
         generateGold: function(){
             if( gold_on_screen === false ){
-                var spawn_chance = util.getRandom(8000,15000);
+                var spawn_chance = util.getRandom(10000,15000);
 
                 setTimeout(function(){
                     var img_gold = loader.getResult("gold");
@@ -314,6 +326,56 @@ var util = (function(){
                     }
                     else{
                         energy.data.update(delta_s);
+                    }
+                }
+            }
+
+        },
+
+        generateMultiplier: function(){
+            if( multiplier_on_screen === false ){
+                var spawn_chance = util.getRandom(13000,25000);
+
+                setTimeout(function(){
+                    var img_multiplier = loader.getResult("multiplier");
+                    var pos_y          = util.getRandom(10,300);
+                    var pos_x          = PLAYGROUND_WIDTH + img_multiplier.width;
+
+                    var sprite_sheet = new createjs.SpriteSheet({
+                        "images": [img_multiplier],
+                        "frames": {"regX": 0, "height": img_multiplier.height, "count": 1, "regY": 0, "width": img_multiplier.width},
+                        "animations": {move: 0}
+                    });
+                    coin_multiplier = new createjs.BitmapAnimation(sprite_sheet);
+                    coin_multiplier.setTransform(pos_x, 0, 1, 1);
+                    coin_multiplier.data = new CoinMultiplier();
+                    coin_multiplier.gotoAndPlay("move");
+                    stage.addChild(coin_multiplier);
+
+                    multiplier_on_screen = true;
+                    // console.log("energy!");
+
+                }, spawn_chance);
+            }
+        },
+
+        multiplierMovement: function(delta_s){
+            if( multiplier_on_screen === true ){
+                if( coin_multiplier.x < -PLAYGROUND_WIDTH) {
+                    stage.removeChild(coin_multiplier);
+                    multiplier_on_screen = false;
+                    util.generateMultiplier();
+                }
+                else{
+                    var col = coin_multiplier.localToLocal(0, 5, abbas);
+                    if( abbas.hitTest(col.x, col.y) ){
+                        util.abbasCoinMultiply();
+                        stage.removeChild(coin_multiplier);
+                        multiplier_on_screen = false;
+                        util.generateMultiplier();
+                    }
+                    else{
+                        coin_multiplier.data.update(delta_s);
                     }
                 }
             }

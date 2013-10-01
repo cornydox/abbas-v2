@@ -25,12 +25,32 @@ function Game(){
             {src:path + "energy.png", id:"energy"},
             {src:path + "multiplier.png", id:"multiplier"}
         ];
+
+        this.initSounds();
+
         util.initControls();
 
         loader = new createjs.LoadQueue(false);
         loader.addEventListener("complete", this.populate);
         loader.loadManifest(manifest);
     };
+
+    this.initSounds = function(){
+        if (!createjs.Sound.initializeDefaultPlugins()) {return;}
+        audio_path = "assets/sounds/";
+        var sounds = [
+            {id:"bgm", src:audio_path + "18.mp3|"+audio_path + "18.ogg"}
+        ];
+        
+        createjs.Sound.addEventListener("fileload", createjs.proxy(soundLoaded, this)); // add an event 
+        createjs.Sound.registerManifest(sounds);
+
+    };
+
+    function soundLoaded(event) {
+        createjs.Sound.play("bgm",createjs.Sound.INTERRUPT_NONE, 0, 0, true, 1);
+    }
+
 
     this.populate = function(){
         $("#loading").fadeOut();
@@ -78,6 +98,7 @@ function Game(){
         util.generateCoins();
         util.generateGold();
         util.generateEnergy();
+        util.generateMultiplier();
 
         stage.addChild(sky, clouds, mountains, base, abbas, grass);
         createjs.Ticker.useRAF = true;
@@ -108,6 +129,7 @@ function Game(){
             util.coinMovement(delta_s);
             util.goldMovement(delta_s);
             util.energyMovement(delta_s);
+            util.multiplierMovement(delta_s);
         }
 
 
