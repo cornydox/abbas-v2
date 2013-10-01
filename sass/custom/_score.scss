@@ -1,0 +1,68 @@
+/*=====================================================
+
+ Custom - Score
+  
+ ======================================================*/
+ 
+.content-score {
+	display: none;
+	position: absolute;
+	padding: 20px;
+	width: 100%;
+	height: 100%;
+	top: 0; left: 0;
+
+	.container-score {
+		position: relative;
+	    width: 100%;
+	    height: percentage(445px/480px);
+	    max-height: 360px;
+	    max-width: 320px;
+	    margin: 0 auto;
+	    padding: 30px;
+	    @extend .content-container;
+	    text-align: center;
+	}
+
+	.wrapper-score {
+		height: 100%;
+		@include respond(landscape-phones) { overflow: auto; }
+	}
+
+		.container-score_upper, 
+		.container-score_lower { padding: 15px 0;}
+		.container-score_upper { border-bottom: 1px solid #ccc; }
+
+	.list-coins {
+		margin-bottom: 0;
+		> img { vertical-align: middle; }
+	}
+
+	.btn-submit, .btn-replay {
+		@extend .bg-wood;
+	    margin: 15px auto 0;
+	    width: percentage(200px/320px);
+	    @include line-and-height(35px);
+	    @include font-size(14px);
+
+	    @include respond(landscape-phones) {
+	    	position: absolute;
+	    	width: 100px;
+	    	@include line-and-height(30px);
+	    	@include font-size(11px);
+	    	margin: 0;
+	    }
+	}
+
+	.btn-submit {
+		@include respond(landscape-phones) {
+			right: 10px; bottom: 0;
+		}
+	}
+
+	.btn-replay {
+		@include respond(landscape-phones) {
+			right: 120px; bottom: 0;
+		}
+	}
+}

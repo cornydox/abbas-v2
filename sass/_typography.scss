@@ -142,11 +142,11 @@ dl dt {
   @include font-size($norm);
 }
 
-@include respond(portrait-tablets) {
+/*@include respond(portrait-tablets) {
   
   ul, ol, dl, p { text-align: left;}
 
-}
+}*/
 
 /* Mobile */
 

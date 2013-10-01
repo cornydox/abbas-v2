@@ -1,0 +1,53 @@
+/*=====================================================
+
+Global Classes
+  
+ ======================================================*/
+
+.wrapper-fluid {
+  margin: 0 auto;
+  width: 100%;
+  max-width: $document-width;
+}
+
+.bg-wood {
+  display: block;
+  background: url('../img/min/wood.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+}
+
+.screen-splash {
+  position: relative;
+  width: 768px;
+  height: 480px;
+  margin: 0 auto;
+  background: url('../img/min/bg_start.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include respond(all-phones) {
+    width: 100%;
+    height: auto;
+    padding-bottom: percentage(480px/768px);
+  }
+}
+
+.content-container {
+  @include border-radius(10px, 10px);
+  background-color: rgba(255, 255, 225, 0.45);
+  border: 3px solid #cebe7d;
+}
+
+.txt-loading, .txt-gameover {
+  display: none;
+  position: absolute;
+  top: 30%; right: 0; left: 0;
+  height: 30px;
+  margin: auto;
+  text-align: center;
+  @include font-size(30px);
+}

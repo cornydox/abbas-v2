@@ -32,102 +32,180 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->        
 
-        <div id="container">
-            <!-- Welcome screen -->
-            <div id="welcome">
-                <img id="logo" src="./assets/img/min/1001.png">
-                <div id="start_outer">
-                    <span id="start" onclick="startGame();">START GAME</span>
+        <div class="wrapper-fluid">
+            <div class="screen-splash">
+                 <!-- Canvas -->
+                <canvas id="playground" width="768" height="480"></canvas>
+
+                <!-- Welcome screen -->
+                <div class="content-welcome">
+                    <img class="logo" src="./assets/img/min/1001.png" alt="Logo">
+                    <a class="btn-start" href="javascript:startGame();">START</a>
                 </div>
-            </div>
 
-            <!-- Canvas -->
-            <canvas id="playground" width="768" height="480"></canvas>
+                <!-- HUD -->
+                <div class="content-hud">
+                    <div class="hud-distance">
+                        <span class="txt-distance">0</span>
+                        <span class="hud-icon">M</span>
+                    </div>
 
-            <!-- HUD -->
-            <div id="hud">                                
-                <div id="distance">0 m</div>                               
-                <div class="hud_container">
-                    <img class="hud_icon" src="./assets/img/min/energy.png">
-                    <div id="energy_outer" class="energy">
-                        <div id="energy_bar" class="energy">&nbsp;</div>
+                    <div class="hud-coins">
+                        <span class="txt-coins">0</span>
+                        <img class=" hud-icon" src="./assets/img/min/coin.png">
+                    </div>
+
+                    <div class="hud-energy">
+                        <div class="energy-wrapper">
+                            <div class="energy-bar"></div>
+                        </div>
+                        <img class="hud-icon" src="./assets/img/min/energy.png">
                     </div>
                 </div>
-                <br />
-                <div class="hud_container">
-                    <img class="hud_icon" src="./assets/img/min/coin.png">
-                    <div id="coin">0 &nbsp;&nbsp;</div>    
-                </div>                 
-            </div>
 
-            <!-- Loading text -->
-            <div id="loading">
-                <h1>NOW LOADING...</h1>
-            </div>
+                <!-- Instructions -->
+                <div class="content-instruction">
+                    <div class="content-title">INSTRUCTIONS</div>
+                    <div class="container-instruction">
 
-            <!-- Game Over 1 -->
-            <div id="gameover_1">
-                <h1>GAME OVER...</h1>
-            </div>
+                        <!-- Instruction part - 1 -->
+                        <div class="instruction-1">
+                            <img class="img-legend" src="./assets/img/min/mouse-1.png" alt="Mouse" />
+                            <p class="txt-legend">LEFT CLICK TO PLAY</p>
+                            <a class="btn-next" href="#">
+                                <img src="./assets/img/min/btn-next.png" alt="Next" />
+                            </a>
+                        </div>
 
-            <!-- Game Over 2 -->
-            <div id="gameover_2" class="gameover">
-                <div class="inner"></div>
-                <div class="score">
-                    <p>DISTANCE : <span id="show_distance"></span></p>
-                    <p><img src="./assets/img/min/coin.png"> <span id="show_coins"></span></p>
-                    <div id="show_bottom">
-                        <hr/>                   
-                        <p>TOTAL SCORE : <span id="show_score"></span></p>
-                        <p><img src="./assets/img/min/submit.png" id="submit"></p>
-                        <p><img src="./assets/img/min/playagain.png" id="playagain"></p>
+                        <!-- Instruction part - 1 -->
+                        <div class="instruction-2">
+                            <div class="wrapper-legend">
+                                <ul>
+                                    <li class="list-legend">
+                                        <img class="img-legend" src="./assets/img/min/coin.png" alt="Coin" />
+                                        <span class="txt-legend">COLLECT AS MANY GOLD COINS AS POSSIBLE TO INCREASE SCORE</span>
+                                    </li>
+                                    <li class="list-legend">
+                                        <img class="img-legend" src="./assets/img/min/energy.png" alt="Coin" />
+                                        <span class="txt-legend">COLLECT ENERGY PILLS TO ReplenIsh YOUR ENERGY</span>
+                                    </li>
+                                    <li class="list-legend">
+                                        <img class="img-legend" src="./assets/img/min/gameplay_19.png" alt="Coin" />
+                                        <span class="txt-legend">BOOST YOUR SPEED FOR A LIMITED TIME!</span>
+                                    </li>
+                                    <li class="list-legend">
+                                        <img class="img-legend" src="./assets/img/min/multiplier.png" alt="Coin" />
+                                        <span class="txt-legend">SCORE MULTIPLIER! ALL COINS COLLECTED EARNS X3 BONUS</span>
+                                    </li>
+                                </ul>
+                            </div>
+                             <a class="btn-play" href="#">
+                                <img src="./assets/img/min/btn-play.png" alt="Play Game" />
+                            </a>
+                             <a class="btn-back" href="#">
+                                <img src="./assets/img/min/btn-back.png" alt="Back" />
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Game Over 3 -->
-            <div id="gameover_3" class="gameover">
-                <img class="title" src="./assets/img/min/registration.png">
-                <div class="inner"></div>
-                <div class="form">
-                    <form id="registration">
-                        <input type="hidden" name="action" value="register">
-                        <input type="hidden" name="score" id="score">
-                        <table>
-                            <tr>
-                                <td>NAME</td>
-                                <td><input type="text" name="name" class="register"></td>
-                            </tr>
-                            <tr>
-                                <td>CONTACT NUMBER</td>
-                                <td><input type="text" name="contact" class="register"></td>
-                            </tr>
-                            <tr>
-                                <td>EMAIL</td>
-                                <td><input type="text" name="email" class="register"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><p id="register">REGISTER!</p></td>
-                            </tr>
-                        </table>
-                    </form>
+                <!-- After game score -->
+                <div class="content-score">
+                    <div class="container-score">
+                        <div class="wrapper-score">
+                            <div class="container-score_upper">
+                                <p class="list-distance">DISTANCE : <span class="txt-distance">1377</span>M</p>
+                                <p class="list-coins">
+                                    <img src="./assets/img/min/coin.png" alt="Coins" />
+                                    <span class="txt-coins">2000</span>
+                                </p>
+                            </div>
+                            <div class="container-score_lower">
+                                <p class="list-totalscore">Total Score : <span class="txt-totalscore">5377</span></p>
+                                <a class="btn-submit" href="#">SUBMIT</a>
+                                <a class="btn-replay" href="#">PLAY AGAIN</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Game Over 4 -->
-            <div id="gameover_4" class="gameover">
-                <img class="title" src="./assets/img/min/leaderboard.png">
-                <div class="inner"></div>
-                <div class="score">
-                    <h3>TOP 25</h3>
-                    <ol id="top25">
-                    </ol>
+                <!-- Registration -->
+                <div class="content-registration">
+                    <div class="content-title">REGISTRATION</div>
+                    <div class="container-registration">
+                        <div class="wrapper-registration">
+                             <form>
+                                <ul>
+                                    <li class="field">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" name="name" />
+                                    </li>
+                                    <li class="field">
+                                        <label for="contact">Contact Number</label>
+                                        <input type="tel" id="contact" name="contact" />
+                                    </li>
+                                    <li class="field">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" />
+                                    </li>
+                                </ul>
+                                <input type="hidden" name="action" value="register">
+                                <input type="hidden" name="score" id="score">
+                                <a href="#" class="btn-register" title="register">REGISTER</a>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- FPS -->
-            <div id="fps"></div>
+                <!-- Leaderboard -->
+                <div class="content-leaderboard">
+                    <div class="content-title">LEADERBOARD</div>
+                    <div class="container-leaderboard">
+                        <a class="btn-close" href="#" title="Close">x</a>
+                        <h5 class="title-heading">TOP 25</h5>
+                        <div class="wrapper-leaderboard">
+                            <ol>
+                                <li class="list-player">
+                                    <span class="txt-name">Rahman</span>
+                                    <span class="txt-score">123456</span>
+                                </li>
+                                <li class="list-player">
+                                    <span class="txt-name">Rahman</span>
+                                    <span class="txt-score">123456</span>
+                                </li>
+                                <li class="list-player">
+                                    <span class="txt-name">Rahman</span>
+                                    <span class="txt-score">123456</span>
+                                </li>
+                                <li class="list-player">
+                                    <span class="txt-name">Rahman</span>
+                                    <span class="txt-score">123456</span>
+                                </li>
+                                <li class="list-player">
+                                    <span class="txt-name">Rahman</span>
+                                    <span class="txt-score">123456</span>
+                                </li>
+                                <li class="list-player">
+                                    <span class="txt-name">Rahman</span>
+                                    <span class="txt-score">123456</span>
+                                </li>
+                                <li class="list-player">
+                                    <span class="txt-name">Rahman</span>
+                                    <span class="txt-score">123456</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading text -->
+                <span class="txt-loading">NOW LOADING...</span>
+
+                <!-- Game over text -->
+                <span class="txt-gameover">GAME OVER</span>
+
+                <!--<div id="fps"></div>-->
+            </div>
         </div>        
     </body>
 </html>

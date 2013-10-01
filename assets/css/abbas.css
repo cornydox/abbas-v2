@@ -3,7 +3,6 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,67 +24,65 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
-/* Base */
-/* line 61, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+/*=====================================================
+
+ Base styles
+  
+ ======================================================*/
 * html {
-  font-size: 100%;
+  font-size: 87.5%;
 }
 
-/* line 64, ../../../../../../Users/narif/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
 html {
-  font-size: 16px;
-  line-height: 1.0625em;
+  font-size: 14px;
+  line-height: 1.21429em;
 }
 
-/* line 6, ../../sass/_base.scss */
+html * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
 }
 
-/* line 10, ../../sass/_base.scss */
 body {
   position: relative;
   background: white;
@@ -95,13 +92,34 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 @media only screen and (max-width: 767px) {
-  /* line 10, ../../sass/_base.scss */
   body {
     -webkit-text-size-adjust: none;
     -ms-text-size-adjust: none;
     width: 100%;
     min-width: 0;
   }
+}
+
+img {
+  max-width: 100%;
+}
+
+input {
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  resize: none;
+  -webkit-appearance: none;
+  font-family: verdana;
+  font-weight: normal;
+  font-size: 14px;
+  font-size: 1rem;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 /* Fonts */
@@ -113,67 +131,51 @@ body {
   font-style: normal;
 }
 
-/* line 2, ../../sass/_typography.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "bd_cartoon_shoutregular";
   font-weight: 400;
   text-rendering: optimizeLegibility;
-  padding-top: 0.1785em;
-  line-height: 0.75544em;
-  padding-bottom: 0.1785em;
+  padding-top: 0.204em;
+  line-height: 0.86336em;
+  padding-bottom: 0.204em;
 }
-/* line 10, ../../sass/_typography.scss */
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: black;
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 16, ../../sass/_typography.scss */
   h1, h2, h3, h4, h5, h6 {
     word-wrap: break-word;
   }
 }
-/* line 19, ../../sass/_typography.scss */
 h1 {
   font-size: 44px;
-  font-size: 2.75rem;
+  font-size: 3.14286rem;
 }
 
-/* line 20, ../../sass/_typography.scss */
 h2 {
   font-size: 37px;
-  font-size: 2.3125rem;
+  font-size: 2.64286rem;
 }
 
-/* line 21, ../../sass/_typography.scss */
 h3 {
   font-size: 27px;
-  font-size: 1.6875rem;
+  font-size: 1.92857rem;
 }
 
-/* line 22, ../../sass/_typography.scss */
 h4 {
   font-size: 23px;
-  font-size: 1.4375rem;
+  font-size: 1.64286rem;
 }
 
-/* line 23, ../../sass/_typography.scss */
 h5 {
   font-size: 17px;
-  font-size: 1.0625rem;
+  font-size: 1.21429rem;
 }
 
-/* line 24, ../../sass/_typography.scss */
 h6 {
   font-size: 14px;
-  font-size: 0.875rem;
-}
-
-/* line 26, ../../sass/_typography.scss */
-.subhead {
-  color: #777;
-  font-weight: normal;
-  margin-bottom: 20px;
+  font-size: 1rem;
 }
 
 /*=====================================================
@@ -181,15 +183,13 @@ h6 {
   Links & Paragraph styles
   
   ======================================================*/
-/* line 38, ../../sass/_typography.scss */
 p {
   font-family: "bd_cartoon_shoutregular";
   font-weight: 400;
   margin-bottom: 8.5px;
-  line-height: 1.0625em;
+  line-height: 1.21429em;
 }
 
-/* line 46, ../../sass/_typography.scss */
 a {
   color: black;
   text-decoration: none;
@@ -198,12 +198,10 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -ms-touch-action: none;
 }
-/* line 53, ../../sass/_typography.scss */
 a:hover {
   color: #404040;
 }
 
-/* line 58, ../../sass/_typography.scss */
 address {
   line-height: 1.2em;
 }
@@ -213,7 +211,6 @@ address {
   Caption
   
  ======================================================*/
-/* line 67, ../../sass/_typography.scss */
 figcaption {
   font-family: "bd_cartoon_shoutregular";
   line-height: 1.2em;
@@ -224,7 +221,6 @@ figcaption {
   Superscript & subscript
   
  ======================================================*/
-/* line 79, ../../sass/_typography.scss */
 sup,
 sub {
   height: 0;
@@ -234,12 +230,10 @@ sub {
   position: relative;
 }
 
-/* line 88, ../../sass/_typography.scss */
 sup {
   bottom: 1ex;
 }
 
-/* line 92, ../../sass/_typography.scss */
 sub {
   top: .5ex;
 }
@@ -249,97 +243,79 @@ sub {
   Lists
   
  ======================================================*/
-/* line 103, ../../sass/_typography.scss */
 ul, ol {
-  margin-bottom: 0.1785em;
+  margin-bottom: 0.204em;
 }
 
-/* line 107, ../../sass/_typography.scss */
 ul {
   list-style: none outside;
 }
 
-/* line 111, ../../sass/_typography.scss */
 ol {
   list-style: decimal;
   margin-left: 30px;
 }
 
-/* line 117, ../../sass/_typography.scss */
 ul.square, ul.circle, ul.disc {
   margin-left: 25px;
 }
-/* line 120, ../../sass/_typography.scss */
 ul.square {
   list-style: square outside;
 }
-/* line 123, ../../sass/_typography.scss */
 ul.circle {
   list-style: circle outside;
 }
-/* line 126, ../../sass/_typography.scss */
 ul.disc {
   list-style: disc outside;
 }
-/* line 129, ../../sass/_typography.scss */
 ul ul {
   margin: 4px 0 5px 25px;
 }
 
-/* line 134, ../../sass/_typography.scss */
 ol ol {
   margin: 4px 0 5px 30px;
 }
 
-/* line 138, ../../sass/_typography.scss */
 li {
-  padding-bottom: 0.1785em;
+  padding-bottom: 0.204em;
 }
 
-/* line 142, ../../sass/_typography.scss */
 ul.large li {
   line-height: 21px;
 }
 
-/* line 146, ../../sass/_typography.scss */
 dl dt {
   font-weight: bold;
   font-size: 14px;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
-@media only screen and (max-width: 768px) {
-  /* line 153, ../../sass/_typography.scss */
-  ul, ol, dl, p {
-    text-align: left;
-  }
-}
+/*@include respond(portrait-tablets) {
+  
+  ul, ol, dl, p { text-align: left;}
+
+}*/
 /* Mobile */
-/* line 159, ../../sass/_typography.scss */
 em {
   font-style: italic;
   line-height: inherit;
 }
 
-/* line 164, ../../sass/_typography.scss */
 strong {
   font-family: "bd_cartoon_shoutregular";
   font-weight: 700;
   line-height: inherit;
 }
 
-/* line 170, ../../sass/_typography.scss */
 small {
   font-size: 56.4%;
   line-height: inherit;
 }
 
-/* line 175, ../../sass/_typography.scss */
 h1 small, h2 small, h3 small, h4 small, h5 small {
   color: #777;
 }
 
-/* line 179, ../../sass/_typography.scss */
 blockquote {
   line-height: inherit;
   color: #777;
@@ -349,44 +325,37 @@ blockquote {
   padding: 30px 25px 30px 80px;
   background-color: #f3f3f3;
 }
-/* line 183, ../../sass/_typography.scss */
 blockquote p {
   line-height: 20px;
   color: #777;
 }
-/* line 191, ../../sass/_typography.scss */
 blockquote cite {
   display: block;
   font-size: 12px;
   font-size: 1.2rem;
   color: black;
 }
-/* line 196, ../../sass/_typography.scss */
 blockquote cite:before {
   content: "\2014 \0020";
 }
-/* line 199, ../../sass/_typography.scss */
 blockquote cite a {
   color: black;
 }
-/* line 201, ../../sass/_typography.scss */
 blockquote cite a:visited {
   color: black;
 }
 
-/* line 208, ../../sass/_typography.scss */
 blockquote:before {
   display: inline-block;
   position: relative;
   content: "\“";
   font-size: 95px;
-  font-size: 5.9375rem;
+  font-size: 6.78571rem;
   position: relative;
   top: 40px;
   left: -25px;
 }
 
-/* line 218, ../../sass/_typography.scss */
 hr {
   border: 1px solid #cccccc;
   clear: both;
@@ -394,7 +363,6 @@ hr {
   height: 0;
 }
 
-/* line 225, ../../sass/_typography.scss */
 abbr, acronym {
   text-transform: uppercase;
   font-size: 90%;
@@ -403,7 +371,6 @@ abbr, acronym {
   cursor: help;
 }
 
-/* line 233, ../../sass/_typography.scss */
 abbr {
   text-transform: none;
 }
@@ -415,7 +382,6 @@ abbr {
  * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
  */
 @media print {
-  /* line 245, ../../sass/_typography.scss */
   * {
     background: transparent !important;
     color: black !important;
@@ -425,50 +391,41 @@ abbr {
   }
 
   /* Black prints faster: sanbeiji.com/archives/953 */
-  /* line 253, ../../sass/_typography.scss */
   p a {
     color: black !important;
     text-decoration: underline;
   }
-  /* line 256, ../../sass/_typography.scss */
   p a:visited {
     color: black !important;
     text-decoration: underline;
   }
-  /* line 260, ../../sass/_typography.scss */
   p a[href]:after {
     content: " (" attr(href) ")";
   }
 
-  /* line 264, ../../sass/_typography.scss */
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
 
-  /* line 267, ../../sass/_typography.scss */
   .ir a:after {
     content: "";
   }
 
-  /* line 271, ../../sass/_typography.scss */
   a[href^="javascript:"]:after, a[href^="#"]:after {
     content: "";
   }
 
   /* Don't show links for images, or javascript/internal links */
-  /* line 276, ../../sass/_typography.scss */
   pre, blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-  /* line 280, ../../sass/_typography.scss */
   thead {
     display: table-header-group;
   }
 
   /* css-discuss.incutio.com/wiki/Printing_Tables */
-  /* line 284, ../../sass/_typography.scss */
   tr, img {
     page-break-inside: avoid;
   }
@@ -477,275 +434,554 @@ abbr {
     margin: 0.5cm;
 }
 
-  /* line 291, ../../sass/_typography.scss */
   p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
 
-  /* line 295, ../../sass/_typography.scss */
   h2, h3 {
     page-break-after: avoid;
   }
 }
-/* line 1, ../../sass/_custom.scss */
-#container {
-  position: relative;
+/*=====================================================
+
+Global Classes
+  
+ ======================================================*/
+.wrapper-fluid {
   margin: 0 auto;
-  margin-top: 50px;
+  width: 100%;
+  max-width: 960px;
+}
+
+.bg-wood, .content-welcome .btn-start, .content-instruction .content-title, .content-score .btn-submit, .content-score .btn-replay, .content-registration .content-title, .content-registration .btn-register, .content-leaderboard .content-title {
+  display: block;
+  background: url("../img/min/wood.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+}
+
+.screen-splash {
+  position: relative;
   width: 768px;
   height: 480px;
-  border: 5px solid #000;
-  background-color: #000;
-  background: url("../img/min/start_bg.png") no-repeat;
-}
-
-/* line 12, ../../sass/_custom.scss */
-#playground {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-size: 100%;
-  cursor: pointer;
-  /*width:100%;*/
-}
-
-/* line 19, ../../sass/_custom.scss */
-#welcome {
-  position: absolute;
-  height: 100%;
-  left: 30%;
-}
-
-/* line 25, ../../sass/_custom.scss */
-#logo {
-  padding-left: 50px;
-}
-
-/* line 27, ../../sass/_custom.scss */
-#start_outer {
-  position: absolute;
-  bottom: 10px;
-  background: url("../img/min/wood.png") no-repeat;
   margin: 0 auto;
-  height: 100px;
-  width: 330px;
-  color: #fff;
-  text-align: center;
+  background: url("../img/min/bg_start.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+@media only screen and (max-width: 767px) {
+  .screen-splash {
+    width: 100%;
+    height: auto;
+    padding-bottom: 62.5%;
+  }
 }
 
-/* line 38, ../../sass/_custom.scss */
-#fps, #coin, #energy, #distance {
-  color: #fff;
+.content-container, .content-instruction .container-instruction, .content-score .container-score, .content-registration .container-registration, .content-leaderboard .container-leaderboard {
+  -webkit-border-radius: 10px 10px;
+  -moz-border-radius: 10px / 10px;
+  border-radius: 10px / 10px;
+  background-color: rgba(255, 255, 225, 0.45);
+  border: 3px solid #cebe7d;
 }
 
-/* line 39, ../../sass/_custom.scss */
-#fps {
-  position: absolute;
-  bottom: 20px;
-  right: 0;
-}
-
-/* line 40, ../../sass/_custom.scss */
-#coin {
-  text-align: right;
-}
-
-/* line 41, ../../sass/_custom.scss */
-#distance {
-  text-align: right;
-}
-
-/* line 43, ../../sass/_custom.scss */
-#hud {
-  position: absolute;
-  top: 40px;
-  right: 50px;
+.txt-loading, .txt-gameover {
   display: none;
-}
-
-/* line 49, ../../sass/_custom.scss */
-.hud_container {
-  position: relative;
-}
-
-/* line 52, ../../sass/_custom.scss */
-.hud_icon {
   position: absolute;
-  left: 170px;
-  bottom: -4px;
-}
-
-/* line 57, ../../sass/_custom.scss */
-#energy_outer {
-  width: 180px;
-  border: 3px solid #93ac8c;
-  background-color: #c5d9e6;
-}
-
-/* line 62, ../../sass/_custom.scss */
-#energy_bar {
-  background-color: #079365;
-  width: 100%;
-}
-
-/* line 66, ../../sass/_custom.scss */
-.energy {
-  height: 29px;
-  -webkit-border-top-left-radius: 20px;
-  -webkit-border-bottom-left-radius: 20px;
-  -moz-border-radius-topleft: 20px;
-  -moz-border-radius-bottomleft: 20px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-/* line 76, ../../sass/_custom.scss */
-#start {
-  color: #000;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-/* line 77, ../../sass/_custom.scss */
-#start:hover {
-  cursor: pointer;
-  color: #fff;
-}
-
-/* line 79, ../../sass/_custom.scss */
-.gameover {
-  position: absolute;
-  top: 60px;
-  border: 4px solid #d0b96a;
-  border-radius: 15px;
+  top: 30%;
+  right: 0;
+  left: 0;
+  height: 30px;
+  margin: auto;
   text-align: center;
+  font-size: 30px;
+  font-size: 2.14286rem;
 }
 
-/* line 86, ../../sass/_custom.scss */
-.inner {
+/* Import all/some custom components here */
+/*=====================================================
+
+ Custom - Welcome
+  
+ ======================================================*/
+.content-welcome {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.content-welcome .logo {
+  position: absolute;
+  width: 26.82292%;
+  height: auto;
+  top: 10px;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+.content-welcome .btn-start {
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  left: 0;
+  margin: auto;
+  width: 240px;
+  height: 79px;
+  line-height: 77px;
+  font-size: 24px;
+  font-size: 1.71429rem;
+}
+@media only screen and (max-width: 568px) {
+  .content-welcome .btn-start {
+    height: 40px;
+    line-height: 38px;
+    font-size: 14px;
+    font-size: 1rem;
+  }
+}
+
+/*=====================================================
+
+ Custom - HUD
+  
+ ======================================================*/
+.content-hud {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+@media only screen and (max-width: 568px) {
+  .content-hud {
+    top: auto;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+.content-hud .hud-icon {
   position: absolute;
   top: 0;
-  opacity: 0.5;
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 10px;
+  right: 0;
+  width: 35px;
+  height: auto;
+  text-align: center;
+  color: white;
 }
-
-/* line 96, ../../sass/_custom.scss */
-.form {
-  position: absolute;
-  top: 30px;
-  padding: 20px;
-  text-align: left;
-}
-
-/* line 103, ../../sass/_custom.scss */
-.form table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  border: 0;
-}
-
-/* line 109, ../../sass/_custom.scss */
-.form table td {
-  padding: 5px;
-}
-
-/* line 113, ../../sass/_custom.scss */
-.form table td input {
-  width: 250px;
-  border: 0;
-  box-shadow: 0 0 20px #333;
-}
-
-/* line 119, ../../sass/_custom.scss */
-.score {
-  position: absolute;
-  top: 30px;
-  width: 100%;
-  /*text-align: center;*/
-}
-
-/* line 126, ../../sass/_custom.scss */
-.score ol {
-  height: 220px;
-  overflow: auto;
-}
-
-/* line 131, ../../sass/_custom.scss */
-.score ol li {
-  text-align: left;
-}
-
-/* line 135, ../../sass/_custom.scss */
-#register {
-  text-align: right;
-}
-
-/* line 138, ../../sass/_custom.scss */
-#register:hover {
-  cursor: pointer;
-}
-
-/* line 142, ../../sass/_custom.scss */
-#gameover_1, #loading {
-  position: absolute;
-  top: 60px;
-  left: 250px;
-  display: none;
-}
-
-/* line 149, ../../sass/_custom.scss */
-#gameover_2 {
-  left: 260px;
-  width: 260px;
-  height: 340px;
-  display: none;
-}
-
-/* line 156, ../../sass/_custom.scss */
-#gameover_3 {
-  top: 60px;
-  left: 170px;
-  width: 400px;
-  height: 300px;
-  display: none;
-}
-
-/* line 164, ../../sass/_custom.scss */
-#gameover_4 {
-  top: 60px;
-  left: 250px;
-  width: 290px;
-  height: 340px;
-  display: none;
-}
-
-/* line 172, ../../sass/_custom.scss */
-.gameover .title {
+.content-hud .hud-distance,
+.content-hud .hud-coins,
+.content-hud .hud-energy {
   position: relative;
-  top: -30px;
-  z-index: 999;
+  padding-right: 40px;
+  height: 35px;
+  line-height: 33px;
+}
+@media only screen and (max-width: 568px) {
+  .content-hud .hud-distance,
+  .content-hud .hud-coins,
+  .content-hud .hud-energy {
+    float: left;
+    margin-left: 15px;
+  }
+}
+.content-hud .energy-wrapper {
+  position: relative;
+  top: 5px;
+  margin-right: -35px;
+  width: 180px;
+  height: 25px;
+  border: 2px solid #cebe7d;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  border-radius: 25px;
+  overflow: hidden;
+}
+.content-hud .energy-wrapper .energy-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #049364;
+  width: 100%;
+  height: 100%;
+}
+.content-hud .txt-distance, .content-hud .txt-coins {
+  display: block;
+  text-align: right;
+  color: white;
 }
 
-/* line 178, ../../sass/_custom.scss */
-#show_bottom {
-  padding: 10px;
+/*=====================================================
+
+ Custom - Instructions
+  
+ ======================================================*/
+.content-instruction {
+  display: none;
+  position: absolute;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.content-instruction .content-title {
+  position: relative;
+  width: 200px;
+  margin: 0 auto;
+  height: 50px;
+  line-height: 48px;
+  font-size: 18px;
+  font-size: 1.28571rem;
+  z-index: 2;
+}
+.content-instruction .container-instruction {
+  position: relative;
+  width: 100%;
+  height: 92.70833%;
+  max-height: 360px;
+  max-width: 320px;
+  margin: -25px auto;
+  padding: 40px 15px;
+}
+.content-instruction .instruction-1 {
+  display: none;
+}
+.content-instruction .instruction-1 .btn-next {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.content-instruction .instruction-1 .img-legend {
+  display: block;
+  margin: 0 auto;
+  max-width: none;
+  max-height: 100%;
+  margin-bottom: 15px;
+}
+@media only screen and (max-width: 568px) {
+  .content-instruction .instruction-1 .img-legend {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 15px;
+  }
+}
+.content-instruction .instruction-1 .txt-legend {
   text-align: center;
 }
-
-/* line 182, ../../sass/_custom.scss */
-#show_bottom hr {
-  background-color: #000;
-  color: #000;
+@media only screen and (max-width: 568px) {
+  .content-instruction .instruction-1 .txt-legend {
+    text-align: left;
+    padding-top: 30px;
+  }
+}
+.content-instruction .instruction-2 {
+  display: none;
+  height: 100%;
+}
+.content-instruction .instruction-2 .wrapper-legend {
+  height: 100%;
+  overflow: auto;
+}
+.content-instruction .instruction-2 .list-legend {
+  position: relative;
+  padding-bottom: 15px;
+}
+.content-instruction .instruction-2 .img-legend {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.content-instruction .instruction-2 .txt-legend {
+  display: table-cell;
+  padding-left: 60px;
+  font-size: 11px;
+  font-size: 0.78571rem;
+  height: 50px;
+  vertical-align: middle;
+}
+.content-instruction .instruction-2 .btn-play {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.content-instruction .instruction-2 .btn-back {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+@media only screen and (max-width: 568px) {
+  .content-instruction .instruction-2 .btn-play, .content-instruction .instruction-2 .btn-back {
+    width: 75px;
+    bottom: 2px;
+  }
 }
 
-/* line 186, ../../sass/_custom.scss */
-#submit:hover, #playagain:hover {
+/*=====================================================
+
+ Custom - Score
+  
+ ======================================================*/
+.content-score {
+  display: none;
+  position: absolute;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.content-score .container-score {
+  position: relative;
+  width: 100%;
+  height: 92.70833%;
+  max-height: 360px;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+}
+.content-score .wrapper-score {
+  height: 100%;
+}
+@media only screen and (max-width: 568px) {
+  .content-score .wrapper-score {
+    overflow: auto;
+  }
+}
+.content-score .container-score_upper,
+.content-score .container-score_lower {
+  padding: 15px 0;
+}
+.content-score .container-score_upper {
+  border-bottom: 1px solid #ccc;
+}
+.content-score .list-coins {
+  margin-bottom: 0;
+}
+.content-score .list-coins > img {
+  vertical-align: middle;
+}
+.content-score .btn-submit, .content-score .btn-replay {
+  margin: 15px auto 0;
+  width: 62.5%;
+  height: 35px;
+  line-height: 33px;
+  font-size: 14px;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 568px) {
+  .content-score .btn-submit, .content-score .btn-replay {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    line-height: 28px;
+    font-size: 11px;
+    font-size: 0.78571rem;
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .content-score .btn-submit {
+    right: 10px;
+    bottom: 0;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .content-score .btn-replay {
+    right: 120px;
+    bottom: 0;
+  }
+}
+
+/*=====================================================
+
+ Custom - Registration
+  
+ ======================================================*/
+.content-registration {
+  display: none;
+  position: absolute;
+  padding: 40px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+@media only screen and (max-width: 568px) {
+  .content-registration {
+    padding: 20px;
+  }
+}
+.content-registration .content-title {
+  position: relative;
+  width: 200px;
+  margin: 0 auto;
+  height: 50px;
+  line-height: 48px;
+  font-size: 18px;
+  font-size: 1.28571rem;
+  z-index: 2;
+}
+.content-registration .container-registration {
+  position: relative;
+  width: 100%;
+  height: 92.70833%;
+  max-height: 300px;
+  max-width: 420px;
+  margin: -25px auto;
+  padding: 40px 15px;
+}
+.content-registration .wrapper-registration {
+  height: 100%;
+  overflow: auto;
+}
+.content-registration .field {
+  position: relative;
+  max-width: 100%;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+.content-registration .field label {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  width: 28.64583%;
+  font-size: 14px;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 568px) {
+  .content-registration .field label {
+    width: 100%;
+  }
+}
+.content-registration .field input {
+  position: relative;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  padding: 0 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  width: 68.75%;
+  height: 26px;
+  line-height: 24px;
+  font-size: 16px;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 568px) {
+  .content-registration .field input {
+    width: 100%;
+  }
+}
+.content-registration .btn-register {
+  margin: 15px 0 0 auto;
+  width: 39.0625%;
+  height: 35px;
+  line-height: 33px;
+  font-size: 14px;
+  font-size: 1rem;
+}
+@media only screen and (max-width: 568px) {
+  .content-registration .btn-register {
+    position: absolute;
+    width: 100px;
+    right: 10px;
+    bottom: 0;
+    height: 30px;
+    line-height: 28px;
+    font-size: 11px;
+    font-size: 0.78571rem;
+    margin: 0;
+  }
+}
+
+/*=====================================================
+
+ Custom - Leaderboard
+  
+ ======================================================*/
+.content-leaderboard {
+  display: none;
+  position: absolute;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.content-leaderboard .title-heading {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.content-leaderboard .content-title {
+  position: relative;
+  width: 200px;
+  margin: 0 auto;
+  height: 50px;
+  line-height: 48px;
+  font-size: 18px;
+  font-size: 1.28571rem;
+  z-index: 2;
+}
+.content-leaderboard .container-leaderboard {
+  position: relative;
+  width: 100%;
+  height: 92.70833%;
+  max-height: 360px;
+  max-width: 320px;
+  margin: -25px auto;
+  padding: 40px 15px;
+}
+.content-leaderboard .wrapper-leaderboard {
+  height: 100%;
+  overflow: auto;
+}
+.content-leaderboard .list-player {
+  padding-bottom: 10px;
+  font-size: 12px;
+  font-size: 0.85714rem;
+}
+.content-leaderboard .btn-close {
+  position: absolute;
+  font-family: verdana;
+  font-weight: bold;
+  top: 5px;
+  right: 10px;
+}
+.content-leaderboard .txt-score {
+  float: right;
+}
+
+/*=====================================================
+
+ Custom - Canvas
+  
+ ======================================================*/
+#playground {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 768px;
+  height: 480px;
+  margin: 0 auto;
   cursor: pointer;
 }
-
-/* line 190, ../../sass/_custom.scss */
-#top25 .list {
-  float: right;
+@media only screen and (max-width: 767px) {
+  #playground {
+    width: 100%;
+    height: auto;
+  }
 }
