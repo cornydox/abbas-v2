@@ -1,6 +1,6 @@
 function Game(){
     this.init = function(){
-        $("#loading").fadeIn();
+        $(elem.loader).fadeIn();
         var element = document.getElementById("welcome");
         element.parentNode.removeChild(element);
 
@@ -53,9 +53,9 @@ function Game(){
 
 
     this.populate = function(){
-        $("#loading").fadeOut();
-        $("#loading").remove();
-        $("#hud").show();
+        $(elem.loader).hide();
+        //$(elem.loader).remove();
+        $(elem.hud).show();
         var img_sky       = loader.getResult("sky");
         var img_clouds    = loader.getResult("clouds");
         var img_base      = loader.getResult("base");

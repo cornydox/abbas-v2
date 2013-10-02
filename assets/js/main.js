@@ -3,6 +3,22 @@ var stage, loader;
 var PLAYGROUND_WIDTH, PLAYGROUND_HEIGHT, path, audio_path;
 var sky, clouds, base, mountains, grass, abbas, gold, energy, coin_multiplier;
 var MULTIPLIER = 6; // Boost multiplier
+var elem = {};
+	
+elem.loader = '.txt-loading';
+elem.gameover = '.txt-gameover';
+
+elem.hud = '.content-hud';
+
+elem.score ='.content-score';
+elem.btn_replay = '.btn-replay';
+elem.btn_submit = '.btn-submit';
+
+elem.registration = '.content-registration';
+elem.formRegister = '#registration';
+elem.btn_register = '.btn-register';
+
+elem.leaderboard = '.content-leaderboard';
 
 var crow = [];
 var coin = [];
@@ -16,8 +32,8 @@ function startGame(){
 
 // Events
 $(function(){
-	$("#register").click(function(){
-		var $form = $("#registration");
+	$(elem.btn_register).click(function(){
+		var $form = $(elem.formRegister);
 		var $input = $form.find("input");
 
 		var form_data = $form.serialize();
@@ -32,14 +48,14 @@ $(function(){
 
 			var html = "";
 			for(var i in data){ // Loop through each row, add to list
-				html += "<li>" + data[i].name.substring(0,12) + " ";
-				html += "<span class='list'>" + data[i].score + "</span></li>";
+				html += '<li class="list-player"><span class="txt-name">' + data[i].name.substring(0,12) + '</span>';
+				html += '<span class="txt-score">' + data[i].score + "</span></li>";
 			}
 
-			$("#top25").html(html);
+			$(".wrapper-leaderboard ol").html(html);
 
-			$("#gameover_3").fadeOut();
-			$("#gameover_4").fadeIn();
+			$(elem.registration).fadeOut();
+			$(elem.leaderboard).fadeIn();
 
 		}).fail(function (jqXHR, textStatus, errorThrown){
 			console.dir(jqXHR + "," + "textStatus" , + "errorThrown");
@@ -47,12 +63,12 @@ $(function(){
 
 	});
 
-	$("#submit").click(function(){
-		$("#gameover_2").fadeOut();
-		$("#gameover_3").fadeIn();
+	$(elem.btn_submit).click(function(){
+		$(elem.score).fadeOut();
+		$(elem.registration).fadeIn();
 	});
 
-	$("#playagain").click(function(){
+	$(elem.btn_replay).click(function(){
 		location.reload();
 	});
 });
