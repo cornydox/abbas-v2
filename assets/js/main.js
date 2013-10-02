@@ -38,47 +38,39 @@ function showTutorial(){
 	$('.content-instruction').show();
 }
 
+function restartGame(){
+	// Should code something here to restart game immediately without having to click
+	location.reload();
+}
 
 // Events
 $(function(){
-	$(elem.btn_register).click(function(){
-		var $form = $(elem.formRegister);
-		var $input = $form.find("input");
+	$(elem.btn_register).click(function(event){
+		var good_to_go = true;
 
-		var form_data = $form.serialize();
-		$input.prop("disabled", true);
-
-		$.ajax({
-			url: "./src/main.php",
-			data: form_data,
-			type: "POST"
-		}).done(function ( data ) {
-			data = $.parseJSON(data); // Data for Leaderboard
-
-			var html = "";
-			for(var i in data){ // Loop through each row, add to list
-				html += '<li class="list-player"><span class="txt-name">' + data[i].name.substring(0,12) + '</span>';
-				html += '<span class="txt-score">' + data[i].score + "</span></li>";
+		$(elem.formRegister + ' input').each(function(){
+			if( $(this).val() === '' ){
+				good_to_go = false;
+				$(this).attr('placeholder', 'Please fill in your ' + $(this).attr('name'));
 			}
-
-			$(".wrapper-leaderboard ol").html(html);
-
-			$(elem.registration).fadeOut();
-			$(elem.leaderboard).fadeIn();
-
-		}).fail(function (jqXHR, textStatus, errorThrown){
-			console.dir(jqXHR + "," + "textStatus" , + "errorThrown");
 		});
 
+		if( good_to_go === true ){
+			gameover.registerUser();
+		}
+
+		event.preventDefault();
 	});
 
-	$(elem.btn_submit).click(function(){
+	$(elem.btn_submit).click(function(event){
 		$(elem.score).fadeOut();
 		$(elem.registration).fadeIn();
+		event.preventDefault();
 	});
 
-	$(elem.btn_replay).click(function(){
-		location.reload();
+	$(elem.btn_replay).click(function(event){
+		restartGame();
+		event.preventDefault();
 	});
 
 	/* Tutorial / Instructions */

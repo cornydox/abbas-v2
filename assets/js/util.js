@@ -75,7 +75,7 @@ var util = (function(){
         },
 
         abbasHit: function(){
-            abbas.y = (abbas.y + 40);
+            abbas.y = (abbas.y + 25);
             abbas.data.damage();
         },
 
@@ -115,10 +115,12 @@ var util = (function(){
         },
 
         abbasCoinMultiply: function(){
+            abbas.shadow = new createjs.Shadow("#e5d584",5,-10,100);
             abbas.data.setCoinMultiply(true);
-            $("#coin").css({color : "#ff0000", "font-size" : "160%"});
+            $("#coin").css({color : "#e5d584", "font-size" : "160%"});
 
             setTimeout(function(){
+                abbas.shadow = false;
                 abbas.data.setCoinMultiply(false);
                 $("#coin").css({color : "#fff", "font-size" : "100%"});
             }, 6000);
