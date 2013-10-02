@@ -125,7 +125,7 @@ var util = (function(){
 
             // document.getElementById("energy").innerHTML = "ENERGY : " + energy;
             document.getElementById("energy_bar").setAttribute("style", width);
-            document.getElementById("distance").innerHTML = distance + " m";
+            document.getElementById("distance").innerHTML = distance;
             // Display fps
             // document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
         },

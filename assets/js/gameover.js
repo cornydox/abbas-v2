@@ -4,10 +4,10 @@ var gameover = (function(){
 		showScore: function(){
 			var distance = $.trim($("#distance").html());
 			var coins = parseInt($("#coin").html());
-            var score = parseInt(distance.replace("m","")) + coins;
+      var score = parseInt(distance.replace("m","")) + coins;
 
-            $(elem.hud).fadeOut();
-            $(elem.hud).remove();
+      $(elem.hud).fadeOut();
+      $(elem.hud).remove();
 			
 			$("#show_distance").html(distance);
 			$("#show_coins").html(coins);
