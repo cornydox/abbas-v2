@@ -52,6 +52,12 @@ var util = (function(){
                 boost = MULTIPLIER;
             }
 
+            if( abbas.data.getEnergy() === 0 ){
+                clearTimeout(mouse_timeout);
+                abbas.data.setFlying(false);
+                abbas.gotoAndPlay("fly");
+            }
+
             if(abbas.y < 350 && abbas.data.isFlying() === false){ // Abbas falling down 
                 abbas.y = (abbas.y + delta_s / boost);
             }
@@ -93,7 +99,7 @@ var util = (function(){
 
         abbasCoin: function(){
             abbas.data.plusCoin();
-            document.getElementById("coin").innerHTML = abbas.data.getCoin() + " &nbsp;&nbsp;";
+            document.getElementById("coin").innerHTML = abbas.data.getCoin();
         },
 
         abbasGold: function(){
