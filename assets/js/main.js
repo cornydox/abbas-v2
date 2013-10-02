@@ -5,20 +5,24 @@ var sky, clouds, base, mountains, grass, abbas, gold, energy, coin_multiplier;
 var MULTIPLIER = 6; // Boost multiplier
 var elem = {};
 	
-elem.loader = '.txt-loading';
-elem.gameover = '.txt-gameover';
+elem.loader       = '.txt-loading';
+elem.gameover     = '.txt-gameover';
 
-elem.hud = '.content-hud';
+elem.hud          = '.content-hud';
 
-elem.score ='.content-score';
-elem.btn_replay = '.btn-replay';
-elem.btn_submit = '.btn-submit';
+elem.score        = '.content-score';
+elem.btn_replay   = '.btn-replay';
+elem.btn_submit   = '.btn-submit';
+elem.btn_next     = '.btn-next';
+elem.btn_back     = '.btn-back';
+elem.btn_play     = '.btn-play';
+elem.btn_close    = '.btn-close';
 
 elem.registration = '.content-registration';
 elem.formRegister = '#registration';
 elem.btn_register = '.btn-register';
 
-elem.leaderboard = '.content-leaderboard';
+elem.leaderboard  = '.content-leaderboard';
 
 var crow = [];
 var coin = [];
@@ -27,6 +31,11 @@ function startGame(){
 	var game = new Game();
 
 	game.init();
+}
+
+function showTutorial(){
+	$('#welcome').hide();
+	$('.content-instruction').show();
 }
 
 
@@ -70,5 +79,29 @@ $(function(){
 
 	$(elem.btn_replay).click(function(){
 		location.reload();
+	});
+
+	/* Tutorial / Instructions */
+	$(elem.btn_next).click(function(event){
+		$('.instruction-1').hide();
+		$('.instruction-2').show();
+		event.preventDefault();
+	});
+
+	$(elem.btn_back).click(function(event){
+		$('.instruction-2').hide();
+		$('.instruction-1').show();
+		event.preventDefault();
+	});
+
+	$(elem.btn_play).click(function(event){
+		startGame();
+		event.preventDefault();
+	});
+
+	$(elem.btn_close).click(function(event){
+		$(this).parent().parent().hide();
+		$('#welcome').show();
+		event.preventDefault();
 	});
 });

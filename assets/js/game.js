@@ -1,8 +1,7 @@
 function Game(){
     this.init = function(){
         $(elem.loader).fadeIn();
-        var element = document.getElementById("welcome");
-        element.parentNode.removeChild(element);
+        $("#welcome,.content-instruction").hide();
 
         stage = new createjs.Stage("playground"); // Init canvas
         createjs.Touch.enable(stage); // Enable touch event
