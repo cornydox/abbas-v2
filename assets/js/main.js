@@ -92,8 +92,9 @@ $(function(){
 	});
 
 	$(elem.btn_close).click(function(event){
-		$(this).parent().parent().hide();
-		$('#welcome').show();
+		// $(this).parent().parent().hide();
+		// $('#welcome').show();
+		location.reload(); // Temporary 
 		event.preventDefault();
 	});
 });
