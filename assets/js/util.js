@@ -139,7 +139,7 @@ var util = (function(){
         },
 
         generateCrow: function(){
-            var spawn_chance = util.getRandom(100,2500);
+            var spawn_chance = util.getRandom(100,1500);
 
             setTimeout(function(){
                 if( abbas.data.getBoost() === false && createjs.Ticker.getPaused() === false ){
