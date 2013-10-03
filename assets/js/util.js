@@ -115,7 +115,7 @@ var util = (function(){
         },
 
         abbasCoinMultiply: function(){
-            abbas.shadow = new createjs.Shadow("#e5d584",5,-10,100);
+            abbas.shadow = new createjs.Shadow("#e5d584",5,-10,50);
             abbas.data.setCoinMultiply(true);
             $("#coin").css({color : "#e5d584", "font-size" : "160%"});
 
@@ -243,7 +243,7 @@ var util = (function(){
 
         generateGold: function(){
             if( gold_on_screen === false ){
-                var spawn_chance = util.getRandom(10000,15000);
+                var spawn_chance = util.getRandom(10000,25000);
 
                 setTimeout(function(){
                     var img_gold = loader.getResult("gold");
