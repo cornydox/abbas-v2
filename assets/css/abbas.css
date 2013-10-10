@@ -612,6 +612,19 @@ Global Classes
   background-color: #049364;
   width: 100%;
   height: 100%;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  border-radius: 25px;
+  -webkit-transition-property: width;
+  -moz-transition-property: width;
+  -o-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
 .content-hud .txt-distance, .content-hud .txt-coins {
   display: block;
@@ -983,20 +996,11 @@ Global Classes
   width: 768px;
   height: 480px;
   margin: 0 auto;
-  cursor: pointer;  
+  cursor: pointer;
 }
 @media only screen and (max-width: 767px) {
   #playground {
     width: 100%;
     height: auto;
   }
-}
-
-/*=====================================================
-
- Attempt to prevent tap selection in Mobile
-  
- ======================================================*/
-#playground, .content-hud{
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

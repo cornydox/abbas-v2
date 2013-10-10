@@ -38,7 +38,13 @@ function Game(){
         if (!createjs.Sound.initializeDefaultPlugins()) {return;}
         audio_path = "assets/sounds/";
         var sounds = [
-            {id:"bgm", src:audio_path + "18.mp3|"+audio_path + "18.ogg"}
+            {id:"bgm", src:audio_path + "18.mp3|"+audio_path + "18.ogg"},
+            {id:"boostfx", src:audio_path + "boost.mp3|"+audio_path + "boost.ogg"},
+            {id:"clickfx", src:audio_path + "click.mp3|"+audio_path + "click.ogg"},
+            {id:"coinfx", src:audio_path + "coin.mp3|"+audio_path + "coin.ogg"},
+            {id:"hitfx", src:audio_path + "hit.mp3|"+audio_path + "hit.ogg"},
+            {id:"energyfx", src:audio_path + "energy.mp3|"+audio_path + "energy.ogg"},
+            {id:"multiplierfx", src:audio_path + "multiplier.mp3|"+audio_path + "multiplier.ogg"},
         ];
         
         createjs.Sound.addEventListener("fileload", createjs.proxy(soundLoaded, this)); // add an event 
@@ -109,11 +115,7 @@ function Game(){
 
     function tick(event){
         var delta_s = event.delta/1000*100;
-        var boost = 1;
-
-        if( abbas.data.getBoost() === true ){
-            boost = MULTIPLIER;
-        }
+        var boost   = abbas.data.getBoost();
 
         if( !createjs.Ticker.getPaused() ){
             sky.x       = (sky.x - delta_s * boost) % sky.width;
@@ -122,8 +124,8 @@ function Game(){
             base.x      = (base.x - delta_s * 3.5 * boost) % base.width;
             grass.x     = (grass.x - delta_s * 10 * boost) % grass.width;
 
-            util.abbasMovement(delta_s);
-            util.abbasStats();
+            abbas.data.movement(delta_s);
+            abbas.data.stats();
             util.crowMovement(delta_s);
             util.coinMovement(delta_s);
             util.goldMovement(delta_s);
