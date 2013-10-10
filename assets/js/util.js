@@ -151,7 +151,7 @@ var util = (function(){
 
         generateGold: function(){
             if( gold_on_screen === false ){
-                var spawn_chance = util.getRandom(10000,25000);
+                var spawn_chance = util.getRandom(10000,30000);
 
                 setTimeout(function(){
                     var img_gold = loader.getResult("gold");
