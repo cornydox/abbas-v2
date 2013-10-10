@@ -1,84 +1,102 @@
 function Abbas(){
-	this.energy = 100; // Initial energy.
-	this.distance = 0;
-	this.energy_timeout = 0;
-	this.flying = false;
-	this.coin   = 0;
-	this.coin_multiply = false;
-	this.boosting = false;
+    this.die = false;
 }
 
-Abbas.prototype.isFlying = function(){
-	return this.flying;
+Abbas.prototype = new Player(); // Inherit Player Class
+
+Abbas.prototype.movement = function(delta_s){
+    if(this.getEnergy() === 0){
+        this.setFlying(false);
+        util.clearMouse();
+        abbas.gotoAndPlay("fly");
+    }
+
+    if(abbas.y < 350 && this.isFlying() === false){ // Abbas falling down 
+        abbas.y = (abbas.y + delta_s / this.boost);
+    }
+    else if(abbas.y > 0 && this.isFlying() === true && this.getEnergy() > 0){ // Abbas fly, limit max height...
+        abbas.y = (abbas.y - (delta_s * 2)/ this.boost);
+    }
+    else if(abbas.y > 350){
+        this.crash(delta_s);
+    }
+    else{
+        abbas.gotoAndPlay("glide");
+    }
+    this.updateDistance();
 };
 
-Abbas.prototype.setFlying = function(state){
-	this.flying = state;
-	var self = this;
-	if(state === true){
-		this.energy_timeout = setInterval(function(){
-			self.energy = self.energy - 1;
-		}, 100);
-	}
-	else{
-		clearInterval(this.energy_timeout);
-	}
+Abbas.prototype.hit = function(){
+    // Sound FX
+    createjs.Sound.play("hitfx");
+
+    abbas.y = (abbas.y + 15);
+    this.damage();
 };
 
-Abbas.prototype.setEnergy = function(value){
-	this.energy = value;
+Abbas.prototype.crash = function(delta_s){
+    abbas.y = (abbas.y - delta_s);
+    this.setEnergy(0);
+    
+    setTimeout(function(){
+        abbas.y = (abbas.y + delta_s * 1.5);
+        util.removeAllCrows();
+    }, 500);
+
+    if(this.die === false){
+        setTimeout(function(){
+            util.gameOver();
+        }, 1500);
+    }
+    
+    this.die = true;
 };
 
-Abbas.prototype.getEnergy = function(){
-	if( this.energy < 0 ){
-		this.energy = 0;
-	}
+Abbas.prototype.coinify = function(){
+    createjs.Sound.play("coinfx");
+    this.plusCoin();
 
-	return this.energy;
+    $("#coin").html(this.getCoin());
 };
 
-Abbas.prototype.plusCoin = function(){
-	if(this.coin_multiply === true){
-		this.coin = this.coin + 3;
-	}
-	else{
-		this.coin++;
-	}
+Abbas.prototype.boostify = function(){
+    createjs.Sound.play("boostfx");
+    this.setBoost(true);
+    util.removeAllCrows();
+
+    var self = this;
+    setTimeout(function(){
+        self.setBoost(false);
+    }, 3000);
 };
 
-Abbas.prototype.getCoin = function(){
-	return this.coin;
+Abbas.prototype.energize = function(){
+    createjs.Sound.play("energyfx");
+    this.regenEnergy();
 };
 
-Abbas.prototype.regenEnergy = function(){
-	this.energy = 100;
+Abbas.prototype.multiply = function(){
+    createjs.Sound.play("multiplierfx");
+    this.setCoinMultiply(true);
+
+    // Make Abbas Glow!
+    abbas.shadow = new createjs.Shadow("#e5d584",5,-10,50);
+
+    // Change HUD color
+    $("#coin").css({color : "#e5d584", "font-size" : "160%"});
+
+    var self = this;
+    setTimeout(function(){
+        abbas.shadow = false;
+        self.setCoinMultiply(false);
+        $("#coin").css({color : "#fff", "font-size" : "100%"});
+    }, 6000);
 };
 
-Abbas.prototype.damage = function(){
-	this.energy = this.energy - 15;
-};
+Abbas.prototype.stats = function(){
+    $("#energy_bar").css("width", this.getEnergy() + "%");
+    $("#distance").html(this.getDistance());
 
-Abbas.prototype.updateDistance = function(){
-	var boost = 1;
-	if(this.boosting === true){
-		boost = MULTIPLIER;
-	}
-
-	this.distance = this.distance + (0.3 * boost);
-};
-
-Abbas.prototype.getDistance = function(){
-	return Math.floor(this.distance);
-};
-
-Abbas.prototype.setBoost = function(state){
-	this.boosting = state;
-};
-
-Abbas.prototype.getBoost = function(){
-	return this.boosting;
-};
-
-Abbas.prototype.setCoinMultiply = function(state){
-	this.coin_multiply = state;
+    // Display fps
+    // document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
 };

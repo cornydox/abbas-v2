@@ -5,8 +5,6 @@ var util = (function(){
     var gold_on_screen       = false;
     var energy_on_screen     = false;
     var multiplier_on_screen = false;
-    var GAMEOVER             = false;
-    var pulsate              = false;
 
     return{
         initControls: function(){
@@ -20,7 +18,6 @@ var util = (function(){
 
                     // On mouse release
                     evt.onMouseUp = function(evt){
-                        clearTimeout(mouse_timeout);
                         abbas.data.setFlying(false);
                         abbas.gotoAndPlay("fly");
                     };
@@ -28,6 +25,10 @@ var util = (function(){
                 }
 
             };
+        },
+
+        clearMouse: function(){
+            clearTimeout(mouse_timeout);
         },
 
         getRandom: function(from, to){
@@ -45,109 +46,11 @@ var util = (function(){
             
         },
 
-        abbasMovement: function(delta_s){
-            var boost = 1;
-
-            if( abbas.data.getBoost() === true ){
-                boost = MULTIPLIER;
-            }
-
-            if( abbas.data.getEnergy() === 0 ){
-                clearTimeout(mouse_timeout);
-                abbas.data.setFlying(false);
-                abbas.gotoAndPlay("fly");
-            }
-
-            if(abbas.y < 350 && abbas.data.isFlying() === false){ // Abbas falling down 
-                abbas.y = (abbas.y + delta_s / boost);
-            }
-            else if(abbas.y > 0 && abbas.data.isFlying() === true && abbas.data.getEnergy() > 0){ // Abbas fly, limit max height...
-                abbas.y = (abbas.y - (delta_s * 2)/ boost);
-            }
-            else if(abbas.y > 350){
-                util.abbasCrash(delta_s);
-            }
-            else{
-                abbas.gotoAndPlay("glide");
-            }
-            abbas.data.updateDistance();
-
-        },
-
-        abbasHit: function(){
-            createjs.Sound.play("hitfx");
-            abbas.y = (abbas.y + 25);
-            abbas.data.damage();
-        },
-
-        abbasCrash: function(delta_s){
-            abbas.data.setEnergy(0);
-            abbas.y = (abbas.y - delta_s);
-            setTimeout(function(){
-                abbas.y = (abbas.y + delta_s * 1.5);
-                util.removeAllCrows();
-            }, 500);
-
-            if( GAMEOVER === false ){
-                setTimeout(function(){
-                    util.gameOver();
-                }, 1500);
-            }
-            
-            GAMEOVER = true;
-
-        },
-
-        abbasCoin: function(){
-            createjs.Sound.play("coinfx");
-            abbas.data.plusCoin();
-            document.getElementById("coin").innerHTML = abbas.data.getCoin();
-        },
-
-        abbasGold: function(){
-            createjs.Sound.play("boostfx");
-            abbas.data.setBoost(true);
-            util.removeAllCrows();
-            setTimeout(function(){
-                abbas.data.setBoost(false);
-            }, 3000);
-        },
-
-        abbasEnergy: function(){
-            createjs.Sound.play("energyfx");
-            abbas.data.regenEnergy();
-        },
-
-        abbasCoinMultiply: function(){
-            createjs.Sound.play("multiplierfx");
-            abbas.shadow = new createjs.Shadow("#e5d584",5,-10,50);
-            abbas.data.setCoinMultiply(true);
-            $("#coin").css({color : "#e5d584", "font-size" : "160%"});
-
-            setTimeout(function(){
-                abbas.shadow = false;
-                abbas.data.setCoinMultiply(false);
-                $("#coin").css({color : "#fff", "font-size" : "100%"});
-            }, 6000);
-        },
-
-        abbasStats: function(){
-            var energy   = abbas.data.getEnergy();
-            var distance = abbas.data.getDistance();
-            var width    = "width:"+ energy + "%";
-
-            $("#energy_bar").css("width", energy + "%");
-            $("#distance").html(distance);
-
-            // Display fps
-            // document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
-        },
-
         generateCrow: function(){
             var spawn_chance = util.getRandom(100,1500);
 
             setTimeout(function(){
-                if( abbas.data.getBoost() === false && createjs.Ticker.getPaused() === false ){
+                if( abbas.data.isBoosting() === false && createjs.Ticker.getPaused() === false ){
                     var img_crow    = loader.getResult("crow");
 
                     var spriteSheet = new createjs.SpriteSheet({
@@ -179,7 +82,7 @@ var util = (function(){
                 }
                 else{
                     var col = crow[i].localToLocal(5, 25, abbas);
-                    if( abbas.hitTest(col.x, col.y) ){ util.abbasHit(); }
+                    if( abbas.hitTest(col.x, col.y) ){ abbas.data.hit(); }
                     crow[i].data.update(delta_s);
                 }
             }
@@ -235,7 +138,7 @@ var util = (function(){
                 else{
                     var col = coin[i].localToLocal(0, 10, abbas);
                     if( abbas.hitTest(col.x, col.y) ){
-                        util.abbasCoin();
+                        abbas.data.coinify();
                         stage.removeChild(coin[i]);
                         delete coin[i];
                     }
@@ -283,7 +186,7 @@ var util = (function(){
                 else{
                     var col = gold.localToLocal(20, 20, abbas);
                     if( abbas.hitTest(col.x, col.y) ){
-                        util.abbasGold();
+                        abbas.data.boostify();
                         stage.removeChild(gold);
                         util.generateGold();
                     }
@@ -332,7 +235,7 @@ var util = (function(){
                 else{
                     var col = energy.localToLocal(0, 5, abbas);
                     if( abbas.hitTest(col.x, col.y) ){
-                        util.abbasEnergy();
+                        abbas.data.energize();
                         stage.removeChild(energy);
                         energy_on_screen = false;
                         util.generateEnergy();
@@ -382,7 +285,7 @@ var util = (function(){
                 else{
                     var col = coin_multiplier.localToLocal(0, 5, abbas);
                     if( abbas.hitTest(col.x, col.y) ){
-                        util.abbasCoinMultiply();
+                        abbas.data.multiply();
                         stage.removeChild(coin_multiplier);
                         multiplier_on_screen = false;
                         util.generateMultiplier();
