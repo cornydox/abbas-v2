@@ -19,23 +19,36 @@
     margin: auto;
   }
 
-  .btn-start, .btn-instruction {
+  .btn-start, .btn-instruction, .btn-leaderboard {
     @extend .bg-wood;
     position: absolute;
-    right: 0; bottom: 90px; left: 0;
+    top: auto; right: 0; left: 0;
     margin: auto;
     width: 240px;
     @include line-and-height(79px);
     @include font-size(24px);
 
     @include respond(landscape-phones) {
-      bottom: 60px;
       @include line-and-height(40px);
       @include font-size(14px);
     }
   }
 
-  .btn-instruction {
-    bottom: 15px;
+  .btn-start {
+    bottom: 160px;
+    @include respond(landscape-phones) {
+      bottom: 105px;
+    }
+  }
+
+  .btn-instruction { 
+    bottom: 85px;
+    @include respond(landscape-phones) {
+      bottom: 60px;
+    }
+  }
+
+  .btn-leaderboard { 
+    bottom: 15px; 
   }
 }

@@ -454,7 +454,7 @@ Global Classes
   max-width: 960px;
 }
 
-.bg-wood, .content-welcome .btn-start, .content-welcome .btn-instruction, .content-instruction .content-title, .content-score .btn-submit, .content-score .btn-replay, .content-registration .content-title, .content-registration .btn-register, .content-leaderboard .content-title {
+.bg-wood, .content-welcome .btn-start, .content-welcome .btn-instruction, .content-welcome .btn-leaderboard, .content-instruction .content-title, .content-score .btn-submit, .content-score .btn-replay, .content-registration .content-title, .content-registration .btn-register, .content-leaderboard .content-title {
   display: block;
   background: url("../img/min/wood.png");
   background-position: center;
@@ -523,10 +523,10 @@ Global Classes
   left: 0;
   margin: auto;
 }
-.content-welcome .btn-start, .content-welcome .btn-instruction {
+.content-welcome .btn-start, .content-welcome .btn-instruction, .content-welcome .btn-leaderboard {
   position: absolute;
+  top: auto;
   right: 0;
-  bottom: 90px;
   left: 0;
   margin: auto;
   width: 240px;
@@ -536,15 +536,30 @@ Global Classes
   font-size: 1.71429rem;
 }
 @media only screen and (max-width: 568px) {
-  .content-welcome .btn-start, .content-welcome .btn-instruction {
-    bottom: 60px;
+  .content-welcome .btn-start, .content-welcome .btn-instruction, .content-welcome .btn-leaderboard {
     height: 40px;
     line-height: 38px;
     font-size: 14px;
     font-size: 1rem;
   }
 }
+.content-welcome .btn-start {
+  bottom: 160px;
+}
+@media only screen and (max-width: 568px) {
+  .content-welcome .btn-start {
+    bottom: 105px;
+  }
+}
 .content-welcome .btn-instruction {
+  bottom: 85px;
+}
+@media only screen and (max-width: 568px) {
+  .content-welcome .btn-instruction {
+    bottom: 60px;
+  }
+}
+.content-welcome .btn-leaderboard {
   bottom: 15px;
 }
 
