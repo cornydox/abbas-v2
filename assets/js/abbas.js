@@ -52,17 +52,10 @@ Abbas.prototype.getCoin = function(){
 
 Abbas.prototype.regenEnergy = function(){
 	this.energy = 100;
-	// if( this.energy > 100 ){
-	// 	this.energy = 100;
-	// }
-	// else{
-	// 	this.energy = this.energy + 5;
-	// }
 };
 
 Abbas.prototype.damage = function(){
-	this.energy = this.energy - 20;
-	// document.getElementById("energy").innerHTML = "ENERGY : " + this.energy;
+	this.energy = this.energy - 15;
 };
 
 Abbas.prototype.updateDistance = function(){

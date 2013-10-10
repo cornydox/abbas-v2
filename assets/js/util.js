@@ -75,6 +75,7 @@ var util = (function(){
         },
 
         abbasHit: function(){
+            createjs.Sound.play("hitfx");
             abbas.y = (abbas.y + 25);
             abbas.data.damage();
         },
@@ -98,11 +99,13 @@ var util = (function(){
         },
 
         abbasCoin: function(){
+            createjs.Sound.play("coinfx");
             abbas.data.plusCoin();
             document.getElementById("coin").innerHTML = abbas.data.getCoin();
         },
 
         abbasGold: function(){
+            createjs.Sound.play("boostfx");
             abbas.data.setBoost(true);
             util.removeAllCrows();
             setTimeout(function(){
@@ -111,10 +114,12 @@ var util = (function(){
         },
 
         abbasEnergy: function(){
+            createjs.Sound.play("energyfx");
             abbas.data.regenEnergy();
         },
 
         abbasCoinMultiply: function(){
+            createjs.Sound.play("multiplierfx");
             abbas.shadow = new createjs.Shadow("#e5d584",5,-10,50);
             abbas.data.setCoinMultiply(true);
             $("#coin").css({color : "#e5d584", "font-size" : "160%"});
@@ -131,9 +136,9 @@ var util = (function(){
             var distance = abbas.data.getDistance();
             var width    = "width:"+ energy + "%";
 
-            // document.getElementById("energy").innerHTML = "ENERGY : " + energy;
-            document.getElementById("energy_bar").setAttribute("style", width);
-            document.getElementById("distance").innerHTML = distance;
+            $("#energy_bar").css("width", energy + "%");
+            $("#distance").html(distance);
+
             // Display fps
             // document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
         },
