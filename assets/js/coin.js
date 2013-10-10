@@ -3,10 +3,7 @@ function Coin(index){
 }
 
 Coin.prototype.update = function(delta_s){
-	var boost = 1;
+	var boost = abbas.data.getBoost();
 
-	if( abbas.data.getBoost() === true ){
-		boost = MULTIPLIER;
-	}
 	coin[this.index].x  = (coin[this.index].x - delta_s * boost);
 };
