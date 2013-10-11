@@ -502,6 +502,48 @@ Global Classes
   font-size: 2.14286rem;
 }
 
+.bg-landing {
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/min/bg-landing.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.sponsors {
+  max-width: 768px;
+  margin: 0 auto;
+}
+.sponsors img {
+  display: block;
+  margin: 0 0 0 auto;
+}
+@media only screen and (max-width: 767px) {
+  .sponsors {
+    display: none;
+  }
+}
+
+.social-links {
+  max-width: 768px;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 5px solid #b39658;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+}
+
 /* Import all/some custom components here */
 /*=====================================================
 
@@ -514,14 +556,30 @@ Global Classes
   height: 100%;
   margin: 0 auto;
 }
-.content-welcome .logo {
+.content-welcome .heading {
   position: absolute;
-  width: 26.82292%;
-  height: auto;
-  top: 10px;
+  width: 29.55729%;
+  top: 50px;
   right: 0;
   left: 0;
+  height: auto;
   margin: auto;
+}
+@media only screen and (max-width: 568px) {
+  .content-welcome .heading {
+    top: 20px;
+  }
+}
+.content-welcome .logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+@media only screen and (max-width: 568px) {
+  .content-welcome .logo {
+    top: 10px;
+    left: 10px;
+  }
 }
 .content-welcome .btn-start, .content-welcome .btn-instruction, .content-welcome .btn-leaderboard {
   position: absolute;
@@ -529,11 +587,11 @@ Global Classes
   right: 0;
   left: 0;
   margin: auto;
-  width: 240px;
-  height: 79px;
-  line-height: 77px;
-  font-size: 24px;
-  font-size: 1.71429rem;
+  width: 200px;
+  height: 50px;
+  line-height: 48px;
+  font-size: 18px;
+  font-size: 1.28571rem;
 }
 @media only screen and (max-width: 568px) {
   .content-welcome .btn-start, .content-welcome .btn-instruction, .content-welcome .btn-leaderboard {
@@ -544,11 +602,11 @@ Global Classes
   }
 }
 .content-welcome .btn-start {
-  bottom: 160px;
+  bottom: 140px;
 }
 @media only screen and (max-width: 568px) {
   .content-welcome .btn-start {
-    bottom: 105px;
+    bottom: 110px;
   }
 }
 .content-welcome .btn-instruction {
@@ -556,11 +614,28 @@ Global Classes
 }
 @media only screen and (max-width: 568px) {
   .content-welcome .btn-instruction {
-    bottom: 60px;
+    bottom: 65px;
   }
 }
 .content-welcome .btn-leaderboard {
-  bottom: 15px;
+  bottom: 30px;
+}
+@media only screen and (max-width: 568px) {
+  .content-welcome .btn-leaderboard {
+    bottom: 20px;
+  }
+}
+.content-welcome .copyright {
+  display: block;
+  position: absolute;
+  width: 100%;
+  color: white;
+  bottom: 5px;
+  text-align: center;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 10px;
+  font-size: 0.71429rem;
 }
 
 /*=====================================================
@@ -940,6 +1015,13 @@ Global Classes
     font-size: 0.78571rem;
     margin: 0;
   }
+}
+.content-registration .btn-close {
+  position: absolute;
+  font-family: verdana;
+  font-weight: bold;
+  top: 5px;
+  right: 10px;
 }
 
 /*=====================================================
