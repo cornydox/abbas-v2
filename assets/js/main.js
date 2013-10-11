@@ -43,6 +43,32 @@ function restartGame(){
 	location.reload();
 }
 
+function showLeaderboard(){
+	var send_data = {action: 'getLeaderboard'};
+
+	$.ajax({
+		url: "./src/main.php",
+		data: send_data,
+		type: "POST"
+	}).done(function ( data ) {
+		data = $.parseJSON(data); // Data for Leaderboard
+
+		var html = "";
+		for(var i in data){ // Loop through each row, add to list
+			html += '<li class="list-player"><span class="txt-name">' + data[i].name.substring(0,12) + '</span>';
+			html += '<span class="txt-score">' + data[i].score + "</span></li>";
+		}
+
+		$(".wrapper-leaderboard ol").html(html);
+
+		$('#welcome').fadeOut();
+		$(elem.leaderboard).fadeIn();
+
+	}).fail(function (jqXHR, textStatus, errorThrown){
+		console.dir(jqXHR + "," + "textStatus" , + "errorThrown");
+	});
+}
+
 // Events
 $(function(){
 	$(elem.btn_register).click(function(event){

@@ -1,9 +1,9 @@
 function CoinMultiplier(){
 	this.movement = "down";
 	this.update = function(delta_s){
-		// X Axis
 		var boost = abbas.data.getBoost();
 
+		// X Axis
 		coin_multiplier.x = (coin_multiplier.x - delta_s * 2 * boost);
 
 		// Y Axis

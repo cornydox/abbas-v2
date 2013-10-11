@@ -20,6 +20,8 @@ var gameover = (function(){
 			var $form = $(elem.formRegister);
 			var $input = $form.find("input");
 			var form_data = $form.serialize();
+
+			form_data += "&action=register";
 			$input.prop("disabled", true);
 
 			$.ajax({
