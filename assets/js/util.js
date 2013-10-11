@@ -18,6 +18,7 @@ var util = (function(){
 
                     // On mouse release
                     evt.onMouseUp = function(evt){
+                        util.clearMouse();
                         abbas.data.setFlying(false);
                         abbas.gotoAndPlay("fly");
                     };
