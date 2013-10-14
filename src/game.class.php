@@ -20,7 +20,7 @@ class Game extends Config{
 	}
 
 	function getLeaderboard(){
-		$query = $this->conn->prepare("SELECT * FROM users ORDER BY score DESC LIMIT 25;");
+		$query = $this->conn->prepare("SELECT * FROM users WHERE `name` IS NOT NULL ORDER BY score DESC LIMIT 25;");
 		$query->execute();
 
 		$result = $query->fetchAll();

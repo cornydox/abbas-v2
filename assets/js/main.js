@@ -47,7 +47,7 @@ function showLeaderboard(){
 	var send_data = {action: 'getLeaderboard'};
 
 	$.ajax({
-		url: "./src/main.php",
+		url: './src/main.php',
 		data: send_data,
 		type: "POST"
 	}).done(function ( data ) {
@@ -59,7 +59,7 @@ function showLeaderboard(){
 			html += '<span class="txt-score">' + data[i].score + "</span></li>";
 		}
 
-		$(".wrapper-leaderboard ol").html(html);
+		$('.wrapper-leaderboard ol').html(html);
 
 		$('#welcome').fadeOut();
 		$(elem.leaderboard).fadeIn();
@@ -71,17 +71,18 @@ function showLeaderboard(){
 
 // Events
 $(function(){
+
 	$(elem.btn_register).click(function(event){
 		var good_to_go = true;
 
 		$(elem.formRegister + ' input').each(function(){
-			if( $(this).val() === '' ){
+			if($(this).val() === ''){
 				good_to_go = false;
 				$(this).attr('placeholder', 'Please fill in your ' + $(this).attr('name'));
 			}
 		});
 
-		if( good_to_go === true ){
+		if(good_to_go === true){
 			gameover.registerUser();
 		}
 
@@ -118,9 +119,12 @@ $(function(){
 	});
 
 	$(elem.btn_close).click(function(event){
-		// $(this).parent().parent().hide();
-		// $('#welcome').show();
-		location.reload(); // Temporary 
+		$(this).parent().parent().hide();
+		$('#welcome').show();
+
+		if($(this).hasClass('new-game')){
+			location.reload(); // Temporary 
+		}
 		event.preventDefault();
 	});
 });
