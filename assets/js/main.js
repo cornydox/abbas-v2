@@ -73,8 +73,6 @@ function showLeaderboard(){
 function loadAssets(){
 	$(elem.loader).fadeIn();
 	preload.assets();
-	$(elem.loader).hide();
-	$('.content-welcome').fadeIn();
 }
 
 // Events

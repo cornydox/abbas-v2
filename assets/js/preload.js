@@ -32,7 +32,8 @@ var preload = (function(){
 		},
 
 		assetsLoaded: function(event){
-			console.log("done!");
+			$(elem.loader).hide();
+			$('.content-welcome').fadeIn();
 		}
 	};
 })();
