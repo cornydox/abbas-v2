@@ -1,6 +1,6 @@
 // Global variables
-var stage, loader;
-var PLAYGROUND_WIDTH, PLAYGROUND_HEIGHT, path, audio_path;
+var stage, loader, delta_s, boost;
+var PLAYGROUND_WIDTH, PLAYGROUND_HEIGHT;
 var sky, clouds, base, mountains, grass, abbas, gold, energy, coin_multiplier;
 var MULTIPLIER = 6; // Boost multiplier
 var elem = {};
@@ -39,8 +39,9 @@ function showTutorial(){
 }
 
 function restartGame(){
-	// Should code something here to restart game immediately without having to click
-	location.reload();
+	$(elem.score).hide();
+		
+	startGame();
 }
 
 function showLeaderboard(){
@@ -69,8 +70,17 @@ function showLeaderboard(){
 	});
 }
 
+function loadAssets(){
+	$(elem.loader).fadeIn();
+	preload.assets();
+	$(elem.loader).hide();
+	$('.content-welcome').fadeIn();
+}
+
 // Events
 $(function(){
+
+	loadAssets();
 
 	$(elem.btn_register).click(function(event){
 		var good_to_go = true;
@@ -87,6 +97,10 @@ $(function(){
 		}
 
 		event.preventDefault();
+	});
+
+	$('a').mouseenter(function(){
+		createjs.Sound.play("clickfx");
 	});
 
 	$(elem.btn_submit).click(function(event){
@@ -122,9 +136,10 @@ $(function(){
 		$(this).parent().parent().hide();
 		$('#welcome').show();
 
-		if($(this).hasClass('new-game')){
-			location.reload(); // Temporary 
-		}
+		// if($(this).hasClass('new-game')){
+		// 	// location.reload(); // Temporary 
+		// 	restartGame();
+		// }
 		event.preventDefault();
 	});
 });

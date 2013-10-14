@@ -1,66 +1,23 @@
 function Game(){
     this.init = function(){
-        $(elem.loader).fadeIn();
         $("#welcome,.content-instruction").hide();
+        $(elem.hud).show();
 
         stage = new createjs.Stage("playground"); // Init canvas
         createjs.Touch.enable(stage); // Enable touch event
 
         PLAYGROUND_HEIGHT = stage.canvas.height;
         PLAYGROUND_WIDTH  = stage.canvas.width;
-
-        path = "assets/img/min/";
-
-        var manifest = [
-            {src:path + "abbas.png", id:"abbas"},
-            {src:path + "coins.png", id:"coins"},
-            {src:path + "gold.png", id:"gold"},
-            {src:path + "crow-new.png", id:"crow"},
-            {src:path + "sky.png", id:"sky"},
-            {src:path + "base.png", id:"base"},
-            {src:path + "mountain.png", id:"mountains"},
-            {src:path + "clouds.png", id:"clouds"},
-            {src:path + "grass.png", id:"grass"},
-            {src:path + "energy.png", id:"energy"},
-            {src:path + "multiplier.png", id:"multiplier"}
-        ];
-
-        this.initSounds();
+        
+        var bgmusic = createjs.Sound.play("bgm",createjs.Sound.INTERRUPT_NONE, 0, 0, true, 1);
+        bgmusic.volume = 0.5;
 
         util.initControls();
-
-        loader = new createjs.LoadQueue(false);
-        loader.addEventListener("complete", this.populate);
-        loader.loadManifest(manifest);
+        this.populate();
     };
-
-    this.initSounds = function(){
-        if (!createjs.Sound.initializeDefaultPlugins()) {return;}
-        audio_path = "assets/sounds/";
-        var sounds = [
-            {id:"bgm", src:audio_path + "18.mp3|"+audio_path + "18.ogg"},
-            {id:"boostfx", src:audio_path + "boost.mp3|"+audio_path + "boost.ogg"},
-            {id:"clickfx", src:audio_path + "click.mp3|"+audio_path + "click.ogg"},
-            {id:"coinfx", src:audio_path + "coin.mp3|"+audio_path + "coin.ogg"},
-            {id:"hitfx", src:audio_path + "hit.mp3|"+audio_path + "hit.ogg"},
-            {id:"energyfx", src:audio_path + "energy.mp3|"+audio_path + "energy.ogg"},
-            {id:"multiplierfx", src:audio_path + "multiplier.mp3|"+audio_path + "multiplier.ogg"},
-        ];
-        
-        createjs.Sound.addEventListener("fileload", createjs.proxy(soundLoaded, this)); // add an event 
-        createjs.Sound.registerManifest(sounds);
-
-    };
-
-    function soundLoaded(event) {
-        createjs.Sound.play("bgm",createjs.Sound.INTERRUPT_NONE, 0, 0, true, 1);
-    }
 
 
     this.populate = function(){
-        $(elem.loader).hide();
-        //$(elem.loader).remove();
-        $(elem.hud).show();
         var img_sky       = loader.getResult("sky");
         var img_clouds    = loader.getResult("clouds");
         var img_base      = loader.getResult("base");
@@ -110,14 +67,20 @@ function Game(){
         createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 
         createjs.Ticker.setFPS(60);
-        createjs.Ticker.addEventListener("tick", tick); // Start Game...
+        if (!createjs.Ticker.hasEventListener("tick")) {
+            createjs.Ticker.addEventListener("tick", tick);
+        }
+        else{
+            createjs.Ticker.setPaused(false);
+        }
+        
     };
 
     function tick(event){
-        var delta_s = event.delta/1000*100;
-        var boost   = abbas.data.getBoost();
-
         if( !createjs.Ticker.getPaused() ){
+            delta_s = event.delta/1000*100;
+            boost   = abbas.data.getBoost();
+
             sky.x       = (sky.x - delta_s * boost) % sky.width;
             clouds.x    = (clouds.x - delta_s * 1.5 * boost) % clouds.width;
             mountains.x = (mountains.x - delta_s * 2 * boost) % mountains.width;
@@ -131,10 +94,9 @@ function Game(){
             util.goldMovement(delta_s);
             util.energyMovement(delta_s);
             util.multiplierMovement(delta_s);
+
+            stage.update();
         }
-
-
-        stage.update();
 
     }
 }
