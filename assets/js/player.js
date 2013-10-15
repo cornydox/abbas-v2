@@ -1,6 +1,7 @@
 function Player(){
 	this.energy         = 100; // Initial energy.
 	this.distance       = 0;
+	this.offset			= 0;
 	this.energy_timeout = 0;
 	this.flying         = false;
 	this.coin           = 0;
@@ -60,7 +61,8 @@ Player.prototype.damage = function(){
 };
 
 Player.prototype.updateDistance = function(){
-	this.distance = this.distance + (0.3 * this.boost);
+	this.offset = 0.3 * (createjs.Ticker.getFPS() / createjs.Ticker.getMeasuredFPS());
+	this.distance = this.distance + (this.offset * this.boost);
 };
 
 Player.prototype.getDistance = function(){
