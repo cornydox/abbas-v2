@@ -45,11 +45,9 @@ function restartGame(){
 }
 
 function showLeaderboard(){
-	var send_data = {action: 'getLeaderboard'};
-
 	$.ajax({
 		url: './src/main.php',
-		data: send_data,
+		data: {action: 'getLeaderboard'},
 		type: "POST"
 	}).done(function ( data ) {
 		data = $.parseJSON(data); // Data for Leaderboard

@@ -27,4 +27,14 @@ class Game extends Config{
 
 		return $result;
 	}
+
+	function getAdminData(){
+		$query = $this->conn->prepare("SELECT * FROM users WHERE `name` IS NOT NULL;");
+		$query->execute();
+
+		$result = $query->fetchAll();
+
+		return $result;
+	}
+
 }
