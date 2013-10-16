@@ -5,7 +5,7 @@ var gameover = (function(){
 			var distance = $.trim($("#distance").html());
 			var coins = parseInt($("#coin").html());
 			var score = parseInt(distance.replace("m","")) + coins;
-
+			$("#coin").html('0');
 			$(elem.hud).fadeOut();
 			$(elem.hud).hide();
 			
@@ -15,6 +15,11 @@ var gameover = (function(){
 			$("#score").val(score);
 
             $(elem.score).fadeIn();
+
+            util.resetAllObjects();
+            stage.removeAllChildren();
+            stage.clear();
+            createjs.Sound.stop("bgm");
 		},
 		registerUser: function(){
 			var $form = $(elem.formRegister);
@@ -22,7 +27,7 @@ var gameover = (function(){
 			var form_data = $form.serialize();
 
 			form_data += "&action=register";
-			$input.prop("disabled", true);
+			// $input.prop("disabled", true);
 
 			$.ajax({
 				url: "./src/main.php",

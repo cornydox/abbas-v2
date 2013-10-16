@@ -11,13 +11,13 @@ Abbas.prototype.movement = function(delta_s){
         abbas.gotoAndPlay("fly");
     }
 
-    if(abbas.y < 350 && this.isFlying() === false){ // Abbas falling down 
+    if(abbas.y < PLAYGROUND_HEIGHT-100 && this.isFlying() === false){ // Abbas falling down 
         abbas.y = (abbas.y + delta_s / this.boost);
     }
     else if(abbas.y > 0 && this.isFlying() === true && this.getEnergy() > 0){ // Abbas fly, limit max height...
         abbas.y = (abbas.y - (delta_s * 2)/ this.boost);
     }
-    else if(abbas.y > 350){
+    else if(abbas.y > PLAYGROUND_HEIGHT-100){
         this.crash(delta_s);
     }
     else{
@@ -80,7 +80,7 @@ Abbas.prototype.multiply = function(){
     this.setCoinMultiply(true);
 
     // Make Abbas Glow!
-    abbas.shadow = new createjs.Shadow("#e5d584",5,-10,50);
+    abbas.shadow = new createjs.Shadow("#e5d584",5,-10,30);
 
     // Change HUD color
     $("#coin").css({color : "#e5d584", "font-size" : "160%"});

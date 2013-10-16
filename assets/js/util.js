@@ -5,6 +5,11 @@ var util = (function(){
     var gold_on_screen       = false;
     var energy_on_screen     = false;
     var multiplier_on_screen = false;
+    var crow_spawn_timeout   = 0;
+    var coin_spawn_timeout   = 0;
+    var gold_timeout         = 0;
+    var energy_timeout       = 0;
+    var multiplier_timeout   = 0;
 
     return{
         initControls: function(){
@@ -18,6 +23,7 @@ var util = (function(){
 
                     // On mouse release
                     evt.onMouseUp = function(evt){
+                        util.clearMouse();
                         abbas.data.setFlying(false);
                         abbas.gotoAndPlay("fly");
                     };
@@ -47,10 +53,10 @@ var util = (function(){
         },
 
         generateCrow: function(){
-            var spawn_chance = util.getRandom(100,1500);
+            var spawn_chance = util.getRandom(100,1100);
 
-            setTimeout(function(){
-                if( abbas.data.isBoosting() === false && createjs.Ticker.getPaused() === false ){
+            crow_spawn_timeout = setTimeout(function(){
+                if( abbas.data.isBoosting() === false ){
                     var img_crow    = loader.getResult("crow");
 
                     var spriteSheet = new createjs.SpriteSheet({
@@ -98,7 +104,7 @@ var util = (function(){
         generateCoins: function(){
             var spawn_chance = util.getRandom(1000,6000);
 
-            setTimeout(function(){
+            coin_spawn_timeout = setTimeout(function(){
                 var no_of_coins  = util.getRandom(3,10);
                 var pos_y        = util.getRandom(10,300);
 
@@ -149,11 +155,18 @@ var util = (function(){
             }
         },
 
+        removeAllCoins: function(){
+            for(var i in coin){
+                stage.removeChild(coin[i]);
+                delete coin[i];
+            }
+        },
+
         generateGold: function(){
             if( gold_on_screen === false ){
                 var spawn_chance = util.getRandom(10000,30000);
 
-                setTimeout(function(){
+                gold_timeout = setTimeout(function(){
                     var img_gold = loader.getResult("gold");
                     var pos_y   = util.getRandom(10,300);
                     var pos_x   = PLAYGROUND_WIDTH + img_gold.width;
@@ -202,7 +215,7 @@ var util = (function(){
             if( energy_on_screen === false ){
                 var spawn_chance = util.getRandom(4000,10000);
 
-                setTimeout(function(){
+                energy_timeout = setTimeout(function(){
                     var img_energy = loader.getResult("energy");
                     var pos_y      = util.getRandom(10,300);
                     var pos_x      = PLAYGROUND_WIDTH + img_energy.width;
@@ -252,7 +265,7 @@ var util = (function(){
             if( multiplier_on_screen === false ){
                 var spawn_chance = util.getRandom(13000,25000);
 
-                setTimeout(function(){
+                multiplier_timeout = setTimeout(function(){
                     var img_multiplier = loader.getResult("multiplier");
                     var pos_y          = util.getRandom(10,300);
                     var pos_x          = PLAYGROUND_WIDTH + img_multiplier.width;
@@ -296,6 +309,21 @@ var util = (function(){
                 }
             }
 
+        },
+
+        resetAllObjects: function(){
+            coin = [];
+            crow = [];
+            clearTimeout(coin_spawn_timeout);
+            clearTimeout(crow_spawn_timeout);
+            clearTimeout(gold_timeout);
+            clearTimeout(energy_timeout);
+            clearTimeout(multiplier_timeout);
+            delete window.abbas;
+            delete window.energy;
+            delete window.gold;
+            delete window.coin_multiplier;
+            energy_on_screen = gold_on_screen = multiplier_on_screen = false;
         }
 
     };
