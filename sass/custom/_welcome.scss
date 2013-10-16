@@ -5,7 +5,7 @@
  ======================================================*/
 
 .content-welcome {
-  //display: none;
+  display: none;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -13,8 +13,8 @@
 
   .heading {
     position: absolute;
-    width: percentage(227px/768px);
-    top: 50px; right: 0; left: 0;
+    width: percentage(394px/768px);
+    top: 30px; right: 0; left: 0;
     height: auto;
     margin: auto;
     @include respond(landscape-phones) { top: 20px; }
@@ -68,10 +68,11 @@
     position: absolute;
     width: 100%;
     color: $white;
-    bottom: 5px;
+    bottom: 12px;
     text-align: center;
     font-family: Arial;
     font-weight: bold;
     @include font-size(10px);
+    @include respond(landscape-phones) { bottom: 5px; }
   }
 }

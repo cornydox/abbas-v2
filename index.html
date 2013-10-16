@@ -50,10 +50,16 @@
         <div class="bg-landing">
             <div class="wrapper-fluid">
                 <div class="sponsors">
-                    <img src="./assets/img/min/img-celcom.png" alt="Celcom" />
+                    <a href="http://www.axiata.com/">
+                        <img src="./assets/img/min/img-celcom.png" alt="Celcom" />
+                    </a>
                 </div>
                 <div class="screen-splash">
-                    <div class="border"></div>
+                    <!--<div class="border-top"></div>
+                    <div class="border-right"></div>
+                    <div class="border-bottom"></div>
+                    <div class="border-left"></div>-->
+                    
                     <!-- Canvas -->
                     <canvas id="playground" width="768" height="480"></canvas>
 
@@ -61,9 +67,9 @@
                     <div id="welcome" class="content-welcome">
                         <img class="heading" src="./assets/img/min/img-heading.png" alt="Abbas Ibn Firnas" />
                         <img class="logo" src="./assets/img/min/img-vm.png" alt="Visit Malaysia" />
-                        <a class="btn-start" href="javascript:startGame();">START</a>
-                        <a class="btn-instruction" href="javascript:showTutorial();">INSTRUCTIONS</a>
-                        <a class="btn-leaderboard" href="javascript:showLeaderboard();">LEADERBOARD</a>
+                        <a class="btn btn-start" href="javascript:startGame();">START</a>
+                        <a class="btn btn-instruction" href="javascript:showTutorial();">INSTRUCTIONS</a>
+                        <a class="btn btn-leaderboard" href="javascript:showLeaderboard();">LEADERBOARD</a>
                         <span class="copyright">
                             &copy; 2013 Copyright by Science Discoveries Sdn. Bhd
                         </span>
@@ -93,12 +99,12 @@
                     <div class="content-instruction">
                         <div class="content-title">INSTRUCTIONS</div>
                         <div class="container-instruction">
-                            <a class="btn-close" href="#" title="Close">x</a>
+                            <a class="btn btn-close" href="#" title="Close">x</a>
                             <!-- Instruction part - 1 -->
                             <div class="instruction-1">
                                 <img class="img-legend" src="./assets/img/min/mouse-1.png" alt="Mouse" />
                                 <p class="txt-legend">LEFT CLICK TO PLAY</p>
-                                <a class="btn-next" href="#">
+                                <a class="btn-img-right btn-next" href="#">
                                     <img src="./assets/img/min/btn-next.png" alt="Next" />
                                 </a>
                             </div>
@@ -125,10 +131,10 @@
                                         </li>
                                     </ul>
                                 </div>
-                                 <a class="btn-play" href="#">
+                                 <a class="btn-img-right btn-play" href="#">
                                     <img src="./assets/img/min/btn-play.png" alt="Play Game" />
                                 </a>
-                                 <a class="btn-back" href="#">
+                                 <a class="btn-img-left btn-back" href="#">
                                     <img src="./assets/img/min/btn-back.png" alt="Back" />
                                 </a>
                             </div>
@@ -148,8 +154,8 @@
                                 </div>
                                 <div class="container-score_lower">
                                     <p class="list-totalscore">Total Score : <span class="txt-totalscore" id="show_score">5377</span></p>
-                                    <a class="btn-submit" href="#">SUBMIT</a>
-                                    <a class="btn-replay" href="#">PLAY AGAIN</a>
+                                    <a class="btn btn-submit" href="#">SUBMIT</a>
+                                    <a class="btn btn-replay" href="#">PLAY AGAIN</a>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +165,7 @@
                     <div class="content-registration">
                         <div class="content-title">REGISTRATION</div>
                         <div class="container-registration">
-                            <a class="btn-close new-game" href="#" title="Close">x</a>
+                            <a class="btn btn-close new-game" href="#" title="Close">x</a>
                             <div class="wrapper-registration">
                                  <form id="registration">
                                     <ul>
@@ -178,7 +184,7 @@
                                     </ul>
                                     <input type="hidden" name="action" value="register">
                                     <input type="hidden" name="score" id="score">
-                                    <a href="#" class="btn-register" title="register">REGISTER</a>
+                                    <a href="#" class="btn btn-register" title="register">REGISTER</a>
                                 </form>
                             </div>
                         </div>
@@ -188,7 +194,7 @@
                     <div class="content-leaderboard">
                         <div class="content-title">LEADERBOARD</div>
                         <div class="container-leaderboard">
-                            <a class="btn-close" href="#" title="Close">x</a>
+                            <a class="btn btn-close" href="#" title="Close">x</a>
                             <h5 class="title-heading">TOP 25</h5>
                             <div class="wrapper-leaderboard">
                                 <ol>

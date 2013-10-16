@@ -2,7 +2,8 @@
 
 @mixin line-and-height($height) {
   height: $height;
-  line-height: $height - 2;
+  //line-height: $height - 2;
+  line-height: $height + 5;
 }
 
 @mixin line-and-min-height($height) {

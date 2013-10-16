@@ -5,9 +5,17 @@ Global Classes
  ======================================================*/
 
 .wrapper-fluid {
-  margin: 0 auto;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: auto;
   width: 100%;
+  max-height: 655px;
   max-width: $document-width;
+
+  @include respond(all-phones) {
+    position: static;
+    margin: 0 auto;
+  }
 }
 
 .bg-wood {
@@ -23,12 +31,12 @@ Global Classes
   position: relative;
   width: 768px;
   height: 480px;
-  //border: 5px solid #b39658;
+  border: 5px solid #b39658;
   margin: 0 auto;
   background: url('../img/min/bg_start.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   //@include box-sizing(content-box);
 
   @include respond(all-phones) {
@@ -64,8 +72,10 @@ Global Classes
 }
 
 .sponsors {
+  position: relative;
   max-width: 768px;
   margin: 0 auto;
+  padding: 10px 0;
   img { display: block; margin: 0 0 0 auto; }
 
   @include respond(all-phones) {
@@ -81,8 +91,21 @@ Global Classes
 
 .border {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 5px solid #b39658;
+  //width: 100%;
+  //height: 100%;
+  //border: 5px solid #b39658;
   @include single-box-shadow;
 }
+
+.btn:hover { color: $white; }
+
+.btn-img {
+  @include transition-property(all);
+  @include transition-duration(.2s);
+}
+
+.btn-img-left,
+.btn-img-right { @extend .btn-img; }
+
+.btn-img-left:hover { margin-left: -2px; }
+.btn-img-right:hover { margin-right: -2px; }

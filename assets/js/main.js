@@ -95,7 +95,7 @@ $(function(){
 		event.preventDefault();
 	});
 
-	$('a').mouseenter(function(){
+	$('.btn, .btn-img-right, .btn-img-left').click(function(){
 		createjs.Sound.play("clickfx");
 	});
 
