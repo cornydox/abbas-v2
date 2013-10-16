@@ -27,7 +27,7 @@ var gameover = (function(){
 			var form_data = $form.serialize();
 
 			form_data += "&action=register";
-			$input.prop("disabled", true);
+			// $input.prop("disabled", true);
 
 			$.ajax({
 				url: "./src/main.php",
