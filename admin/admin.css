@@ -41,3 +41,9 @@ h1,h2,h3, button {
 #export {
 	cursor: pointer;
 }
+
+@-moz-document url-prefix() {
+    #result{
+    	float:left;
+    }
+}
