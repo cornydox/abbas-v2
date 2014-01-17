@@ -1,21 +1,22 @@
 var preload = (function(){
 	var img_path   = "assets/img/min/";
+	var new_path   = "assets/img/new/";
 	var sound_path = "assets/sounds/";
 	return {
 		assets: function(){
 
 			var manifest = [
-				{id:"abbas", src:img_path + "abbas.png"},
+				{id:"abbas", src:new_path + "abbas.png"},
 				{id:"coins", src:img_path + "coins.png"},
-				{id:"gold", src:img_path + "gold.png"},
+				{id:"gold", src:new_path + "speed-booster.png"},
 				{id:"crow", src:img_path + "crow-new.png"},
-				{id:"sky", src:img_path + "sky.png"},
-				{id:"base", src:img_path + "base.png"},
+				{id:"sky", src:new_path + "sky.png"},
+				{id:"base", src:new_path + "base.png"},
 				{id:"mountains", src:img_path + "mountain.png"},
 				{id:"clouds", src:img_path + "clouds.png"},
-				{id:"grass", src:img_path + "grass.png"},
+				{id:"grass", src:new_path + "grass.png"},
 				{id:"energy", src:img_path + "energy.png"},
-				{id:"multiplier", src:img_path + "multiplier.png"},
+				{id:"multiplier", src:new_path + "multiplier.png"},
 				{id:"bgm", src:sound_path + "18.mp3|"+sound_path + "18.ogg"},
 				{id:"boostfx", src:sound_path + "boost.mp3|"+sound_path + "boost.ogg"},
 				{id:"clickfx", src:sound_path + "click.mp3|"+sound_path + "click.ogg"},

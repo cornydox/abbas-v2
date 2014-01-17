@@ -450,7 +450,7 @@ Global Classes
  ======================================================*/
 .wrapper-fluid {
   position: absolute;
-  top: 0;
+  top: 20%;
   right: 0;
   bottom: 0;
   left: 0;
@@ -473,6 +473,7 @@ Global Classes
   background-repeat: no-repeat;
   background-size: contain;
   text-align: center;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 .screen-splash {
@@ -481,7 +482,7 @@ Global Classes
   height: 480px;
   border: 5px solid #b39658;
   margin: 0 auto;
-  background: url("../img/min/bg_start.jpg");
+  background: url("../img/new/bg_start4.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -518,9 +519,9 @@ Global Classes
 .bg-landing {
   width: 100%;
   height: 100%;
-  background-image: url("../img/min/bg-landing.jpg");
+  background-image: url("../img/new/bg-landing.jpg");
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -558,6 +559,7 @@ Global Classes
 
 .btn:hover {
   color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .btn-img, .btn-img-left,
@@ -595,8 +597,8 @@ Global Classes
 }
 .content-welcome .heading {
   position: absolute;
-  width: 51.30208%;
-  top: 30px;
+  width: 45%;
+  top: 60px;
   right: 0;
   left: 0;
   height: auto;
@@ -639,7 +641,7 @@ Global Classes
   }
 }
 .content-welcome .btn-start {
-  bottom: 140px;
+  bottom: 165px;
 }
 @media only screen and (max-width: 568px) {
   .content-welcome .btn-start {
@@ -647,7 +649,7 @@ Global Classes
   }
 }
 .content-welcome .btn-instruction {
-  bottom: 85px;
+  bottom: 110px;
 }
 @media only screen and (max-width: 568px) {
   .content-welcome .btn-instruction {
@@ -655,18 +657,18 @@ Global Classes
   }
 }
 .content-welcome .btn-leaderboard {
-  bottom: 30px;
+  bottom: 55px;
 }
 @media only screen and (max-width: 568px) {
   .content-welcome .btn-leaderboard {
     bottom: 20px;
   }
 }
-.content-welcome .copyright {
+.content-welcome .copyright, .copyright-container .copyright {
   display: block;
   position: absolute;
   width: 100%;
-  color: white;
+  color: #000;
   bottom: 12px;
   text-align: center;
   font-family: Arial;
@@ -674,9 +676,11 @@ Global Classes
   font-size: 10px;
   font-size: 0.71429rem;
 }
+
 @media only screen and (max-width: 568px) {
-  .content-welcome .copyright {
+  .content-welcome .copyright, .copyright-container .copyright {
     bottom: 5px;
+    display: none;
   }
 }
 

@@ -177,7 +177,7 @@ var util = (function(){
                         "animations": {move: 0}
                     });
                     gold = new createjs.BitmapAnimation(sprite_sheet);
-                    gold.setTransform(pos_x, 0, 0.3, 0.3);
+                    gold.setTransform(pos_x, 0, 1, 1);
                     gold.data = new Gold();
                     gold.gotoAndPlay("move");
                     stage.addChild(gold);

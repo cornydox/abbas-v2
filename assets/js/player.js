@@ -57,7 +57,7 @@ Player.prototype.regenEnergy = function(){
 };
 
 Player.prototype.damage = function(){
-	this.energy = this.energy - 15;
+	this.energy = this.energy - 5;
 };
 
 Player.prototype.updateDistance = function(){
