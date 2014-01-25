@@ -10,6 +10,9 @@ var util = (function(){
     var gold_timeout         = 0;
     var energy_timeout       = 0;
     var multiplier_timeout   = 0;
+    var min_spawn_rate       = 0;
+    var max_spawn_rate       = 0;    
+    var max_speed            = 0;
 
     return{
         initControls: function(){
@@ -52,8 +55,35 @@ var util = (function(){
             
         },
 
+        levelCheck: function(){
+            var current_distance = abbas.data.getDistance();
+
+            if(current_distance < 650){
+                min_spawn_rate = 650;
+                max_spawn_rate = 1900;
+                max_speed      = 5;
+            }
+            else if(current_distance < 1200){
+                min_spawn_rate = 400;
+                max_spawn_rate = 1400;
+                max_speed      = 7;
+            }
+            else if(current_distance < 1900){
+                min_spawn_rate = 150;
+                max_spawn_rate = 1200;
+                max_speed      = 9;
+            }
+            else{
+                min_spawn_rate = 100;
+                max_spawn_rate = 1000;
+                max_speed      = 10;
+            }
+        },
+
         generateCrow: function(){
-            var spawn_chance = util.getRandom(100,1100);
+            util.levelCheck();
+
+            var spawn_chance = util.getRandom(min_spawn_rate, max_spawn_rate);
 
             crow_spawn_timeout = setTimeout(function(){
                 if( abbas.data.isBoosting() === false ){
@@ -67,7 +97,7 @@ var util = (function(){
                     crow.push(new createjs.BitmapAnimation(spriteSheet));
                     crow[crow.length-1].setTransform(PLAYGROUND_WIDTH,abbas.y,0.6,0.6);
                     crow[crow.length-1].gotoAndPlay("fly");
-                    crow[crow.length-1].data = new Crow(crow.length-1);
+                    crow[crow.length-1].data = new Crow(crow.length-1, max_speed);
 
                     stage.addChild(crow[crow.length-1]);
 
@@ -105,7 +135,7 @@ var util = (function(){
             var spawn_chance = util.getRandom(1000,6000);
 
             coin_spawn_timeout = setTimeout(function(){
-                var no_of_coins  = util.getRandom(3,10);
+                var no_of_coins  = util.getRandom(7,14);
                 var pos_y        = util.getRandom(10,300);
 
                 var img_coin   = loader.getResult("coins");

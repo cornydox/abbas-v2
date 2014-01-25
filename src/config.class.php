@@ -4,12 +4,12 @@ class Config{
 	private $dbname   = "inventio_game";
 
 	## Development
-	// private $username = "root";
-	// private $password = "123456";
+	private $username = "root";
+	private $password = "123456";
 
 	## LIVE
-	private $username = "inventio_root";
-	private $password = "inventions123";
+	// private $username = "inventio_root";
+	// private $password = "inventions123";
 
 	public $conn = "";
 

@@ -9,7 +9,8 @@ function Game(){
         PLAYGROUND_HEIGHT = stage.canvas.height;
         PLAYGROUND_WIDTH  = stage.canvas.width;
         
-        var bgmusic = createjs.Sound.play("bgm",createjs.Sound.INTERRUPT_NONE, 0, 0, true, 1);
+        // var bgmusic = createjs.Sound.play("bgm",createjs.Sound.INTERRUPT_NONE, 0, 0, true, 1);
+        var bgmusic = createjs.Sound.play("bgm", {loop: -1});
         bgmusic.volume = 0.5;
 
         util.initControls();
@@ -62,7 +63,7 @@ function Game(){
         util.generateEnergy();
         util.generateMultiplier();
 
-        stage.addChild(sky, base, abbas, grass);
+        stage.addChild(sky, base, grass, abbas);
         createjs.Ticker.useRAF = true;
         createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 

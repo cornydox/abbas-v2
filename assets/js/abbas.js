@@ -44,11 +44,12 @@ Abbas.prototype.crash = function(delta_s){
     }, 500);
 
     if(this.die === false){
+        createjs.Sound.play("crashed");
         setTimeout(function(){
             util.gameOver();
         }, 1500);
     }
-    
+
     this.die = true;
 };
 

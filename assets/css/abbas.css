@@ -80,7 +80,7 @@ html * {
 }
 
 html, body {
-  height: 100%;
+  height: 100%;  
 }
 
 body {
@@ -450,7 +450,7 @@ Global Classes
  ======================================================*/
 .wrapper-fluid {
   position: absolute;
-  top: 20%;
+  top: 15%;
   right: 0;
   bottom: 0;
   left: 0;
@@ -666,7 +666,7 @@ Global Classes
 }
 .content-welcome .copyright, .copyright-container .copyright {
   display: block;
-  position: absolute;
+  position: relative;
   width: 100%;
   color: #000;
   bottom: 12px;
@@ -1122,9 +1122,34 @@ Global Classes
   font-weight: bold;
   top: 5px;
   right: 10px;
+  display: none;
 }
 .content-leaderboard .txt-score {
   float: right;
+}
+
+.content-leaderboard .content-main-menu {
+  position: relative;
+  top: 25px;
+}
+
+.content-leaderboard .content-main-menu .btn-main-menu{
+  position: relative;
+  width: 150px;
+  margin: 0 auto;
+  height: 50px;
+  line-height: 55px;  
+  z-index: 10;
+}
+
+@media only screen and (max-width: 767px) {
+  .content-leaderboard .btn-close {
+    display: inherit;
+  }
+
+  .content-leaderboard .content-main-menu .btn-main-menu {
+    display: none;
+  }
 }
 
 /*=====================================================

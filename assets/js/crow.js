@@ -1,5 +1,5 @@
-function Crow(index){
-	this.speed = Math.random() * (9-4-1) + 4;
+function Crow(index, max_speed){
+	this.speed = Math.random() * (max_speed-4-1) + 5;
 	this.index = index;
 }
 
