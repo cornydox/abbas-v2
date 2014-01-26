@@ -1,13 +1,15 @@
 // Global variables
-var stage, loader, delta_s, boost;
+var stage, loader, delta_s, boost, bgmusic;
 var PLAYGROUND_WIDTH, PLAYGROUND_HEIGHT;
 var sky, clouds, base, mountains, grass, abbas, gold, energy, coin_multiplier;
 var MULTIPLIER = 6; // Boost multiplier
-var elem = {};
+var elem       = {};
+var set_paused  = false;
 	
 elem.loader       = '.txt-loading';
 elem.gameover     = '.txt-gameover';
 
+elem.pause_play   = '.content-pause-play';
 elem.hud          = '.content-hud';
 
 elem.score        = '.content-score';
@@ -16,7 +18,8 @@ elem.btn_submit   = '.btn-submit';
 elem.btn_next     = '.btn-next';
 elem.btn_back     = '.btn-back';
 elem.btn_play     = '.btn-play';
-elem.btn_close    = '.btn-close';
+elem.btn_close    = '.btn-close, .btn-main-menu';
+elem.btn_pause_play = '.btn-pause-play';
 
 elem.registration = '.content-registration';
 elem.formRegister = '#registration';
@@ -132,10 +135,30 @@ $(function(){
 		$(this).parent().parent().hide();
 		$('#welcome').show();
 
-		// if($(this).hasClass('new-game')){
-		// 	// location.reload(); // Temporary 
-		// 	restartGame();
-		// }
+		event.preventDefault();
+	});
+
+	$(elem.btn_pause_play).click(function(event){
+		createjs.Sound.play("clickfx");
+		var current_image = $(this).attr('src');
+
+		if($(this).hasClass('paused')){
+			set_paused = false;
+			current_image = current_image.replace('pause', 'play');
+			$(this).removeClass('paused');
+			bgmusic.resume();
+		}
+		else {
+			set_paused = true;
+			current_image = current_image.replace('play', 'pause');
+			$(this).addClass('paused');
+			bgmusic.pause();
+		}
+
+		$(this).attr('src', current_image);
+
+		util.pausePlay(set_paused);
+
 		event.preventDefault();
 	});
 });

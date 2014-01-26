@@ -548,6 +548,11 @@ Global Classes
   max-width: 768px;
   margin: 15px auto;
   text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 .border {
@@ -686,6 +691,27 @@ Global Classes
 
 /*=====================================================
 
+ Custom - Pause / Play
+  
+ ======================================================*/
+.content-pause-play {
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.content-pause-play .btn-pause-play {
+  cursor: pointer;
+}
+
+/*=====================================================
+
  Custom - HUD
   
  ======================================================*/
@@ -694,6 +720,11 @@ Global Classes
   position: absolute;
   top: 20px;
   right: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 @media only screen and (max-width: 568px) {
   .content-hud {
@@ -944,13 +975,13 @@ Global Classes
 }
 @media only screen and (max-width: 568px) {
   .content-score .btn-submit {
-    right: 10px;
+    right: 50px;
     bottom: 0;
   }
 }
 @media only screen and (max-width: 568px) {
   .content-score .btn-replay {
-    right: 120px;
+    right: 170px;
     bottom: 0;
   }
 }

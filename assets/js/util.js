@@ -44,6 +44,10 @@ var util = (function(){
             return Math.floor(Math.random()*(to-from-1) + from);
         },
 
+        pausePlay: function(state){
+            createjs.Ticker.setPaused(state);
+        },
+
         gameOver: function(){
             createjs.Ticker.setPaused(true);
             $("#gameover_1").fadeIn();
@@ -86,7 +90,7 @@ var util = (function(){
             var spawn_chance = util.getRandom(min_spawn_rate, max_spawn_rate);
 
             crow_spawn_timeout = setTimeout(function(){
-                if( abbas.data.isBoosting() === false ){
+                if( abbas.data.isBoosting() === false && set_paused === false ){
                     var img_crow    = loader.getResult("crow");
 
                     var spriteSheet = new createjs.SpriteSheet({
@@ -135,31 +139,33 @@ var util = (function(){
             var spawn_chance = util.getRandom(1000,6000);
 
             coin_spawn_timeout = setTimeout(function(){
-                var no_of_coins  = util.getRandom(7,14);
-                var pos_y        = util.getRandom(10,300);
+                if(set_paused === false){
+                    var no_of_coins  = util.getRandom(7,14);
+                    var pos_y        = util.getRandom(10,300);
 
-                var img_coin   = loader.getResult("coins");
-                var coin_width = img_coin.width/5;
-                var temp       = [];
-                var pos_x      = PLAYGROUND_WIDTH + (no_of_coins*coin_width);
-                for( var z = 0; z < no_of_coins; z++ ){
-                    var speed = Math.floor(Math.random()*2) + 1;
+                    var img_coin   = loader.getResult("coins");
+                    var coin_width = img_coin.width/5;
+                    var temp       = [];
+                    var pos_x      = PLAYGROUND_WIDTH + (no_of_coins*coin_width);
+                    for( var z = 0; z < no_of_coins; z++ ){
+                        var speed = Math.floor(Math.random()*2) + 1;
 
-                    temp.push(new createjs.SpriteSheet({
-                        images: [img_coin],
-                        frames: {"regX": 0, "height": 30, "count": 5, "regY": 0, "width": coin_width},
-                        animations: {turn:[0,4,true,speed+2]}
-                    }));
+                        temp.push(new createjs.SpriteSheet({
+                            images: [img_coin],
+                            frames: {"regX": 0, "height": 30, "count": 5, "regY": 0, "width": coin_width},
+                            animations: {turn:[0,4,true,speed+2]}
+                        }));
 
-                    coin.push(new createjs.BitmapAnimation(temp[z]));
-                    coin[coin.length-1].setTransform(pos_x,pos_y,0.7,0.7);
-                    coin[coin.length-1].gotoAndPlay("turn");
-                    coin[coin.length-1].data = new Coin(coin.length-1);
-                    stage.addChild(coin[coin.length-1]);
-                    pos_x = pos_x - coin_width;
-                }
+                        coin.push(new createjs.BitmapAnimation(temp[z]));
+                        coin[coin.length-1].setTransform(pos_x,pos_y,0.7,0.7);
+                        coin[coin.length-1].gotoAndPlay("turn");
+                        coin[coin.length-1].data = new Coin(coin.length-1);
+                        stage.addChild(coin[coin.length-1]);
+                        pos_x = pos_x - coin_width;
+                    }
 
-                util.generateCoins();
+                    util.generateCoins();
+                }                
             }, spawn_chance);
 
         },
@@ -193,7 +199,7 @@ var util = (function(){
         },
 
         generateGold: function(){
-            if( gold_on_screen === false ){
+            if( gold_on_screen === false && set_paused === false){
                 var spawn_chance = util.getRandom(10000,30000);
 
                 gold_timeout = setTimeout(function(){
@@ -242,7 +248,7 @@ var util = (function(){
         },
 
         generateEnergy: function(){
-            if( energy_on_screen === false ){
+            if( energy_on_screen === false && set_paused === false ){
                 var spawn_chance = util.getRandom(4000,10000);
 
                 energy_timeout = setTimeout(function(){
@@ -292,7 +298,7 @@ var util = (function(){
         },
 
         generateMultiplier: function(){
-            if( multiplier_on_screen === false ){
+            if( multiplier_on_screen === false && set_paused === false ){
                 var spawn_chance = util.getRandom(13000,25000);
 
                 multiplier_timeout = setTimeout(function(){

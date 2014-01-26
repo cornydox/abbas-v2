@@ -2,6 +2,7 @@ function Game(){
     this.init = function(){
         $("#welcome,.content-instruction").hide();
         $(elem.hud).show();
+        $(elem.pause_play).show();
 
         stage = new createjs.Stage("playground"); // Init canvas
         createjs.Touch.enable(stage); // Enable touch event
@@ -10,7 +11,7 @@ function Game(){
         PLAYGROUND_WIDTH  = stage.canvas.width;
         
         // var bgmusic = createjs.Sound.play("bgm",createjs.Sound.INTERRUPT_NONE, 0, 0, true, 1);
-        var bgmusic = createjs.Sound.play("bgm", {loop: -1});
+        bgmusic = createjs.Sound.play("bgm", {loop: -1});
         bgmusic.volume = 0.5;
 
         util.initControls();

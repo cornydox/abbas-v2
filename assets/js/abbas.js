@@ -45,6 +45,7 @@ Abbas.prototype.crash = function(delta_s){
 
     if(this.die === false){
         createjs.Sound.play("crashed");
+        $(elem.pause_play).hide();
         setTimeout(function(){
             util.gameOver();
         }, 1500);
