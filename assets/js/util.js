@@ -11,7 +11,7 @@ var util = (function(){
     var energy_timeout       = 0;
     var multiplier_timeout   = 0;
     var min_spawn_rate       = 0;
-    var max_spawn_rate       = 0;    
+    var max_spawn_rate       = 0;
     var max_speed            = 0;
 
     return{
@@ -165,7 +165,7 @@ var util = (function(){
                     }
 
                     util.generateCoins();
-                }                
+                }
             }, spawn_chance);
 
         },
