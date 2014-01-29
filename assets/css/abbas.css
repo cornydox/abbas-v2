@@ -80,7 +80,7 @@ html * {
 }
 
 html, body {
-  height: 100%;  
+  height: 100%;
 }
 
 body {
@@ -450,7 +450,7 @@ Global Classes
  ======================================================*/
 .wrapper-fluid {
   position: absolute;
-  top: 15%;
+  top: 5%;
   right: 0;
   bottom: 0;
   left: 0;
@@ -492,6 +492,21 @@ Global Classes
     width: 100%;
     height: auto;
     padding-bottom: 62.5%;
+  }
+}
+
+/* Attempt to fix IOS Layout issue */
+@media screen and (device-aspect-ratio: 40/71) and (orientation:landscape) {
+  .wrapper-fluid {
+    height: 60%;
+    width: auto;    
+  }
+}
+
+@media only screen and (max-device-width: 480px) and (orientation:landscape) {
+  .wrapper-fluid {
+    height: 60%;
+    width: auto;    
   }
 }
 
@@ -541,6 +556,9 @@ Global Classes
 @media only screen and (max-width: 767px) {
   .sponsors {
     display: none;
+  }
+  .bg-landing {
+    height: 100%;
   }
 }
 
@@ -674,18 +692,49 @@ Global Classes
   position: relative;
   width: 100%;
   color: #000;
-  bottom: 12px;
+  /*bottom: 12px;*/
   text-align: center;
   font-family: Arial;
   font-weight: bold;
   font-size: 10px;
   font-size: 0.71429rem;
 }
+.organisers-container {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  width: 580px;
+  text-align: center;
+}
+.organisers-container p{
+  font-family: Arial;
+  font-weight: bold;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 11px;
+  font-size: 0.71429rem;
+}
+
+.organisers-container .supported {
+  float: left;
+}
+.organisers-container .organised {
+  border-left: 1px solid #000;
+  padding-left: 10px;
+  float: right;
+}
+.organisers-container .organised img {
+  padding-top: 10px;
+}
 
 @media only screen and (max-width: 568px) {
-  .content-welcome .copyright, .copyright-container .copyright {
-    bottom: 5px;
-    display: none;
+  .organisers-container {
+    width: 100%;
+  }
+
+  .organisers-container .supported, .organisers-container .organised { 
+    float: none;
+    padding: 0;
   }
 }
 

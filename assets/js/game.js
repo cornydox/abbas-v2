@@ -10,7 +10,6 @@ function Game(){
         PLAYGROUND_HEIGHT = stage.canvas.height;
         PLAYGROUND_WIDTH  = stage.canvas.width;
         
-        // var bgmusic = createjs.Sound.play("bgm",createjs.Sound.INTERRUPT_NONE, 0, 0, true, 1);
         bgmusic = createjs.Sound.play("bgm", {loop: -1});
         bgmusic.volume = 0.5;
 
@@ -21,28 +20,20 @@ function Game(){
 
     this.populate = function(){
         var img_sky       = loader.getResult("sky");
-        // var img_clouds    = loader.getResult("clouds");
         var img_base      = loader.getResult("base");
-        // var img_mountains = loader.getResult("mountains");
         var img_grass     = loader.getResult("grass");
         var img_abbas     = loader.getResult("abbas");
 
         sky       = new createjs.Shape();
-        // clouds    = new createjs.Shape();
-        // mountains = new createjs.Shape();
         base      = new createjs.Shape();
         grass     = new createjs.Shape();
 
         sky.width       = img_sky.width;
-        // clouds.width    = img_clouds.width;
-        // mountains.width = img_mountains.width;
         base.width      = img_base.width;
         grass.width     = img_grass.width;
 
         // Paint to canvas
         sky.graphics.beginBitmapFill(img_sky).drawRect(0,0,PLAYGROUND_WIDTH+img_sky.width,img_sky.height);
-        // clouds.graphics.beginBitmapFill(img_clouds).drawRect(0,0,PLAYGROUND_WIDTH+img_clouds.width,img_clouds.height);
-        // mountains.graphics.beginBitmapFill(img_mountains).drawRect(0,0,PLAYGROUND_WIDTH+img_mountains.width,img_mountains.height);
         base.graphics.beginBitmapFill(img_base).drawRect(0,0,PLAYGROUND_WIDTH+img_base.width,img_base.height);
         grass.graphics.beginBitmapFill(img_grass).drawRect(0,0,PLAYGROUND_WIDTH+img_grass.width,img_grass.height);
         grass.setTransform(0,350,1,1);
@@ -84,8 +75,6 @@ function Game(){
             boost   = abbas.data.getBoost();
 
             sky.x       = (sky.x - delta_s * boost) % sky.width;
-            // clouds.x    = (clouds.x - delta_s * 1.5 * boost) % clouds.width;
-            // mountains.x = (mountains.x - delta_s * 2 * boost) % mountains.width;
             base.x      = (base.x - delta_s * 3.5 * boost) % base.width;
             grass.x     = (grass.x - delta_s * 10 * boost) % grass.width;
 

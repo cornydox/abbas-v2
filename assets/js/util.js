@@ -199,7 +199,7 @@ var util = (function(){
         },
 
         generateGold: function(){
-            if( gold_on_screen === false && set_paused === false){
+            if( gold_on_screen === false && set_paused === false ){
                 var spawn_chance = util.getRandom(10000,30000);
 
                 gold_timeout = setTimeout(function(){
