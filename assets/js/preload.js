@@ -36,7 +36,7 @@ var preload = (function(){
 				{id:"hitfx", src:sound_path + "hit-new.mp3|"+sound_path + "hit-new.ogg"},
 				{id:"energyfx", src:sound_path + "energy.mp3|"+sound_path + "energy.ogg"},
 				{id:"multiplierfx", src:sound_path + "multiplier.mp3|"+sound_path + "multiplier.ogg"},
-				{id:"crashed", src:sound_path + "crashed.mp3|"+sound_path + "crashed.ogg"},
+				{id:"crashed", src:sound_path + "crash.mp3|"+sound_path + "crash.ogg"},
 			];
 
 			loader = new createjs.LoadQueue(false);
