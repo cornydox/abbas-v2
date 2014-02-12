@@ -90,6 +90,14 @@ body {
   font-weight: 400;
   color: black;
   -webkit-font-smoothing: antialiased;
+  background-image: url("../img/new/bg-landing.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 @media only screen and (max-width: 767px) {
   body {
@@ -497,16 +505,14 @@ Global Classes
 
 /* Attempt to fix IOS Layout issue */
 @media screen and (device-aspect-ratio: 40/71) and (orientation:landscape) {
-  .wrapper-fluid {
-    height: 60%;
-    width: auto;    
+  .screen-splash {
+    padding-bottom: 55%;
   }
 }
 
 @media only screen and (max-device-width: 480px) and (orientation:landscape) {
-  .wrapper-fluid {
-    height: 60%;
-    width: auto;    
+  .screen-splash {
+    padding-bottom: 55%;
   }
 }
 
@@ -534,13 +540,13 @@ Global Classes
 .bg-landing {
   width: 100%;
   height: 100%;
-  background-image: url("../img/new/bg-landing.jpg");
+  /*background-image: url("../img/new/bg-landing.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
 }
 
 .sponsors {
@@ -691,13 +697,14 @@ Global Classes
   display: block;
   position: relative;
   width: 100%;
-  color: #000;
+  color: white;
   /*bottom: 12px;*/
   text-align: center;
   font-family: Arial;
   font-weight: bold;
-  font-size: 10px;
+  /*font-size: 10px;*/
   font-size: 0.71429rem;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .organisers-container {
   display: block;
@@ -718,13 +725,18 @@ Global Classes
 .organisers-container .supported {
   float: left;
 }
+.organisers-container .supported img {
+  width: 329px;
+  height: auto;
+}
 .organisers-container .organised {
   border-left: 1px solid #000;
   padding-left: 10px;
   float: right;
 }
 .organisers-container .organised img {
-  padding-top: 10px;
+  width: 226px;
+  height: auto;
 }
 
 @media only screen and (max-width: 568px) {
@@ -734,7 +746,6 @@ Global Classes
 
   .organisers-container .supported, .organisers-container .organised { 
     float: none;
-    padding: 0;
   }
 }
 
@@ -1024,16 +1035,17 @@ Global Classes
 }
 @media only screen and (max-width: 568px) {
   .content-score .btn-submit {
-    right: 50px;
+    right: 13%;
     bottom: 0;
   }
 }
 @media only screen and (max-width: 568px) {
   .content-score .btn-replay {
-    right: 170px;
+    right: 53%;
     bottom: 0;
   }
 }
+/*(max-device-width: 480px)*/
 
 /*=====================================================
 

@@ -1,7 +1,10 @@
 // Global variables
 var stage, loader, delta_s, boost, bgmusic;
 var PLAYGROUND_WIDTH, PLAYGROUND_HEIGHT;
-var sky, clouds, base, mountains, grass, abbas, gold, energy, coin_multiplier;
+var sky, clouds, base1, base2, base3, base4, mountains, mt_kk, bg_kl, abbas, gold, energy, coin_multiplier;
+var front_grass1, front_grass2, front_grass3, front_grass4, back_grass1, back_grass2, back_grass3, back_grass4;
+// var img_base_01, img_base_02, img_base_03, img_base_04;
+var FUCK_FLAG = false;
 var MULTIPLIER = 6; // Boost multiplier
 var elem       = {};
 var set_paused  = false;
