@@ -13,8 +13,6 @@ var preload = (function(){
 				{id:"crow", src:img_path + "crow-new.png"},
 				{id:"sky", src:new_path + "sky.png"},
 				{id:"base1", src:bg_path + "bg_base_01.png"},
-				{id:"base2", src:bg_path + "bg_base_02.png"},
-				{id:"base3", src:bg_path + "bg_base_03.png"},
 				{id:"base4", src:bg_path + "bg_base_04.png"},
 				{id:"mt_kk", src:bg_path + "bg_mt_kk.png"},
 				{id:"bg_kl", src:bg_path + "bg_kl.png"},

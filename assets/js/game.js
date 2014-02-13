@@ -28,25 +28,36 @@ function Game(){
         var img_base_03        = loader.getResult("base3");
         var img_base_04        = loader.getResult("base4");
         var img_back_grass_01  = loader.getResult("back_grass1");
+        var img_back_grass_02  = loader.getResult("back_grass2");
         var img_back_grass_03  = loader.getResult("back_grass3");
         var img_back_grass_04  = loader.getResult("back_grass4");
-        var img_front_grass_02 = loader.getResult("front_grass2");
+        var img_front_grass_02 = loader.getResult("front_grass3");
         var img_abbas          = loader.getResult("abbas");
 
-        sky          = new createjs.Shape();
+        sky = new createjs.Bitmap(img_sky);
+        sky.scaleX = (PLAYGROUND_WIDTH/img_sky.width) + 1;
 
-        mountains    = new createjs.Shape();
-        bg_kl        = new createjs.Shape();
-        mt_kk        = new createjs.Shape();
-        
-        base1        = new createjs.Shape();
-        base4        = new createjs.Shape();
-        
-        front_grass2 = new createjs.Shape();
+        mountains = new createjs.Bitmap(img_mountains);
+        mountains.x = PLAYGROUND_WIDTH;
 
-        back_grass1  = new createjs.Shape();
-        back_grass3  = new createjs.Shape();
-        back_grass4  = new createjs.Shape();
+        bg_kl = new createjs.Bitmap(img_bg_kl);
+        bg_kl.x = img_bg_kl.width*2;
+
+        mt_kk = new createjs.Bitmap(img_mt_kk);
+        mt_kk.x = img_mt_kk.width*3;
+
+        base1 = new createjs.Bitmap(img_base_01);
+        base4 = new createjs.Bitmap(img_base_04);
+        base4.x = base4.x + img_base_01.width;
+
+        back_grass3 = new createjs.Bitmap(img_back_grass_03);
+        back_grass4 = new createjs.Bitmap(img_back_grass_04);
+        back_grass4.x = img_back_grass_03.width;
+        back_grass1 = new createjs.Bitmap(img_back_grass_01);
+        back_grass1.x = img_back_grass_03.width + img_back_grass_04.width;
+
+        front_grass2 = new createjs.Bitmap(img_front_grass_02);
+        front_grass2.scaleX = 2.1;
         
         sky.width          = img_sky.width;
         mountains.width    = img_mountains.width;
@@ -60,24 +71,7 @@ function Game(){
         back_grass3.width  = img_back_grass_03.width;
         back_grass4.width  = img_back_grass_04.width;
 
-        // Paint to canvas
-        sky.graphics.beginBitmapFill(img_sky).drawRect(0,0,PLAYGROUND_WIDTH+img_sky.width,img_sky.height);
-        mountains.graphics.beginBitmapFill(img_mountains).drawRect(PLAYGROUND_WIDTH,0,img_mountains.width,img_mountains.height);
-        bg_kl.graphics.beginBitmapFill(img_bg_kl).drawRect(img_bg_kl.width*2,0,img_bg_kl.width,img_bg_kl.height);
-        mt_kk.graphics.beginBitmapFill(img_mt_kk).drawRect(img_mt_kk.width*3,0,img_mt_kk.width,img_mt_kk.height);
-
-        base1.graphics.beginBitmapFill(img_base_01).drawRect(0, 0, img_base_01.width + PLAYGROUND_WIDTH,img_base_01.height);
-        base4.graphics.beginBitmapFill(img_base_04).drawRect(0, 0, img_base_04.width + PLAYGROUND_WIDTH,img_base_04.height);
-        
-        back_grass3.graphics.beginBitmapFill(img_back_grass_03).drawRect(0, 0, img_back_grass_03.width,img_back_grass_03.height);
-        back_grass4.graphics.beginBitmapFill(img_back_grass_04).drawRect(img_back_grass_03.width, 0, img_back_grass_04.width,img_back_grass_04.height);
-        back_grass1.graphics.beginBitmapFill(img_back_grass_01).drawRect(img_back_grass_03.width + img_back_grass_04.width,0,PLAYGROUND_WIDTH + img_back_grass_01.width,img_back_grass_01.height);
-        
-        front_grass2.graphics.beginBitmapFill(img_front_grass_02).drawRect(0,0,img_front_grass_02.width + PLAYGROUND_WIDTH,img_front_grass_02.height);
-
-        base4.setTransform(img_base_01.width,0,1,1);
-
-        // console.log(base2.x);
+        // Paint to canvas        
 
         // Abbas animation
         var sprite_sheet = new createjs.SpriteSheet({
@@ -96,7 +90,8 @@ function Game(){
         util.generateEnergy();
         util.generateMultiplier();
 
-        stage.addChild(sky, mountains, bg_kl, mt_kk, base1, base4, back_grass3, back_grass4, back_grass1, front_grass2, abbas);
+        stage.addChild(sky, mountains, bg_kl, mt_kk, base4, base1, back_grass1,  back_grass3, back_grass4, front_grass2, abbas);
+
         createjs.Ticker.useRAF = true;
         createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 
@@ -111,6 +106,7 @@ function Game(){
     };
 
     function tick(event){
+
         if( !createjs.Ticker.getPaused() ){
             delta_s = event.delta/1000*100;
             boost   = abbas.data.getBoost();
@@ -120,12 +116,17 @@ function Game(){
             bg_kl.x       = (bg_kl.x - delta_s * 2.2 * boost) % (bg_kl.width * 3);
             mt_kk.x       = (mt_kk.x - delta_s * 1.6 * boost) % (mt_kk.width * 4);
             
-            base1.x = (base1.x - delta_s * 3 * boost) % (base1.width * 2);
-            base4.x = (base4.x - delta_s * 3 * boost) % (base1.width * 2);
+            if(base1.x < -base1.width){ base1.x = base4.x + base4.width; }
+            if(base4.x < -base4.width){ base4.x = base1.x + base1.width; }
+            base1.x = (base1.x - delta_s * 3 * boost);
+            base4.x = (base4.x - delta_s * 3 * boost);
 
-            back_grass1.x = (back_grass1.x - delta_s * 3.5 * boost) % (back_grass1.width * 3);
-            back_grass3.x = (back_grass3.x - delta_s * 3.5 * boost) % (back_grass1.width * 3 );
-            back_grass4.x = (back_grass4.x - delta_s * 3.5 * boost) % (back_grass1.width * 3 );
+            if(back_grass1.x < -back_grass1.width){ back_grass1.x = back_grass4.x + back_grass4.width; }
+            if(back_grass3.x < -back_grass3.width){ back_grass3.x = back_grass1.x + back_grass1.width; }
+            if(back_grass4.x < -back_grass4.width){ back_grass4.x = back_grass3.x + back_grass3.width; }
+            back_grass1.x = (back_grass1.x - delta_s * 3.5 * boost);
+            back_grass3.x = (back_grass3.x - delta_s * 3.5 * boost);
+            back_grass4.x = (back_grass4.x - delta_s * 3.5 * boost);
 
             front_grass2.x = (front_grass2.x - delta_s * 10 * boost) % (front_grass2.width);
 
