@@ -11,7 +11,7 @@ function Game(){
         PLAYGROUND_WIDTH  = stage.canvas.width;
         
         bgmusic = createjs.Sound.play("bgm", {loop: -1});
-        bgmusic.volume = 0.5;
+        bgmusic.volume = 0.3;
 
         util.initControls();
         this.populate();
