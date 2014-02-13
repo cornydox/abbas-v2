@@ -100,5 +100,5 @@ Abbas.prototype.stats = function(){
     $("#distance").html(this.getDistance());
 
     // Display fps
-    document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
+    // document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
 };
