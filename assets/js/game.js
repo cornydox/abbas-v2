@@ -65,23 +65,6 @@ function Game(){
         front_grass2 = new createjs.Bitmap(img_front_grass_02);
         front_grass2.scaleX = 2.1;
         
-        sky.width          = img_sky.width;
-        mountains.width    = img_mountains.width;
-        bg_kl.width        = img_bg_kl.width;
-        mt_kk.width        = img_mt_kk.width;
-        base1.width        = img_base_01.width;
-        base2.width        = img_base_02.width;
-        base3.width        = img_base_03.width;
-        base4.width        = img_base_04.width;
-        front_grass2.width = img_front_grass_02.width;
-        
-        back_grass1.width  = img_back_grass_01.width;
-        back_grass2.width  = img_back_grass_02.width;
-        back_grass3.width  = img_back_grass_03.width;
-        back_grass4.width  = img_back_grass_04.width;
-
-        // Paint to canvas        
-
         // Abbas animation
         var sprite_sheet = new createjs.SpriteSheet({
             "images": [img_abbas],
@@ -120,10 +103,10 @@ function Game(){
             delta_s = event.delta/1000*100;
             boost   = abbas.data.getBoost();
 
-            sky.x         = (sky.x - delta_s * boost) % sky.width;
-            mountains.x   = (mountains.x - delta_s * 1.2 * boost) % (mountains.width * 2);
-            bg_kl.x       = (bg_kl.x - delta_s * 2.2 * boost) % (bg_kl.width * 3);
-            mt_kk.x       = (mt_kk.x - delta_s * 1.6 * boost) % (mt_kk.width * 4);
+            sky.x         = (sky.x - delta_s * boost) % sky.image.width;
+            mountains.x   = (mountains.x - delta_s * 1.2 * boost) % (mountains.image.width * 2);
+            bg_kl.x       = (bg_kl.x - delta_s * 2.2 * boost) % (bg_kl.image.width * 3);
+            mt_kk.x       = (mt_kk.x - delta_s * 1.6 * boost) % (mt_kk.image.width * 4);
             
             base1.x = (base1.x - delta_s * 3 * boost);
             base2.x = (base2.x - delta_s * 3 * boost);
@@ -135,7 +118,7 @@ function Game(){
             back_grass3.x = (back_grass3.x - delta_s * 3.5 * boost);
             back_grass4.x = (back_grass4.x - delta_s * 3.5 * boost);
 
-            front_grass2.x = (front_grass2.x - delta_s * 10 * boost) % (front_grass2.width);
+            front_grass2.x = (front_grass2.x - delta_s * 10 * boost) % (front_grass2.image.width);
 
             abbas.data.movement(delta_s);
             abbas.data.stats();
@@ -148,6 +131,9 @@ function Game(){
             util.rotateBackGrass();
 
             stage.update();
+            
+            // Display FPS for debugging
+            // document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
         }
 
     }

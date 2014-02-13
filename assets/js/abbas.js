@@ -97,8 +97,5 @@ Abbas.prototype.multiply = function(){
 
 Abbas.prototype.stats = function(){
     $("#energy_bar").css("width", this.getEnergy() + "%");
-    $("#distance").html(this.getDistance());
-
-    // Display fps
-    document.getElementById("fps").innerHTML = Math.floor(createjs.Ticker.getMeasuredFPS());
+    $("#distance").html(this.getDistance());    
 };
