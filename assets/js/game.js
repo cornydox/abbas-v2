@@ -27,10 +27,10 @@ function Game(){
         var img_base_02        = loader.getResult("base2");
         var img_base_03        = loader.getResult("base3");
         var img_base_04        = loader.getResult("base4");
-        var img_back_grass_01  = loader.getResult("back_grass1");
-        var img_back_grass_02  = loader.getResult("back_grass2");
-        var img_back_grass_03  = loader.getResult("back_grass3");
-        var img_back_grass_04  = loader.getResult("back_grass4");
+        var img_back_grass_01  = loader.getResult("back_grass2");
+        var img_back_grass_02  = loader.getResult("back_grass3");
+        var img_back_grass_03  = loader.getResult("back_grass4");
+        var img_back_grass_04  = loader.getResult("back_grass1");
         var img_front_grass_02 = loader.getResult("front_grass3");
         var img_abbas          = loader.getResult("abbas");
 
@@ -47,14 +47,20 @@ function Game(){
         mt_kk.x = img_mt_kk.width*3;
 
         base1 = new createjs.Bitmap(img_base_01);
+        base2 = new createjs.Bitmap(img_base_02);
+        base3 = new createjs.Bitmap(img_base_03);
         base4 = new createjs.Bitmap(img_base_04);
-        base4.x = base4.x + img_base_01.width;
-
+        base2.x = img_base_01.width;
+        base3.x = img_base_01.width * 2;
+        base4.x = img_base_01.width * 3;
+        
+        back_grass1 = new createjs.Bitmap(img_back_grass_01);
+        back_grass2 = new createjs.Bitmap(img_back_grass_02);
         back_grass3 = new createjs.Bitmap(img_back_grass_03);
         back_grass4 = new createjs.Bitmap(img_back_grass_04);
-        back_grass4.x = img_back_grass_03.width;
-        back_grass1 = new createjs.Bitmap(img_back_grass_01);
-        back_grass1.x = img_back_grass_03.width + img_back_grass_04.width;
+        back_grass2.x = img_back_grass_01.width;
+        back_grass3.x = img_back_grass_01.width * 2;
+        back_grass4.x = img_back_grass_01.width * 3;
 
         front_grass2 = new createjs.Bitmap(img_front_grass_02);
         front_grass2.scaleX = 2.1;
@@ -64,10 +70,13 @@ function Game(){
         bg_kl.width        = img_bg_kl.width;
         mt_kk.width        = img_mt_kk.width;
         base1.width        = img_base_01.width;
+        base2.width        = img_base_02.width;
+        base3.width        = img_base_03.width;
         base4.width        = img_base_04.width;
         front_grass2.width = img_front_grass_02.width;
         
         back_grass1.width  = img_back_grass_01.width;
+        back_grass2.width  = img_back_grass_02.width;
         back_grass3.width  = img_back_grass_03.width;
         back_grass4.width  = img_back_grass_04.width;
 
@@ -90,7 +99,7 @@ function Game(){
         util.generateEnergy();
         util.generateMultiplier();
 
-        stage.addChild(sky, mountains, bg_kl, mt_kk, base4, base1, back_grass1,  back_grass3, back_grass4, front_grass2, abbas);
+        stage.addChild(sky, mountains, bg_kl, mt_kk, base1, base2, back_grass1, back_grass2, front_grass2, abbas);
 
         createjs.Ticker.useRAF = true;
         createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
@@ -116,15 +125,13 @@ function Game(){
             bg_kl.x       = (bg_kl.x - delta_s * 2.2 * boost) % (bg_kl.width * 3);
             mt_kk.x       = (mt_kk.x - delta_s * 1.6 * boost) % (mt_kk.width * 4);
             
-            if(base1.x < -base1.width){ base1.x = base4.x + base4.width; }
-            if(base4.x < -base4.width){ base4.x = base1.x + base1.width; }
             base1.x = (base1.x - delta_s * 3 * boost);
+            base2.x = (base2.x - delta_s * 3 * boost);
+            base3.x = (base3.x - delta_s * 3 * boost);
             base4.x = (base4.x - delta_s * 3 * boost);
-
-            if(back_grass1.x < -back_grass1.width){ back_grass1.x = back_grass4.x + back_grass4.width; }
-            if(back_grass3.x < -back_grass3.width){ back_grass3.x = back_grass1.x + back_grass1.width; }
-            if(back_grass4.x < -back_grass4.width){ back_grass4.x = back_grass3.x + back_grass3.width; }
+            
             back_grass1.x = (back_grass1.x - delta_s * 3.5 * boost);
+            back_grass2.x = (back_grass2.x - delta_s * 3.5 * boost);
             back_grass3.x = (back_grass3.x - delta_s * 3.5 * boost);
             back_grass4.x = (back_grass4.x - delta_s * 3.5 * boost);
 
@@ -137,6 +144,8 @@ function Game(){
             util.goldMovement(delta_s);
             util.energyMovement(delta_s);
             util.multiplierMovement(delta_s);
+            util.rotateBase();
+            util.rotateBackGrass();
 
             stage.update();
         }

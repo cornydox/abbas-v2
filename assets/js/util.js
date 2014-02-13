@@ -155,7 +155,7 @@ var util = (function(){
                             frames: {"regX": 0, "height": 30, "count": 5, "regY": 0, "width": coin_width},
                             animations: {turn:[0,4,true,speed+2]}
                         }));
-
+                        
                         coin.push(new createjs.BitmapAnimation(temp[z]));
                         coin[coin.length-1].setTransform(pos_x,pos_y,0.7,0.7);
                         coin[coin.length-1].gotoAndPlay("turn");
@@ -345,6 +345,52 @@ var util = (function(){
                 }
             }
 
+        },
+
+        rotateBase: function(){
+            if(base1.x < -base1.width && base2.x > -base2.width){
+                base1.x = base4.x + base4.width;
+                stage.removeChild(base1);
+                stage.addChildAt(base3,5);
+            }
+            else if(base2.x < -base2.width && base3.x > -base3.width){
+                base2.x = base1.x + base1.width;
+                stage.removeChild(base2);
+                stage.addChildAt(base4,5);
+            }
+            else if(base3.x < -base3.width && base4.x > -base4.width){
+                base3.x = base2.x + base2.width;
+                stage.removeChild(base3);
+                stage.addChildAt(base1,5);
+            }
+            else if(base4.x < -base4.width && base1.x > -base1.width){
+                base4.x = base3.x + base3.width;
+                stage.removeChild(base4);
+                stage.addChildAt(base2,5);
+            }
+        },
+
+        rotateBackGrass: function(){
+            if(back_grass1.x < -back_grass1.width && back_grass2.x > -back_grass2.width){
+                back_grass1.x = back_grass4.x + back_grass4.width;
+                stage.removeChild(back_grass1);
+                stage.addChildAt(back_grass3,7);
+            }
+            else if(back_grass2.x < -back_grass2.width && back_grass3.x > -back_grass3.width){
+                back_grass2.x = back_grass1.x + back_grass1.width;
+                stage.removeChild(back_grass2);
+                stage.addChildAt(back_grass4,7);
+            }
+            else if(back_grass3.x < -back_grass3.width && back_grass4.x > -back_grass4.width){
+                back_grass3.x = back_grass2.x + back_grass2.width;
+                stage.removeChild(back_grass3);
+                stage.addChildAt(back_grass1,7);
+            }
+            else if(back_grass4.x < -back_grass4.width && back_grass1.x > -back_grass1.width){
+                back_grass4.x = back_grass3.x + back_grass3.width;
+                stage.removeChild(back_grass4);
+                stage.addChildAt(back_grass2,7);
+            }
         },
 
         resetAllObjects: function(){

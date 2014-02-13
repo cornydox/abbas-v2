@@ -7,12 +7,17 @@ var preload = (function(){
 		assets: function(){
 
 			var manifest = [
+				{id:"wood", src:img_path + "wood.png"},
+				{id:"bg_landing", src:new_path + "bg-landing.jpg"},
+				{id:"screen_splash", src:new_path + "bg_start4.jpg"},
 				{id:"abbas", src:new_path + "abbas.png"},
 				{id:"coins", src:img_path + "coins.png"},
 				{id:"gold", src:new_path + "speed-booster.png"},
 				{id:"crow", src:img_path + "crow-new.png"},
 				{id:"sky", src:new_path + "sky.png"},
 				{id:"base1", src:bg_path + "bg_base_01.png"},
+				{id:"base2", src:bg_path + "bg_base_02.png"},
+				{id:"base3", src:bg_path + "bg_base_03.png"},
 				{id:"base4", src:bg_path + "bg_base_04.png"},
 				{id:"mt_kk", src:bg_path + "bg_mt_kk.png"},
 				{id:"bg_kl", src:bg_path + "bg_kl.png"},
@@ -40,12 +45,18 @@ var preload = (function(){
 			loader = new createjs.LoadQueue(false);
 			loader.installPlugin(createjs.Sound);
 			loader.addEventListener("complete", preload.assetsLoaded);
+			loader.addEventListener("progress", preload.assetsProgress);
 			loader.loadManifest(manifest);
 		},
 
 		assetsLoaded: function(event){
 			$(elem.loader).hide();
 			$('.content-welcome').fadeIn();
+		},
+
+		assetsProgress: function(event){
+			var perc = event.loaded / event.total;
+			$('#progress').html(Math.ceil(perc*100).toString());
 		}
 	};
 })();

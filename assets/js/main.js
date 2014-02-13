@@ -1,13 +1,35 @@
-// Global variables
-var stage, loader, delta_s, boost, bgmusic;
+/*=====================================================
+
+ Global Variables
+  
+======================================================*/
+var stage, loader, delta_s, bgmusic;
 var PLAYGROUND_WIDTH, PLAYGROUND_HEIGHT;
-var sky, clouds, base, base1, base2, base3, base4, mountains, mt_kk, bg_kl, abbas, gold, energy, coin_multiplier;
+
+// Objects
+var abbas, gold, energy, coin_multiplier;
+
+// Background Landscape - Back Layers
+var sky, clouds, base, base1, base2, base3, base4, mountains, mt_kk, bg_kl;
+
+// Background Landscape - Front Layers
 var front_grass1, front_grass2, front_grass3, front_grass4, back_grass1, back_grass2, back_grass3, back_grass4;
-// var img_base_01, img_base_02, img_base_03, img_base_04;
-var FUCK_FLAG = false;
-var MULTIPLIER = 6; // Boost multiplier
-var elem       = {};
-var set_paused  = false;
+
+// Boost speed constant. Currently set to 6x of normal speed.
+var MULTIPLIER = 6;
+
+// Current movement speed (** Should've name this something else, oh well)
+var boost;
+
+// Pause state
+var set_paused = false;
+
+// Array to store multiple objects on screen
+var crow = [];
+var coin = [];
+
+// Selectors
+var elem = {};
 	
 elem.loader       = '.txt-loading';
 elem.gameover     = '.txt-gameover';
@@ -30,12 +52,13 @@ elem.btn_register = '.btn-register';
 
 elem.leaderboard  = '.content-leaderboard';
 
-var crow = [];
-var coin = [];
+/*=====================================================
 
+ Global Functions
+  
+======================================================*/
 function startGame(){
 	var game = new Game();
-
 	game.init();
 }
 
@@ -46,7 +69,6 @@ function showTutorial(){
 
 function restartGame(){
 	$(elem.score).hide();
-		
 	startGame();
 }
 
@@ -55,10 +77,10 @@ function showLeaderboard(){
 		url: './src/main.php',
 		data: {action: 'getLeaderboard'},
 		type: "POST"
-	}).done(function ( data ) {
+	}).done(function(data) {
 		data = $.parseJSON(data); // Data for Leaderboard
 
-		var html = "";
+		var html = '';
 		for(var i in data){ // Loop through each row, add to list
 			html += '<li class="list-player"><span class="txt-name">' + data[i].name.substring(0,12) + '</span>';
 			html += '<span class="txt-score">' + data[i].score + "</span></li>";
@@ -79,11 +101,22 @@ function loadAssets(){
 	preload.assets();
 }
 
-// Events
-$(function(){
+/*=====================================================
 
+ Events
+  
+======================================================*/
+$(function(){
 	loadAssets();
 
+	// Proceed to register high score
+	$(elem.btn_submit).click(function(event){
+		$(elem.score).fadeOut();
+		$(elem.registration).fadeIn();
+		event.preventDefault();
+	});
+
+	// Actual high score form registration
 	$(elem.btn_register).click(function(event){
 		var good_to_go = true;
 
@@ -101,39 +134,38 @@ $(function(){
 		event.preventDefault();
 	});
 
+	// Click sound
 	$('.btn, .btn-img-right, .btn-img-left').click(function(){
 		createjs.Sound.play("clickfx");
 	});
 
-	$(elem.btn_submit).click(function(event){
-		$(elem.score).fadeOut();
-		$(elem.registration).fadeIn();
+	// Play game
+	$(elem.btn_play).click(function(event){
+		startGame();
 		event.preventDefault();
 	});
 
+	// Play again
 	$(elem.btn_replay).click(function(event){
 		restartGame();
 		event.preventDefault();
 	});
 
-	/* Tutorial / Instructions */
+	// Tutorial / Instructions
 	$(elem.btn_next).click(function(event){
 		$('.instruction-1').hide();
 		$('.instruction-2').show();
 		event.preventDefault();
 	});
 
+	// Back to main menu
 	$(elem.btn_back).click(function(event){
 		$('.instruction-2').hide();
 		$('.instruction-1').show();
 		event.preventDefault();
 	});
-
-	$(elem.btn_play).click(function(event){
-		startGame();
-		event.preventDefault();
-	});
-
+	
+	// Close button
 	$(elem.btn_close).click(function(event){
 		$(this).parent().parent().hide();
 		$('#welcome').show();
@@ -141,6 +173,7 @@ $(function(){
 		event.preventDefault();
 	});
 
+	// Pause / Resume button
 	$(elem.btn_pause_play).click(function(event){
 		createjs.Sound.play("clickfx");
 		var current_image = $(this).attr('src');

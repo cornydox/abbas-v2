@@ -90,6 +90,7 @@ body {
   font-weight: 400;
   color: black;
   -webkit-font-smoothing: antialiased;
+  background-color: #ebcc95;
   background-image: url("../img/new/bg-landing.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -490,6 +491,7 @@ Global Classes
   height: 480px;
   border: 5px solid #b39658;
   margin: 0 auto;
+  background-color: #000;
   background: url("../img/new/bg_start4.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -535,6 +537,8 @@ Global Classes
   text-align: center;
   font-size: 30px;
   font-size: 2.14286rem;
+  color: #fff;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 .bg-landing {
@@ -1257,6 +1261,10 @@ Global Classes
   height: 470px;
   margin: 0 auto;
   cursor: pointer;
+}
+#fps {
+  color:#fff;
+  font-family: verdana;
 }
 @media only screen and (max-width: 767px) {
   #playground {
