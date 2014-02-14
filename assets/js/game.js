@@ -76,6 +76,7 @@ function Game(){
         abbas.data = new Abbas();
         abbas.gotoAndPlay("fly");
 
+        // Objects generation
         util.generateCrow();
         util.generateCoins();
         util.generateGold();
